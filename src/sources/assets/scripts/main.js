@@ -1,5 +1,20 @@
-"use strict";
+/*jslint browser: true*/
+/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo */
 
+(function ($) {
+    'use strict';
+
+    $(function () {
+        touchClick.init();
+        externalLinks.init();
+        scrollToTop.init();
+        scrolledIntoView.init();
+        softScroll.init();
+        hamburger.init();
+        showLogo.init();
+    });
+    // end ready function
+})(jQuery);
 /*jslint browser: true*/
 /*global jQuery, undefined, window */
 
@@ -9,7 +24,7 @@ var bannerBackground = function ($, undefined) {
 
     var bannerHeight = $(".banner").height(),
         hasBanner = $(".has-page-banner").length,
-        init = function init() {
+        init = function () {
         if (hasBanner) {
             $(window).scroll(function () {
                 var thisWindow = $(window),
@@ -28,8 +43,6 @@ var bannerBackground = function ($, undefined) {
         init: init
     };
 }(jQuery);
-"use strict";
-
 /*jslint browser: true, this: true*/
 /*global jQuery, undefined, window */
 
@@ -37,8 +50,8 @@ var bannerBackground = function ($, undefined) {
 var externalLinks = function ($, undefined) {
     "use strict";
 
-    var allExternalLinks = $('a[href^="http://"], a[href^="https://"]');
-    var init = function init() {
+    let allExternalLinks = $('a[href^="http://"], a[href^="https://"]');
+    let init = function () {
         allExternalLinks.each(function () {
             var thisExternalLink = $(this);
             thisExternalLink.attr("target", "_blank");
@@ -48,19 +61,17 @@ var externalLinks = function ($, undefined) {
         init: init
     };
 }(jQuery);
-'use strict';
-
 /*jsLint es6 */
 /*global jQuery, window */
 
 // function to attach a class to the body element when the hamburger is touched/clicked
-var hamburger = function ($) {
+const hamburger = function ($) {
     'use strict';
 
-    var init = function init() {
-        var thisPage = $('body');
-        var hamburger = $('.hamburger');
-        var thisMenuLayer = $('.navigation').find('ul');
+    let init = function () {
+        const thisPage = $('body');
+        const hamburger = $('.hamburger');
+        const thisMenuLayer = $('.navigation').find('ul');
 
         hamburger.on('click', function () {
             if (thisPage.hasClass('navActive')) {
@@ -87,8 +98,6 @@ var hamburger = function ($) {
         init: init
     };
 }(jQuery);
-"use strict";
-
 /*jslint es6, this:true*/
 /*global jQuery, YT, window*/
 
@@ -96,17 +105,17 @@ var hamburger = function ($) {
 // allows videos to be inserted with minimal html
 // example: "<div class="youtube-video" data-video-tn="<path/to/img>" data-video-id="<youtube id>" data-start-time="10" data-end-time="140"></div>
 
-var inlineVideos = function ($, undefined) {
+let inlineVideos = function ($, undefined) {
     "use strict";
 
-    var allVideos = $(".inline-video");
-    var allPlayers = [];
+    let allVideos = $(".inline-video");
+    let allPlayers = [];
 
     // initialize all video links when the player is ready
-    var initVideoLinks = function initVideoLinks() {
+    let initVideoLinks = function () {
 
         allVideos.each(function (i) {
-            var thisTrigger = $(this);
+            let thisTrigger = $(this);
 
             thisTrigger.on('click', function () {
                 allPlayers[i].playVideo();
@@ -114,7 +123,7 @@ var inlineVideos = function ($, undefined) {
         });
     };
 
-    var onPlayerStateChange = function onPlayerStateChange(event) {
+    let onPlayerStateChange = function (event) {
 
         // player states
         // "unstarted"               = -1
@@ -141,16 +150,16 @@ var inlineVideos = function ($, undefined) {
         }
     };
 
-    var init = function init() {
+    let init = function () {
         // add all videos to the DOM
         allVideos.each(function (i) {
-            var thisVideo = $(this);
-            var thisVideoIndex = i;
+            let thisVideo = $(this);
+            let thisVideoIndex = i;
             // add the thumbnail
-            var thisVideoTnHTML = "<div class='video-tn'><img src='" + thisVideo.data("video-tn") + "' alt='' /></div>";
+            let thisVideoTnHTML = `<div class='video-tn'><img src='${thisVideo.data("video-tn")}' alt='' /></div>`;
             thisVideo.append(thisVideoTnHTML);
             // and the video
-            var thisVideoHTML = "<div class='video-wrapper'><div id='linearVideo" + thisVideoIndex + "'></div></div>";
+            let thisVideoHTML = `<div class='video-wrapper'><div id='linearVideo${thisVideoIndex}'></div></div>`;
             thisVideo.append(thisVideoHTML);
         });
 
@@ -158,13 +167,13 @@ var inlineVideos = function ($, undefined) {
         // videoAPIReady is a custom event triggered when the Youtube API has been loaded
         $(window).on("videoAPIReady", function () {
             allVideos.each(function (i) {
-                var videoID = allVideos.eq(i).data('video-id');
-                var startTime = allVideos.eq(i).data('start-time');
-                var endTime = allVideos.eq(i).data('end-time');
-                var videoTarget = "linearVideo" + i;
+                let videoID = allVideos.eq(i).data('video-id');
+                let startTime = allVideos.eq(i).data('start-time');
+                let endTime = allVideos.eq(i).data('end-time');
+                let videoTarget = "linearVideo" + i;
 
                 // reference https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-                var playerVars = {
+                let playerVars = {
                     autoplay: 0, // start/stop via js commands
                     start: startTime || null, // if no start or end time is specified go trom 0 to end
                     end: endTime || null,
@@ -188,9 +197,9 @@ var inlineVideos = function ($, undefined) {
 
             // initially the video thumbnail is visible. on click fadeout the tn, show and play the video
             allVideos.each(function (i) {
-                var thisVideo = $(this);
+                let thisVideo = $(this);
                 thisVideo.find(".video-tn").on("click", function () {
-                    var thisVideoTn = $(this);
+                    let thisVideoTn = $(this);
                     thisVideoTn.fadeOut();
                     thisVideoTn.next().fadeIn();
                     allPlayers[i].playVideo();
@@ -203,17 +212,15 @@ var inlineVideos = function ($, undefined) {
         init: init
     };
 }(jQuery);
-'use strict';
-
 /*jsLint es6, this: true */
 /*global YT, jQuery, window */
 
-var marketoModal = function ($) {
+let marketoModal = function ($) {
     'use strict';
 
-    var init = function init() {
-        var marketoTriggers = $('.marketo-modal-trigger');
-        var marketoFormContainer = $('.marketo-form-container');
+    let init = function () {
+        let marketoTriggers = $('.marketo-modal-trigger');
+        let marketoFormContainer = $('.marketo-form-container');
 
         // load the Marketo Forms2 library
         $.getScript("//app-sj13.marketo.com/js/forms2/js/forms2.min.js");
@@ -223,10 +230,10 @@ var marketoModal = function ($) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
-            var thisMarketoTrigger = $(this);
-            var marketoFormTitle = thisMarketoTrigger.data('marketo-title');
-            var marketoFormID = thisMarketoTrigger.data('marketo-id');
-            var marketoTarget = '<div class="inner"><h2>' + marketoFormTitle + '</h2><form id=\'mktoForm_' + marketoFormID + '\' class=\'clearfix\'></form></div>';
+            let thisMarketoTrigger = $(this);
+            let marketoFormTitle = thisMarketoTrigger.data('marketo-title');
+            let marketoFormID = thisMarketoTrigger.data('marketo-id');
+            let marketoTarget = `<div class="inner"><h2>${marketoFormTitle}</h2><form id='mktoForm_${marketoFormID}' class='clearfix'></form></div>`;
 
             marketoFormContainer.append(marketoTarget);
 
@@ -247,16 +254,16 @@ var marketoModal = function ($) {
                 $('[for^="GDPR_Consent"]').parents('.mktoFormRow').addClass('gdpr-consent');
 
                 // remove the external stylesheets
-                var links = window.document.getElementsByTagName('link');
+                let links = window.document.getElementsByTagName('link');
                 $(links).each(function () {
-                    var thisLinkElement = $(this);
-                    var thisLinkURL = thisLinkElement.attr('href');
+                    let thisLinkElement = $(this);
+                    let thisLinkURL = thisLinkElement.attr('href');
                     if (thisLinkURL.indexOf('marketo.com') > 1) {
                         thisLinkElement.remove();
                     }
                 });
                 // and the inline styles
-                var marketoForms = $("[id*='mktoForm']");
+                let marketoForms = $("[id*='mktoForm']");
                 marketoForms.each(function () {
                     $(this).find('style').remove();
                 });
@@ -267,7 +274,7 @@ var marketoModal = function ($) {
                 });
 
                 marketoForms.each(function () {
-                    var thisMarketoForm = $(this);
+                    let thisMarketoForm = $(this);
                     //thisMarketoForm.find('select').niceSelect();
                     thisMarketoForm.find(':checkbox').after("<i class='icon icon-checkmark'></i>");
                 });
@@ -277,7 +284,7 @@ var marketoModal = function ($) {
         });
 
         marketoFormContainer.find('.icon-x').on('touchclick', function () {
-            var thisMarketoContainer = $(this).parent();
+            let thisMarketoContainer = $(this).parent();
             thisMarketoContainer.find('.inner').remove();
             thisMarketoContainer.fadeOut();
         });
@@ -287,8 +294,6 @@ var marketoModal = function ($) {
         init: init
     };
 }(jQuery);
-"use strict";
-
 /*jsLint es6 */
 /*global YT, jQuery, window, setInterval, clearInterval */
 
@@ -306,23 +311,23 @@ var marketoModal = function ($) {
 // new video starts, a few frames of the prior video might be visible. API docs recommend to use videoPause().
 
 
-var modalVideos = function ($, undefined) {
+let modalVideos = function ($, undefined) {
     "use strict";
 
-    var modalVideoTriggers = $(".modal-video");
-    var player = void 0;
-    var videoOverlay = void 0;
+    let modalVideoTriggers = $(".modal-video");
+    let player;
+    let videoOverlay;
 
     // initialize all video links when the player is ready
-    var initVideoLinks = function initVideoLinks() {
+    let initVideoLinks = function () {
         videoOverlay = $('#video-overlay');
-        var closeVideoOverlay = videoOverlay.find('.icon-x');
+        let closeVideoOverlay = videoOverlay.find('.icon-x');
 
         modalVideoTriggers.each(function () {
-            var thisTrigger = $(this);
-            var requestedVideoID = thisTrigger.data('video-id');
-            var startTime = thisTrigger.data('start-time');
-            var endTime = thisTrigger.data('end-time');
+            let thisTrigger = $(this);
+            let requestedVideoID = thisTrigger.data('video-id');
+            let startTime = thisTrigger.data('start-time');
+            let endTime = thisTrigger.data('end-time');
 
             // turn data-video-link into a href attribute and remove disabled attribute
             thisTrigger.attr('href', thisTrigger.data('video-link')).removeAttr('data-video-link').removeAttr('disabled');
@@ -351,8 +356,8 @@ var modalVideos = function ($, undefined) {
 
         closeVideoOverlay.on('click', function () {
             // fadeout sound as we close the overlay
-            var currentVolume = player.getVolume();
-            var fadeout = setInterval(function () {
+            let currentVolume = player.getVolume();
+            let fadeout = setInterval(function () {
                 if (currentVolume <= 0) {
                     // use pauseVideo rather than stopVideo to minimize
                     // previous video flashes when starting the new video
@@ -366,7 +371,7 @@ var modalVideos = function ($, undefined) {
         });
     };
 
-    var onPlayerStateChange = function onPlayerStateChange(event) {
+    let onPlayerStateChange = function (event) {
         videoOverlay = $('#video-overlay');
 
         // player states
@@ -393,7 +398,7 @@ var modalVideos = function ($, undefined) {
         }
     };
 
-    var init = function init() {
+    let init = function () {
         if (!$("body").hasClass("hasVideo")) {
             return;
         }
@@ -402,15 +407,23 @@ var modalVideos = function ($, undefined) {
         $(window).on("videoAPIReady", function () {
 
             // create an video overlay
-            $("body").append("\n            <div id=\"video-overlay\" class=\"video-overlay\">\n                <i class=\"icon icon-x\"></i>\n                <div class=\"responsive-wrapper\">\n                    <div class=\"video-container\">\n                        <div id=\"ytvideo\"></div>\n                    </div>\n                </div>\n            </div>");
+            $("body").append(`
+            <div id="video-overlay" class="video-overlay">
+                <i class="icon icon-x"></i>
+                <div class="responsive-wrapper">
+                    <div class="video-container">
+                        <div id="ytvideo"></div>
+                    </div>
+                </div>
+            </div>`);
 
             videoOverlay = $('#video-overlay');
-            var videoID = modalVideoTriggers.eq(0).data('video-id'); // the first video link
-            var startTime = modalVideoTriggers.eq(0).data('start-time');
-            var endTime = modalVideoTriggers.eq(0).data('end-time');
+            let videoID = modalVideoTriggers.eq(0).data('video-id'); // the first video link
+            let startTime = modalVideoTriggers.eq(0).data('start-time');
+            let endTime = modalVideoTriggers.eq(0).data('end-time');
 
             // reference https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-            var playerVars = {
+            let playerVars = {
                 autoplay: 0,
                 start: startTime || null, // if no start or end time is specified go trom 0 to end
                 end: endTime || null, // start/stop via js commands
@@ -437,53 +450,15 @@ var modalVideos = function ($, undefined) {
         init: init
     };
 }(jQuery);
-'use strict';
-
-/*jslint es6*/
-/*global jQuery, window*/
-
-var scrolledIntoView = function ($, undefined) {
-    "use strict";
-
-    var init = function init() {
-        var animateWhenInView = $('.initial');
-
-        $(window).scroll(function () {
-
-            if (animateWhenInView.length) {
-                animateWhenInView.each(function () {
-                    var thisElement = $(this);
-
-                    if (intoView(thisElement) && thisElement.hasClass('initial')) {
-                        thisElement.removeClass('initial');
-                    }
-                });
-            }
-        });
-    };
-
-    var intoView = function intoView(element) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-        var elementTop = $(element).offset().top;
-        return elementTop <= docViewBottom && elementTop >= docViewTop;
-    };
-
-    return {
-        init: init
-    };
-}(jQuery);
-"use strict";
-
 /*eslint no-unused-vars: 0*/
 
 // the scroll to top function for long pages
 var scrollToTop = function ($, undefined) {
-    var hasToTop = $("#toTop").length;
-    var toTop = $("#toTop");
-    var TO_TOP_VISIBLE = 400;
+    let hasToTop = $("#toTop").length;
+    let toTop = $("#toTop");
+    const TO_TOP_VISIBLE = 400;
 
-    var init = function init() {
+    let init = function () {
         if (hasToTop) {
             toTop.on("touchclick", function () {
                 $("html, body").animate({
@@ -517,19 +492,51 @@ var scrollToTop = function ($, undefined) {
         init: init
     };
 }(jQuery);
-'use strict';
+/*jslint es6*/
+/*global jQuery, window*/
 
+var scrolledIntoView = function ($, undefined) {
+    "use strict";
+
+    let init = function () {
+        let animateWhenInView = $('.initial');
+
+        $(window).scroll(function () {
+
+            if (animateWhenInView.length) {
+                animateWhenInView.each(function () {
+                    let thisElement = $(this);
+
+                    if (intoView(thisElement) && thisElement.hasClass('initial')) {
+                        thisElement.removeClass('initial');
+                    }
+                });
+            }
+        });
+    };
+
+    let intoView = function (element) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        return elementTop <= docViewBottom && elementTop >= docViewTop;
+    };
+
+    return {
+        init: init
+    };
+}(jQuery);
 /*jsLint es6 */
 /*global jQuery, window */
 
 // function to manage top nav visibility
-var showLogo = function ($) {
+let showLogo = function ($) {
     'use strict';
 
-    var init = function init() {
-        var welcomeScreenMain = $('.welcome-screen__bg-image');
-        var showLogoEdge = 500;
-        var logo = $('#logo');
+    let init = function () {
+        let welcomeScreenMain = $('.welcome-screen__bg-image');
+        let showLogoEdge = 500;
+        let logo = $('#logo');
 
         $(window).on('scroll', function () {
             //if scrollTop is >= what-i-do section we'll show the topNav
@@ -546,22 +553,20 @@ var showLogo = function ($) {
         init: init
     };
 }(jQuery);
-'use strict';
-
 /*jsLint es6 */
 /*global YT, jQuery, window, setInterval, clearInterval */
 
 // function to scroll softly to on-page anchors
-var softScroll = function ($) {
+const softScroll = function ($) {
     'use strict';
 
     // filter handling for a /dir/ OR /indexordefault.page
 
-    var filterPath = function filterPath(string) {
+    var filterPath = function (string) {
         return string.replace(/^\//, '').replace(/(index|default).[a-zA-Z]{3,4}$/, '').replace(/\/$/, '');
     };
 
-    var init = function init() {
+    var init = function () {
         // source: https://css-tricks.com/smooth-scrolling-accessibility/
         // URL updates and the element focus is maintained
         // originally found via in Update 3 on http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links
@@ -571,14 +576,14 @@ var softScroll = function ($) {
         // the error is caused by this selector $('a[href*="#"]') as this selector selects urls that have an "#" in any place
         // Changing that to $('a[href^="#"]') insures that only hashes that START with and "#" are selected.
 
-        var locationPath = filterPath(location.pathname);
+        const locationPath = filterPath(location.pathname);
         $('a[href^="#"]').each(function () {
-            var thisPath = filterPath(this.pathname) || locationPath;
-            var hash = this.hash;
+            const thisPath = filterPath(this.pathname) || locationPath;
+            const hash = this.hash;
             if ($("#" + hash.replace(/#/, '')).length) {
                 if (locationPath === thisPath && (location.hostname === this.hostname || !this.hostname) && this.hash.replace(/#/, '')) {
-                    var $target = $(hash),
-                        target = this.hash;
+                    const $target = $(hash),
+                          target = this.hash;
                     if (target) {
                         $(this).on('click', function (event) {
                             event.preventDefault();
@@ -596,22 +601,20 @@ var softScroll = function ($) {
         init: init
     };
 }(jQuery);
-"use strict";
-
 /*jsLint es6 */
 /*global YT, jQuery, window */
 
 // function to extend jQuery event >> touchclick for touch and click
-var touchClick = function ($, undefined) {
+let touchClick = function ($, undefined) {
     "use strict";
 
-    var init = function init() {
-        var isMobile = false;
+    let init = function () {
+        let isMobile = false;
         if ($("html").hasClass("touch")) {
             isMobile = true;
         }
         //var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-        var eventType = isMobile ? "touchstart" : "click";
+        let eventType = isMobile ? "touchstart" : "click";
 
         $.event.special.touchclick = {
             bindType: eventType,
@@ -623,8 +626,6 @@ var touchClick = function ($, undefined) {
         init: init
     };
 }(jQuery);
-"use strict";
-
 /*jsLint es6 */
 /*global YT, jQuery, window, setInterval, clearInterval */
 
@@ -637,16 +638,16 @@ var touchClick = function ($, undefined) {
 // once the api has been loaded the video object is given the videoID. The video will be played in a loop
 
 
-var backgroundVideo = function ($, undefined) {
+let backgroundVideo = function ($, undefined) {
     "use strict";
 
-    var player = void 0;
+    let player;
 
-    var onPlayerReady = function onPlayerReady(event) {
+    let onPlayerReady = function (event) {
         //event.target.playVideo();
     };
 
-    var onPlayerStateChange = function onPlayerStateChange(event) {
+    let onPlayerStateChange = function (event) {
 
         // player states
         // "unstarted"               = -1
@@ -672,18 +673,18 @@ var backgroundVideo = function ($, undefined) {
         }
     };
 
-    var init = function init() {
+    let init = function () {
         if (!$("body").hasClass("hasVideo")) {
             return;
         }
 
-        var videoID = $('#video-background').data('video-id');
+        let videoID = $('#video-background').data('video-id');
 
         // on videoAPIReady we add a video overlay and create a video player in div#ytvideo
         $(window).on("videoAPIReady", function () {
 
             // reference https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-            var playerVars = {
+            let playerVars = {
                 modestbranding: 1,
                 showinfo: 0,
                 controls: 0, // show video controls
@@ -710,8 +711,6 @@ var backgroundVideo = function ($, undefined) {
         init: init
     };
 }(jQuery);
-"use strict";
-
 /*jslint es6*/
 /*global jQuery, YT, window*/
 
@@ -721,16 +720,16 @@ var backgroundVideo = function ($, undefined) {
 var youTubeVideos = function ($, undefined) {
     "use strict";
 
-    var allVideos = $(".youtube-video");
+    let allVideos = $(".youtube-video");
 
-    var _getTnHTML = function _getTnHTML(videoTn) {
+    let _getTnHTML = function (videoTn) {
         var videoHTML = "<div class='video-tn'>";
         videoHTML += "<img src='" + videoTn + "' alt='' />";
         videoHTML += "</div>";
         return videoHTML;
     };
 
-    var _getVideoHTML = function _getVideoHTML(videoID, videoIndex, addAttr) {
+    let _getVideoHTML = function (videoID, videoIndex, addAttr) {
         var videoHTML = "<div class='video-wrapper'>";
         var addAttributes = addAttr ? addAttr : "";
         videoHTML += "<iframe id='player" + videoIndex + "' src='https://www.youtube.com/embed/" + videoID + addAttributes + " frameborder='0'></iframe>";
@@ -738,8 +737,8 @@ var youTubeVideos = function ($, undefined) {
         return videoHTML;
     };
 
-    var init = function init() {
-        var allPlayers = [];
+    let init = function () {
+        let allPlayers = [];
 
         // add all videos to the DOM
         allVideos.each(function (i) {
@@ -759,7 +758,7 @@ var youTubeVideos = function ($, undefined) {
             allVideos.each(function (i) {
                 allPlayers[i] = new YT.Player("player" + i, {
                     events: {
-                        "onStateChange": function onStateChange(event) {
+                        "onStateChange": function (event) {
                             //if (event.data === YT.PlayerState.PAUSED) {}
                             //if (event.data == YT.PlayerState.PLAYING) {}
                             if (event.data == YT.PlayerState.ENDED) {
@@ -791,23 +790,3 @@ var youTubeVideos = function ($, undefined) {
         init: init
     };
 }(jQuery);
-'use strict';
-
-/*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo */
-
-(function ($) {
-    'use strict';
-
-    $(function () {
-        touchClick.init();
-        externalLinks.init();
-        scrollToTop.init();
-        scrolledIntoView.init();
-        softScroll.init();
-        hamburger.init();
-        showLogo.init();
-    });
-    // end ready function
-})(jQuery);
-//# sourceMappingURL=main.js.map

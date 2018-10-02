@@ -197,3 +197,33 @@ gulp.task("default", ["buildDev"], function () {
         scriptPath + "**/*"
     ], ["refresh"]);
 });
+
+gulp.task('buildProd', function (cb) {
+    'use strict';
+    sequence([
+        'vendorScripts',
+        'productionScripts',
+        'productionStyles'
+    ],
+        'metalsmith',
+        cb
+        );
+});
+
+gulp.task('productionScripts', function () {
+    'use strict';
+    return gulp.src(path.join(__dirname, scriptPath, '**/*.js'))
+        .pipe(babel())
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest(path.join(__dirname, assetPath, 'assets/scripts')));
+});
+
+// compile style sheet for development
+gulp.task('productionStyles', function () {
+    'use strict';
+
+    return gulp.src(path.join(__dirname, stylePath, 'main.scss'))
+        .pipe(sass({style: 'compressed'}))
+        .pipe(autoprefixer('last 2 version'))
+        .pipe(gulp.dest(path.join(__dirname, assetPath, 'assets/styles')));
+});
