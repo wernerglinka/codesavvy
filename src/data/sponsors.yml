@@ -1,0 +1,27 @@
+target:
+  name: Target
+  image_src: "target-logo.png"
+  link_url: "https://target.com"
+peoplenet:
+  name: Peoplenet
+  image_src: "peoplenet-logo.png"
+  link_url: "https://peoplenetonline.com"
+clockwork:
+  name: ClockWork
+  image_src: "clockwork-logo.png"
+  link_url: "https://clockwork.com"
+mctc:
+  name: Minneapolis Community & Technical College
+  image_src: "mctc-logo.png"
+  link_url: "https://minneapolis.edu"
+works_museum:
+  name: the Works Museum
+  image_src: "works-museum-logo.png"
+techdotcom:
+  name: Tech{dot}MN
+  image_src: "techdotmn-logo.png"
+  link_url: "https://tech.mn"
+livefront:
+  name: Livefront
+  image_src: "livefront-logo.png"
+  link_url: "https://livefront.com"

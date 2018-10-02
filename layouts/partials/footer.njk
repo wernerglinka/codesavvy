@@ -1,15 +1,17 @@
 <footer style="background-image: url('{% if footer_background_image %}{{ footer_background_image }}{% else %}{{ site.footer_background_image }}{% endif %}')">
     <div class="container">
-        <div class="footer-main-wrapper">
+        
+        <p>Code Savvy is a not for profit organization with 501(c)3 status from the IRS. Code Savvy's EIN is 46-3760347</p>
 
-            <ul class="footer-col contact-info vcard list-unstyled">
-                <li><a class="footer-logo" href="/"><img src="/assets/images/logo.png" alt=""></a></li>
-                <li class="fn">{{ site.owner.name }}</li>
-                <li><a class="tel" href="tel:">{{ site.owner.tel }}</a></li>
-                <li><a class="email" href="mailto:{{ site.owner.email }}">{{ site.owner.email }}</a></li>
-            </ul>
+        <ul class="list-unstyled list-inline">
+            <li class="social-link"><a href="https://www.linkedin.com/company/{{ site.owner.linkedin }}" target="_blank"><i class="icon icon-linkedin"></i></a></li>
+            <li class="social-link"><a href="https://twitter.com/{{ site.owner.twitter }}" target="_blank"><i class="icon icon-twitter"></i></a></li>
+            <li class="social-link"><a href="https://www.facebook.com/{{ site.owner.facebook }}" target="_blank"><i class="icon icon-facebook"></i></a></li>
+        </ul>
+        <ul class="list-unstyled list-inline">
+            <li>&copy; 2018 {{ site.owner.name }} </li>
+        </ul>
 
-        </div>
+        
     </div>
-    {% include "partials/bottom-stripe.html" %}
 </footer>

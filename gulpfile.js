@@ -46,6 +46,9 @@ const srcPath = './src/content/';
 const destPath = './build/';
 const metadataPath = './src/data/site.yml';
 const programsdataPath = './src/data/programs.yml';
+const teamPath = './src/data/team.yml';
+const sponsorsPath = './src/data/sponsors.yml';
+const contactPath = './src/data/contact.yml';
 const stylePath = './src/styles/';
 const scriptPath = './src/scripts/';
 const assetPath = './src/sources/';
@@ -62,7 +65,10 @@ function setUpMS(callback) {
         .use(metadata({
             "files": {
                 "site": metadataPath,
-                "programs": programsdataPath
+                "programs": programsdataPath,
+                "team": teamPath,
+                "sponsors": sponsorsPath,
+                "contact": contactPath
             },
             "config": {
                 isExternalSrc: true

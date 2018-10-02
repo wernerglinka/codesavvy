@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'square1';
+  font-family: 'codesavvy';
   src:
-    url('fonts/square1.ttf?hpc9e') format('truetype'),
-    url('fonts/square1.woff?hpc9e') format('woff'),
-    url('fonts/square1.svg?hpc9e#square1') format('svg');
+    url('fonts/codesavvy.ttf?yl65s4') format('truetype'),
+    url('fonts/codesavvy.woff?yl65s4') format('woff'),
+    url('fonts/codesavvy.svg?yl65s4#codesavvy') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'square1' !important;
+  font-family: 'codesavvy' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -23,6 +23,15 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-mail:before {
+  content: "\e926";
+}
+.icon-map-pin:before {
+  content: "\e927";
+}
+.icon-phone:before {
+  content: "\e928";
+}
 .icon-arrow-down:before {
   content: "\e900";
 }

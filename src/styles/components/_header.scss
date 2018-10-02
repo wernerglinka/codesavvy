@@ -11,6 +11,12 @@ header {
     background-color: $header-bg-color;
     padding: 0 30px;
     transition: background-color 0.5s;
+
+    .btn {
+        position: absolute;
+        top: 27px;
+        right: 150px;
+    }
 }
 
 .brand {
@@ -26,12 +32,6 @@ header {
         display: block;
         max-width: $logo-width;
     }
-}
-
-.btn {
-    position: absolute;
-    top: 27px;
-    right: 150px;
 }
 
 .navigation {

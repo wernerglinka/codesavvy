@@ -1,18 +1,18 @@
 @import "variables";
 
 @font-face {
-  font-family: 'square1';
+  font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/square1.ttf?hpc9e') format('truetype'),
-    url('#{$icomoon-font-path}/square1.woff?hpc9e') format('woff'),
-    url('#{$icomoon-font-path}/square1.svg?hpc9e#square1') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?yl65s4') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?yl65s4') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?yl65s4##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'square1' !important;
+  font-family: '#{$icomoon-font-family}' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -25,6 +25,21 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-mail {
+  &:before {
+    content: $icon-mail; 
+  }
+}
+.icon-map-pin {
+  &:before {
+    content: $icon-map-pin; 
+  }
+}
+.icon-phone {
+  &:before {
+    content: $icon-phone; 
+  }
+}
 .icon-arrow-down {
   &:before {
     content: $icon-arrow-down; 

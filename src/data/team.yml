@@ -1,0 +1,39 @@
+board_of_directors:
+  jean_weiss:
+    image_src: jean-weiss.jpg
+    title: "Jean Weiss"
+    position: "Executive Director"
+  kim_skanson:
+    image_src: kim-skanson.jpg
+    title: "Kim Skanson"
+    position: "Board Member"
+  andrea_wilson_vazquez:
+    image_src: andrea-wilson-vazquez.jpg
+    title: "Andrea Wilson Vazquez"
+    position: "Board Secretary"
+
+program_directors:
+  eileen_king:
+    image_src: eileen-king.jpg
+    title: "Eileen King"
+    position: "Director, Summer Camps"
+  lanise_block:
+    image_src: lanise-block.jpg
+    title: "Dr. Lanise Block"
+    position: "Digital Empowerment Academy Program Director"
+  matt_gray:
+    image_src: matt-gray.jpg
+    title: "Matt Gray"
+    position: "Director, CoderDojo TC"
+  andrea_wilson_vazquez:
+    image_src: andrea-wilson-vazquez.jpg
+    title: "Andrea Wilson Vazquez"
+    position: "Director, Educator Programs"
+  marie_gottschalk:
+    image_src: marie-gottschalk.jpg
+    title: "Marie Gottschalk"
+    position: "Director, CoderDojo & Code Clubs"
+  laurie_Aaronson:
+    image_src: laurie-aaronson.jpg
+    title: "Laurie Aaronson"
+    position: "Web and Google Administrator"

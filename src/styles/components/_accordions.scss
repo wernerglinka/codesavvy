@@ -1,0 +1,30 @@
+.accordion {
+    .accordion-head {
+        position: relative;
+        padding: 5px 10px;
+        border: $default-border;
+        font-size: 18px;
+        margin-top: 0;
+
+        &:hover {
+            background-color: $highlight-bg-color;
+            cursor: pointer;
+        }
+
+
+        .icon {
+            position: absolute;
+            top: 30%;
+            right: 30px;
+            line-height: 1;
+        }
+
+        &+ div {
+            display: none;
+
+            p:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}
