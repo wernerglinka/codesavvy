@@ -3,9 +3,18 @@
     justify-content: space-between;
     align-items: flex-end;
     flex-wrap: wrap;
+
+    @media (max-width: 620px) {
+        display: block;
+    }
     
     li {
         width: 280px;
         text-align: center;
+
+        @media (max-width: 620px) {
+            display: block;
+            margin: 0 auto;
+        }
     }
 }

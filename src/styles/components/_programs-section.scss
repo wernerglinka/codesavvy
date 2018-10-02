@@ -5,16 +5,26 @@
         margin: 0;
         padding: 0;
 
+        @media (max-width: 620px) {
+            display: block;
+        }
+
         li {
             position: relative;
+            overflow: hidden;
             list-style: none;
             flex: 0 1 50%;
+            max-width: 50%;
             height: 0;
             padding-bottom: 50%;
             background-size: 100%;
             background-position: center center;
             transition: all 0.3s;
             opacity: 0.5;
+            
+            @media (max-width: 620px) {
+                margin: 0 auto;
+            }
 
             &:hover {
                 background-size: 110%;
@@ -38,7 +48,7 @@
             }
 
             h2 {
-                font-size: 5vw;
+                font-size: 4vw;
                 line-height: 1;
                 font-weight: 600;
                 text-shadow: $default-text-shadow;
