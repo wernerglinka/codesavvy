@@ -1,0 +1,23 @@
+.content-pagination {
+    text-align: center;
+    margin: 20px 0;
+
+    a, span {
+        position: relative;
+        display: inline-block;
+        margin: 0 20px;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &.activePage {
+            font-weight: 700;
+        }
+    }
+
+    .activePage {
+        color: $default-hover-color;
+        border-bottom: 2px solid $default-hover-color;
+    }
+}

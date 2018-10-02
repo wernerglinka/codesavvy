@@ -1,0 +1,22 @@
+.content-wrapper {
+    clear: both;
+    padding: 0 $min-side-padding;
+}
+
+.banner + .content-wrapper {
+    position: relative;
+    //z-index: 2;
+}
+
+.has-page-banner .banner + .content-wrapper {
+    margin-top: $banner-height;
+}
+
+.has-full-page-banner .banner + .content-wrapper {
+    margin-top: 100vh;
+}
+
+p > strong {
+    text-transform: uppercase;
+    font-size: 0.75em;
+}

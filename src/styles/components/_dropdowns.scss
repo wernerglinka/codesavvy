@@ -1,0 +1,79 @@
+.dropdown {
+    position: relative;
+}
+
+// dropdown menu
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: $default-font-size;
+    text-align: left;
+    background-color: $dropdown-bg-color;
+    border-radius: 0;
+    box-shadow: 0px 2px 18px 0px rgba(50, 50, 50, 0.75);
+
+    &.pull-right {
+        right: 0;
+        left: auto;
+    }
+
+    > li > a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1em;
+        color: $dropdown-link-color;
+        white-space: nowrap; // prevent links from randomly breaking onto new lines
+    }
+}
+
+// Hover/Focus state
+.dropdown-menu > li > a {
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        background-color: $dropdown-link-hover-bg-color;
+    }
+}
+
+// Active state
+.dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+        color: $dropdown-link-color;
+        text-decoration: none;
+        outline: 0;
+        background-color: $dropdown-bg-color;
+    }
+}
+
+// Disabled state
+//
+// Gray out text and ensure the hover/focus state remains gray
+
+.dropdown-menu > .disabled > a {
+  &,
+  &:hover,
+  &:focus {
+    color: $dropdown-link-disabled-color;
+  }
+
+  // Nuke hover/focus effects
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none; // Remove CSS gradient
+    cursor: not-allowed;
+  }
+}

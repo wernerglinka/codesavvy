@@ -1,0 +1,20 @@
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+{% if site.owner.twitter %}<meta name="twitter:site" content="{{ site.owner.twitter }}">{% endif %}
+<meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+{% if description %}<meta name="twitter:description" content="{{ description }}">{% endif %}
+<meta name="twitter:creator" content="{% if author %}{{ author }}{% else %}{{ site.title }}{% endif %}">
+<meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}{{ page.image.thumb }}{% else %}{{ site.url }}/assets/images/default-thumb.png{% endif %}">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+{% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
+<meta property="og:url" content="{{ url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:image" content="{% if page.image.thumb %}{{ site.url }}{{ page.image.thumb }}{% else %}{{ site.url }}/assets/images/default-thumb.png{% endif %}">
+
+<!-- Schema.org -->
+<meta itemprop=”name” content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+{% if description %}<meta itemprop=”description” content="{{ description }}">{% endif %}

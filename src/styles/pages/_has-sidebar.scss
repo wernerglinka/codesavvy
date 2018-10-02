@@ -1,0 +1,128 @@
+// landing pages with sidebar
+.has-sidebar .content-wrapper .container {
+    display: flex;
+
+    h1 {
+        width: 100%;
+        padding: 10px 15px 10px 0;
+    }
+}
+
+.blog-post .content-wrapper .container h1 {
+     font-size: 1.725em;
+     font-weight: 300;
+     line-height: 1.5;
+     padding: 0 15px 0 0;
+     margin: 15px 0;
+}
+
+.has-sidebar {
+
+    .main {
+        flex: 0 1 50%;
+        padding: 0 15px;
+    }
+    .sidebar {
+        flex: 0 1 50%;
+        padding: 0 15px 50px 50px;
+        background-color: $sidebar-bg-color;
+
+        h3 {
+            font-size: 1em;
+            padding-bottom: 20px;
+        }
+    }
+
+    &.blog-post,
+    &.blog {
+        .main {
+            flex: 0 1 70%;
+            padding: 70px 10% 0 0;
+            overflow: hidden; // important so flex container doesn't stretch beyond page due to long code lines
+        }
+        .sidebar {
+            flex: 0 1 30%;
+            padding: 70px 15px 50px;
+
+        }
+    }
+
+    &.blog-post {
+        .main {
+            position: relative;
+            padding-left: 10%;
+
+            .page-socials {
+                position: absolute;
+                top: 100px;
+                left: 30px;
+            }
+        }
+    }
+
+    &.is-tag-page {
+        .main {
+            padding-top: 0;
+        }
+        .sidebar{
+            padding-top: 30px;
+        }
+    }
+}
+
+@media (max-width: 1330px) {
+    .has-sidebar {
+
+        &.blog {
+            .main {
+                padding: 70px 10% 0 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile-break-point) {
+    .has-sidebar .content-wrapper .container {
+        flex-wrap: wrap;
+    }
+    .has-sidebar {
+        .main {
+            flex: 1 1 100%;
+        }
+        .sidebar {
+            flex: 1 1 100%;
+            padding: 0 30px;
+            margin-bottom: 50px;
+
+            h1 {
+                text-align: center;
+            }
+        }
+
+        &.blog-post,
+        &.blog {
+            .main {
+                flex: 0 1 100%;
+                padding: 30px 15px 0;
+            }
+            .sidebar {
+                flex: 0 1 100%;
+                padding: 0 15px;
+            }
+        }
+        &.blog {
+            .main {
+                padding: 0 15px 0;
+            }
+        }
+
+        &.blog-post {
+            .main {
+
+                .page-socials {
+                    position: static;
+                }
+            }
+        }
+    }
+}

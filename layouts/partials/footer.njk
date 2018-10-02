@@ -1,0 +1,15 @@
+<footer style="background-image: url('{% if footer_background_image %}{{ footer_background_image }}{% else %}{{ site.footer_background_image }}{% endif %}')">
+    <div class="container">
+        <div class="footer-main-wrapper">
+
+            <ul class="footer-col contact-info vcard list-unstyled">
+                <li><a class="footer-logo" href="/"><img src="/assets/images/logo.png" alt=""></a></li>
+                <li class="fn">{{ site.owner.name }}</li>
+                <li><a class="tel" href="tel:">{{ site.owner.tel }}</a></li>
+                <li><a class="email" href="mailto:{{ site.owner.email }}">{{ site.owner.email }}</a></li>
+            </ul>
+
+        </div>
+    </div>
+    {% include "partials/bottom-stripe.html" %}
+</footer>

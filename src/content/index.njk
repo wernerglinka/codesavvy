@@ -1,0 +1,60 @@
+---
+title: Page Title
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: home
+
+---
+
+{% extends "default.njk" %}
+
+{% block body %}
+    <section class="welcome-section">
+        <div class="welcome-section__header" style="background-image: url('/assets/images/welcome-section/classroom-with-children.jpg')">
+            <h1>{{ site.owner.name }}</h1>
+            <p class="welcome-section__text">Learn how to code with Code Savvy</p>
+        </div>
+        <a href="#about"><i class="icon icon-arrow-down"></i></a>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h1>About Code Savvy</h1>
+            <p>Code Savvy is a non-profit organization built to inspire kids and teens to become code-savvy. We create and foster programs and services that help kids understand the kind of creative thinking that goes into coding, and to experience programming computers and devices. By doing this, Code Savvy is determined to bring more gender and ethnic diversity to computer science.</p>
+
+            <p>Code Savvy achieves its mission by supporting a number of open and free coding classes such as the Twin Cities CoderDojo, the girls-only Rebecca CoderDojo and various local coder clubs. It also facilitates Technovation[MN], a local app development competition for local teen girls. Code Savvy also offers services and programs for educators through its Get With The Program workshops, Educators Cohort, and the Coding In The Classroom Summit.</p>
+
+            <p>Code Savvy is a central resource for local advocates and champions for the advancement of youth computer science. Through its connections and vision, it is able to activate programs and services that give real-world coding experience to the kids who need it most.</p>
+        </div>
+    </section>
+
+    <section id="youth-programs" class="youth-programs-section">
+        <div class="container">
+            <h1>Youth Programs</h1>
+            <p>The main focus of Code Savvy is the development of opportunities for youth to engage in coding activities. Mentor provide support and encouragement for youth ages 8-17 in a variety of environments and locations through the Twin Cities and greater MN area.</p>
+            {% if programs %}
+                <ul> 
+                    {% for item, program in programs %}
+                    
+                    <li style="background-image: url('/assets/images/programs/{{ program.image_src }}')">
+                        <a href="{{ program.link_url }}">
+                            <h2>{{ program.title }}</h2>
+                            <div class="inner">
+                                <p>{{ program.description }}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

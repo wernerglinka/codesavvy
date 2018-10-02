@@ -1,0 +1,12 @@
+.inline-video-link {
+    display: inline-block;
+    height: 1.4em;
+    width: 1.4em;
+    line-height: 1.3;
+    text-align: center;
+    padding-left: 0.1em;
+    font-size: 0.75em;
+    border: 1px solid $default-link-color;
+    border-radius: 0.7em;
+    margin: 0 0.5em;
+}

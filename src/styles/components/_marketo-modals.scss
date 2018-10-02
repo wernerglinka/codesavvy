@@ -1,0 +1,31 @@
+.marketo-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1001;
+    padding-top: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: none;
+
+    .icon-x {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+    }
+    .inner {
+        width: 50%;
+        margin: 0 auto;
+
+        @media (max-width: 600px) {
+            width: 90%;
+        }
+    }
+}
+
+// form styles
+.mktoAsterix {
+    display: inline-block;
+}

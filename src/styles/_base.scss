@@ -1,0 +1,208 @@
+/**
+ * base styling
+ */
+
+// box sizing for everything
+* {
+    box-sizing: border-box;
+}
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+// we give html a background color so when body is short and the window is tall we don't have a gap at the bottom
+// background color should be same for footer and html
+html,
+footer {
+    font-size: 100%;
+    font-weight: 300;
+}
+body {
+    font-family: $default-font-family-sans-serif;
+    font-size: $default-font-size;
+    line-height: $default-line-height;
+    color: $default-text-color;
+    background-color: $content-bg-color;
+    padding: 0;
+    margin: 0;
+}
+h1 {
+    font-size: 1.75em;
+    font-weight: 300;
+    color: $codesavvy-purple;
+}
+section {
+    h1 {
+        border-bottom: 1px solid $codesavvy-light-purple;
+    }
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+h3 {
+    color: $default-text-color;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.5625;
+    margin-bottom: 0;
+}
+// here we use h4 as a title byline
+h1 + h4 {
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+p {
+    color: $default-text-color;
+    font-size: 1em;
+    line-height: 1.4;
+    font-weight: 300;
+
+    &.center {
+        text-align: center;
+    }
+}
+
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+a {
+    color: $default-link-color;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color, background-color 0.5s;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+// clearfix
+// container is always 'fixed'
+.clearfix,
+.container {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.container {
+    max-width: $max-page-width;
+    margin: 0 auto;
+
+    @media (max-width: $max-page-width) {
+        padding: 0 30px;
+    }
+}
+
+
+
+// images are always responsive. use inline-block so we can use text-align
+img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block
+}
+
+hr {
+    margin: 1em 0;
+}
+
+// Only display content to screen readers
+// See: http://a11yproject.com/posts/how-to-hide-content
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+.sr-only-focusable {
+    &:active,
+    &:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+    }
+}
+
+// iOS "clickable elements" fix for role="button"
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+[role="button"] {
+    cursor: pointer;
+}
+
+// utility styles
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+[disabled],
+.is-disabled {
+    color: $default-disabled-color !important;
+}
+
+.has-highlight {
+    background-color: $highlight-bg-color !important;
+}
+
+.nowrap {
+    white-space: nowrap;
+    font-size: 1em !important;
+}
+
+blockquote {
+    padding: 20px;
+    background-color: #f5f5f5;
+    font-style: italic;
+}
+
+// global wide/narrow screen visibility
+.wide-screen-only {
+    display: block;
+}
+.narrow-screen-only {
+    display: none;
+}
+@media (max-width: $mobile-break-point) {
+    .wide-screen-only {
+        display: none;
+        }
+    .narrow-screen-only {
+        display: block;
+    }
+}
+
+.image-cover {
+    background-size: cover;
+}

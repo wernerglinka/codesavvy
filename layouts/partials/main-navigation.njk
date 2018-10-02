@@ -1,0 +1,68 @@
+<nav class="main-navigation pull-right clearfix">
+    <ul class="main-menu list-unstyled list-inline pull-right">
+        {% for link in navigation %}
+        <li class="{{ link.linkClass }}">
+            {% if link.isLink %}
+            <a href={% if link.isLink %} "{{ link.url }}" {% else %} "" {% endif %} {% if link.submenu %} aria-haspopup="true" aria-expanded="false" {% endif %}>
+                {% if link.submenu %}
+                <i class="icon icon-chevron-south"></i>
+                <i class="icon icon-chevron-north"></i>
+                {% endif %}
+                {{ link. title }}
+            </a>
+            {% else %}
+            <span {% if link.submenu %} aria-haspopup="true" aria-expanded="false" {% endif %}>
+                {% if link.submenu %}
+                <i class="icon icon-chevron-south"></i>
+                <i class="icon icon-chevron-north"></i>
+                {% endif %}
+                {{ link. title }}
+            </span>
+            {% endif %}
+            {% if link.submenu %}
+            <ul class="dropdown-menu">
+                {% for sublink in link.submenu %}
+                <li class="{{sublink.linkClass}}">
+                    <a href="{{ sublink.url }}">{{ sublink.title}}</a>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+<nav class="mobile-navigation">
+    <ul class="main-menu list-unstyled">
+        {% for link in navigation %}
+        <li class="{{ link.linkClass }}">
+            {% if link.isLink %}
+            <a href={% if link.isLink %} "{{ link.url }}" {% else %} "" {% endif %} {% if link.submenu %} aria-haspopup="true" aria-expanded="false" {% endif %}>
+                {% if link.submenu %}
+                <i class="icon icon-chevron-south"></i>
+                <i class="icon icon-chevron-north"></i>
+                {% endif %}
+                {{ link. title }}
+            </a>
+            {% else %}
+            <span {% if link.submenu %} aria-haspopup="true" aria-expanded="false" {% endif %}>
+                {% if link.submenu %}
+                <i class="icon icon-chevron-south"></i>
+                <i class="icon icon-chevron-north"></i>
+                {% endif %}
+                {{ link. title }}
+            </span>
+            {% endif %}
+            {% if link.submenu %}
+            <ul class="dropdown-menu">
+                {% for sublink in link.submenu %}
+                <li class="{{sublink.linkClass}}">
+                    <a href="{{ sublink.url }}">{{ sublink.title}}</a>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+        <li class="contact-us-link has-bottom-border"><a href="/contact-us/">contact us</a></li>
+        <li><a href="">sign in</a></li>
+    </ul>
+</nav>

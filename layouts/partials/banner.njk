@@ -1,0 +1,10 @@
+
+{% if hasVideo %}
+<div class="banner hasVideo">
+    <video src="{{ banner_video_src }}" type="video/mp4" {{ banner_video_controls }} poster="{{ banner_video_poster}}"></video>
+{% elseif hasImage %}
+<div class="banner hasImage">
+    <img src="{{ banner_image_src }}" alt="{{ banner_image_alt }}" />
+{% endif %}
+{% block banner_content %}{% endblock %}
+</div>

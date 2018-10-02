@@ -1,0 +1,16 @@
+#toTop {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: all .5s ease 0s;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: $default-link-color;
+    font-size: 30px;
+}

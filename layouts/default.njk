@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "partials/head.njk" %}
+    </head>
+    <body class="{{ body_classes }}">
+        {% include "partials/browser-upgrade.njk" %}
+        
+        {% block header %}
+        {% include "partials/header.njk" %}
+        {% endblock %}
+
+        {% block banner %}{% endblock %}
+
+        {% block body %}{% endblock %}
+
+        {% block footer %}
+        {% include "partials/footer.njk" %}
+        {% endblock %}
+
+        {% block to_top %}
+        <div id="toTop"><i class="icon icon-chevron-up"></i></div>
+        {% endblock %}
+        
+        {% include "partials/scripts.njk" %}
+        {% include "partials/google-analytics.njk" %}
+    </body>
+</html>

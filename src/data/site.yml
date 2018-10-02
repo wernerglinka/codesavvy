@@ -1,0 +1,20 @@
+title: Code Savvy
+locale: en_US
+url: https://codesavvy.org
+description: "Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids and educators, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies."
+owner:
+    name: Code Savvy
+    email: info@sitename.com
+    tel: 612-963-3344
+    disqus_shortname: ""
+    twitter: "codesavvyorg"
+    facebook: "codesavvyorg"
+    linkedin: "code-savvy"
+    google:
+        analytics: 
+        verify:
+    bing_verify:
+    github: 
+    
+    
+footer_background_image: /assets/images/banners/footer-banner.jpg

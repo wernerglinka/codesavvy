@@ -1,0 +1,155 @@
+$max-page-width:                            1024px;
+// main mobile break point
+$mobile-break-point:                        768px;
+$small-screen-break-point:                  400px;
+
+// brand colors
+$codesavvy-purple:                          #3A1366;
+$codesavvy-light-purple:                    #5b4382;
+
+$primary-cta-color:                         #ff8000;
+
+// content background color
+// this color is applied to the content area. individual elements with different background
+// colors sit on top of this
+$content-bg-color:                          #fff;
+
+// minimal side padding
+// minimal side padding for small screens when container is at 100% screen width
+$min-side-padding:                          30px;
+
+$default-text-shadow:                       2px 0px 8px rgba(0, 0, 0, 0.8);
+$default-box-shadow:                        0px 0px 10px 0px rgba(0,0,0,0.4);
+$default-border:                            1px solid #ccc;
+
+// font variables
+$default-font-family-sans-serif:            "Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+$default-font-size:                         100%;
+$default-line-height:                       1.6;
+
+// typography
+$default-text-color:                        #333;
+$light-text-color:                          #eee;
+$default-bg-color:                          #fff;
+$default-link-color:                        $primary-cta-color;
+$active-link-color:                         $default-link-color;
+$default-hover-color:                       $codesavvy-light-purple;
+$default-dimmed-color:                      #999;
+$default-disabled-color:                    #ccc;
+$default-date-color:                        #333;
+
+// site structure
+
+// header
+$header-height:                             100px;
+$header-bg-color:                           rgba(255, 255, 255, 0.9);
+$logo-width:                                200px;
+
+// navigation
+$nav-bg-color:                              $header-bg-color;
+$nav-text-color:                            $default-link-color;
+$main-nav-link-color:                       #fff;
+$main-nav-link-hover-color:                 red;
+$main-nav-link-active-color:                $default-hover-color;
+$main-nav-sublink-color:                    $default-link-color;
+$main-nav-btn-color:                        $nav-bg-color;
+$main-nav-btn-bg-color:                     $default-hover-color;
+$main-nav-btn-bg-height:                    1.875em;
+$main-nav-btn-radius:                       $main-nav-btn-bg-height/2;
+
+// main nav dropdown menus
+$main-nav-dropdown-menu-bg-color:           rgba(0,0,0,0.7);
+$main-nav-dropdown-menu-border:             1px solid #262626;
+$main-nav-dropdown-menu-highlight-color:    #262626;
+
+// mobile menu
+$main-nav-mobile-bg-color:                  $nav-bg-color;
+$cta-btn-mobile-font-size:                  14px;
+
+// banner
+$banner-height:                             400px;
+$light-banner-bg-color:                     rgba(255,255,255,0.8);
+
+// borders
+$default-border:                            1px solid #ccc;
+
+// footer
+$footer-bg-color:                           rgba(51,51,51,1);
+$footer-social-strip-bg-color:              rgba(51,51,51,1);
+
+$footer-nav-link-color:                     $default-link-color;
+$sub-link-dimmed-color:                     $default-dimmed-color;
+$footer-nav-link-hover-color:               $default-hover-color;
+
+$bottom-stripe-text-color:                  #999;
+$icon-color:                                $light-text-color;
+$bottom-stripe-bg-color:                    rgba(0,0,0,0.6);
+
+// buttons
+$btn-font-size:                             0.938em;
+$btn-line-height:                           2.2em;
+$btn-font-weight:                           400;
+
+$btn-dark-default-text-color:               #e9212d;
+$btn-light-default-text-color:              #fff;
+$btn-light-default-bg-color:                #e9212d;
+
+$btn-default-padding:                       0 1.25em;
+$btn-default-border:                        2px solid #e9212d;
+$btn-default-height:                        40px; //2.5em;
+$btn-border-radius:                         22px; //1.25em;
+
+$btn-disabled:                              0.3;
+
+// dropdowns
+$dropdown-bg-color:                         $default-bg-color;
+$dropdown-border:                           1px solid #262626;
+$dropdown-header-color:                     $default-text-color;
+$dropdown-link-color:                       $default-text-color;
+$dropdown-link-hover-color:                 $default-hover-color;
+$dropdown-link-hover-bg-color:              #262626;
+$dropdown-link-disabled-color:              $default-dimmed-color;
+
+// forms
+$checkmark-color:                           #ec1c24;
+$form-field-border:                         1px solid #e0e0e0;
+
+// highlight background
+$highlight-bg-color:                        #f4f4f4;
+
+// sidebar
+$sidebar-bg-color:                          #f9f9f9;
+$sidebar-social-bg-color:                   #eaeaea;
+
+// modals
+$overlay-bg:                                rgba(255, 255, 255, 0.95);
+
+// animations
+$animation-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+
+$animation-default: $animation-fast-out-slow-in !default;
+
+
+
+
+// mixins
+@mixin icon-base($icon-size, $icon-color) {
+    font-family: 'square1' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: $icon-size;
+    color: $icon-color;
+}
+
+@mixin insert-icon($icon, $icon-size, $icon-color) {
+    @include icon-base($icon-size, $icon-color);
+    content: $icon;
+}

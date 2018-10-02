@@ -1,0 +1,81 @@
+.banner {
+
+    &.has-video,
+    &.has-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100vw;
+        height: $banner-height;
+        overflow: hidden;
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  // will not work if height is set to 'auto'
+        }
+    }
+
+    &.has-image {
+        top: $header-height;
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
+
+.has-full-page-banner .banner {
+    &.has-video {
+        height: 100vh;
+    }
+}
+
+.banner-content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    color: $light-text-color;
+    height: 100%;
+    width: 100%;
+
+    .banner-content {
+
+        width: 50%;
+        text-align: center;
+        margin: auto;
+
+        > * {
+            color: #fff;
+        }
+
+        .page-title {
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-style: italic;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+    }
+}
+
+.banner-content-has-light-background .banner-content {
+    background-color: $light-banner-bg-color;
+
+    > * {
+            color: $default-text-color;
+        }
+}
