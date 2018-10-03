@@ -1,0 +1,119 @@
+---
+title: Educator Programs
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: educator-programs
+
+---
+
+{% extends "default.njk" %}
+
+{% block header %}
+    {% include "partials/edu-prog-header.njk" %}
+{% endblock %}
+
+{% block body %}
+    <section class="educator-programs-section">
+        <div class="container">
+            <h1>Educator Programs</h1>
+            <img class="img-left" src="/assets/images/edu-programs/gwtp-robot.jpg" alt="Get with the program" />
+            <p><strong>Get With the Program</strong> is an initiative from Code Savvy designed to develop coding awareness, skills and resources among K-12 and after-school educators through hands-on workshops, conferences and mentoring.</p>
+
+            <p>Our focus is to provide opportunities for educators to explore coding as well as practical ideas on how to integrate computer science into school curricula and out-of-school educational programs.  Get With the Program offers professional development both for classroom teachers and for community educators.  Please contact us at <a href="mailto:educators@CodeSavvy.org">educators@CodeSavvy.org</a> if you would like to arrange custom training.  Current sponsored events include:</p>
+
+            <ul>
+                <li>Scratch Camp for Educators, held every summer.</li>
+                <li>MN Coding in the Classroom Leadership Cohort, a group of K-12 teachers who meet monthly to explore, collaborate and share information about computer science education and develop resources for integrating computer science into MN classrooms and other learning environments.</li> 
+                <li>MN Coding in the Classroom Summit, held each year in May.</li>
+            </ul>
+
+            <h2>Code Savvy Professional Trainer Program</h2>
+
+            <p>Code Savvy is expanding its programming to provide teachers, school, and districts with customizable professional development opportunities around computer science education. <a href="https://docs.google.com/document/d/1UdG82-hVcD9QYisZqBzLtjlM-7LPLXjVIOrsG8PVB6U">Click here to view our Training and Consulting information sheet</a>.</p> 
+
+            <p><em>Interested in learning more?</em></p>
+
+            <p>Please take a moment to <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpNmtlfOoKOgBM3_Qw62iCRBvUJY7sI64yyNUah95omDCIhQ/viewform">fill out this form</a> to indicate your school or district's interest in partnering with Code Savvy to offer professional development. We will get back to you within two business days to follow up about your request.</p>
+        </div>
+        
+    </section>
+
+    <section id="cohort" class="mn-coding-cohort-section">
+        <div class="container">
+            <h1>About the MN Coding in the Classroom Leadership Cohort</h1>
+            <img class="img-left" src="/assets/images/edu-programs/mn-coding-cohort-logo.jpg" alt="Minnesota coding cohort" />
+            <p>The purpose of the Cohort is to empower a network of visionary educators with knowledge and resources in computer science education so that we can help all students to become creators, not merely users, of new technologies. In doing so, we hope to help make Minnesota a world leader in K-12 computer science education!</p>  
+
+            <p>The Cohort explores the principles and skills within computer science, as well as strategies for integrating computer science into any subject area. We emphasize equitable teaching practices that interrupt and counteract gender and racial gaps in computer science, while exploring a variety of coding platforms and resources and gaining insights into the IT industry through site visits and guest speakers. Participants develop, evaluate and share coding curriculum that integrates computer science into academic content areas and meets MN K-12 Academic Standards and <a href="https://www.csteachers.org/page/standards">CSTA K-12 Standards</a> . Additionally, participants will share their knowledge and resources with at least 10 other educators by creating and delivering professional development related to computer science education.</p>
+
+            <p><strong>Participants</strong>: Any K-12 or community educators who are involved with or interested in computer science education are invited to apply. We encourage all experience levels!</p>
+
+            <p><strong>2018-19 Cohort Dates</strong>: A 2-day kick-off event will be held August 2nd and 3rd, 2018, followed by monthly sessions from <a href="https://docs.google.com/document/d/1j10A4zIi1bYDaC71vJKhfD1ucOZS_JynfeDrbTQvnZQ">September 2018 to May 2019</a>, both in-person and online.  The Cohort will culminate in May 2019 with the <a href="http://www.mncodessummit.org/">MNCodes Summit</a>.  Most Cohort sessions will take place evenings and weekends - <a href="https://docs.google.com/document/d/1j10A4zIi1bYDaC71vJKhfD1ucOZS_JynfeDrbTQvnZQ">see the preliminary schedule here</a> .</p>
+
+            <p>Note: A travel stipend is available for those who live 50 miles or more outside the Twin Cities</p>
+
+            <p><strong>Stipend & Credit Option</strong>: Cohort participants will receive a $500 stipend upon completion of the cohort requirements and will have an option to earn 3 graduate credits through the College of St. Scholastica.  The graduate credits will be offered at a discounted workshop rate.</p>
+
+            <p><strong>Contact</strong>: Please contact us at <a href="mailto:educators@codesavvy.org">educators@codesavvy.org</a> with any questions.</p>
+
+            <h2>Coding Resources</h2>
+            <ul>
+                <li><a href="https://www.obvibase.com/p/DFSuPRAJpmSSpaSm#table/DFSuPRAJpmSSpaSm/*">Cohort created K-12 curriculum resource database</a></li>
+                <li><a href="https://www.obvibase.com/p/guWfNFrJhbcTkut3#table/guWfNFrJhbcTkut3/*">Cohort created K-12 professional development resource database</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="summit" class="mn-coding-summit-section">
+        <div class="container">
+            <h1>MN Coding Summit</h1>
+            <p>The <a href="http://www.mncodessummit.org/">MN Coding in the Classroom Summit</a> is a day of learning for educators that focuses theme of Computer Science for All (#cs4all).  <a href="https://docs.google.com/document/d/1w1OjW68I3bFe8SAqfJX-SgH_0RS6n94aPodrluGXWEM">Hands-on sessions</a> explore ways to integrate computer science, coding, and computational thinking into a variety of curricular areas, from K-12! Featured speakers include educators at elementary, middle, and high school levels.  Our goal is to provide a wide range of topics that help educators at all levels of computer science education.  Past keynote speakers have featured <a href="https://www.annmarie-thomas.com/">AnnMarie Thomas</a>, Ph.D. from the University of St. Thomas,  School of Engineering and <a href="https://www-users.cs.umn.edu/~gini/">Dr. Maria Gini</a> from the University of MN, Department of Computer Science and Engineering.</p>
+
+            <p>Also featured, a <strong>Playground demo area</strong> of many different devices and technologies to help incorporate computer science into the classroom. New to coding education? This is a great chance to try out many different computer science activities and ask questions to educators who have experience using them in the classroom.  Have you been teaching computer science for a while?</p>
+
+            <p>Come learn new ways and ideas to integrate computer science into already existing curriculum.  The playground area features ideas for lessons and projects for both beginners and those who are more advanced.  Lastly, we have <a href="https://docs.google.com/document/d/1Ra13aaiLwUzM2n3JHwsQHg9GM15K8CFpZj9Cx4ZjR04">poster sessions</a> - informal, hands-on learning opportunities on specific topics.</p>
+
+            <p>Information about 2018 Summit will be posted here in January 2018, including submitting a program proposal, poster session idea and registration details.</p>
+        </div>
+    </section>
+
+    <section id="sponsors" class="mn-coding-summit-section">
+        <div class="container">
+            <h1>MN Coding Summit</h1>
+            <h2>Grants</h2>
+            <ul class="sponsor-list list-inline list-unstyled">
+                {% for item, sponsor in educationProgramSponsors.grants %}
+                <li>
+                    <img src="/assets/images/edu-programs/{{ sponsor.image_src }}" alt="{{ sponsor.title }} Logo" />
+                </li>
+                {% endfor %}
+            </ul>
+            <h2>Partners</h2>
+            <ul class="sponsor-list list-inline list-unstyled">
+                {% for item, sponsor in educationProgramSponsors.partners %}
+                <li>
+                    <img src="/assets/images/edu-programs/{{ sponsor.image_src }}" alt="{{ sponsor.title }} Logo" />
+                </li>
+                {% endfor %}
+            </ul>
+            <h2>Summit Sponsors</h2>
+            <ul class="sponsor-list list-inline list-unstyled">
+                {% for item, sponsor in educationProgramSponsors.summit_sponsors %}
+                <li>
+                    <img src="/assets/images/edu-programs/{{ sponsor.image_src }}" alt="{{ sponsor.title }} Logo" />
+                </li>
+                {% endfor %}
+            </ul>
+
+            
+        </div>
+    </section>
+
+{% endblock %}

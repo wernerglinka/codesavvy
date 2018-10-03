@@ -49,6 +49,7 @@ const programsdataPath = './src/data/programs.yml';
 const teamPath = './src/data/team.yml';
 const sponsorsPath = './src/data/sponsors.yml';
 const contactPath = './src/data/contact.yml';
+const eduProgSonsorsPath = './src/data/educator-programs-sponsors.yml';
 const stylePath = './src/styles/';
 const scriptPath = './src/scripts/';
 const assetPath = './src/sources/';
@@ -68,7 +69,8 @@ function setUpMS(callback) {
                 "programs": programsdataPath,
                 "team": teamPath,
                 "sponsors": sponsorsPath,
-                "contact": contactPath
+                "contact": contactPath,
+                "educationProgramSponsors": eduProgSonsorsPath
             },
             "config": {
                 isExternalSrc: true

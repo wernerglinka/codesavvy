@@ -11,7 +11,9 @@
         scrolledIntoView.init();
         softScroll.init();
         hamburger.init();
-        showLogo.init();
+        if ($('body').hasClass('home')) { 
+            showLogo.init();
+        }
         accordions.init();
     });
     // end ready function

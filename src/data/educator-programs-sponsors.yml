@@ -1,0 +1,37 @@
+grants:  
+  google_cs_4_hs:
+    image_src: google-edu-logo.png
+    title: "Google Educator PD Grants"
+    link_url: "https://edu.google.com/computer-science/educator-grants"
+  education_mn:
+    image_src: edu-mn-logo.png
+    title: "Education Minnesota"
+    link_url: "https://www.educationminnesota.org/home"
+
+partners:
+  u_of_m:
+    image_src: umn-logo.png
+    title: "University of Minnesota"
+    link_url: "https://cse.umn.edu/"
+  unisys:
+    image_src: unisys-logo.png
+    title: "Unisys"
+    link_url: "https://www.unisys.com/"
+  mn_gopher_state:
+    image_src: mn-gopher-statelogo.png
+    title: "Minnesota Gopher Sate"
+    link_url:
+
+summit_sponsors:
+  devx:
+    image_src: devx-logo.png
+    title: "DevX"
+    link_url: "http://www.devx.com/"
+  medtronic:
+    image_src: medtronic-logo.png
+    title: "Medtronic"
+    link_url: "http://www.medtronic.com/"
+  lt-media-lab:
+    image_src: ltml-logo.png
+    title: "LTmedia.lab"
+    link_url: "http://lt.umn.edu/projects.html"

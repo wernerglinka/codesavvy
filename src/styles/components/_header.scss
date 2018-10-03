@@ -16,6 +16,13 @@ header {
         position: absolute;
         top: 27px;
         right: 150px;
+
+        @media (max-width: 500px) {
+            right: 90px;
+            padding: 0 15px;
+            font-size: 14px;
+            line-height: 2.5;
+        }
     }
 }
 
@@ -25,13 +32,29 @@ header {
     left: 50px;
     z-index: 1001;
     display: block;
-    max-width: $logo-width;
-    display: none;
+    max-height: $header-height;
+
+    @media (max-width: 500px) {
+        left: 10px;
+    }
     
     .main-logo {
         display: block;
-        max-width: $logo-width;
+
+        img {
+            max-height: $header-height;
+            width: auto;
+
+            @media (max-width: 500px) {
+                width: 120px;
+                height: auto;
+            }
+        }
     }
+}
+
+.home .brand {
+    display: none;
 }
 
 .navigation {
@@ -63,6 +86,10 @@ header {
     cursor: pointer;
     display: block;
     border: none;
+
+    @media (max-width: 500px) {
+        right: 10px;
+    }
 
 
     &:focus {

@@ -24,12 +24,24 @@
             
             @media (max-width: 620px) {
                 margin: 0 auto;
+                width: 300px;
+                max-width: 300px;
+                height: 300px;
             }
 
             &:hover {
                 background-size: 110%;
                 cursor: pointer;
                 opacity: 1;
+            }
+
+            > a {
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
             }
 
             .inner {

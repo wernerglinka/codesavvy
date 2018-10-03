@@ -6,7 +6,7 @@ technovation_challenge:
 get_with_the_program:
   image_src: get-with-the-program.jpg
   title: "Get with the Program "
-  link_url: /educators/""
+  link_url: "/educator-programs/"
   description: "Designed to develop coding awareness, skills and resources among K-12 and after-school educators through hands-on workshops, conferences and mentoring"
 twincities_coderdojo:
   image_src: coderdojo1.jpg
