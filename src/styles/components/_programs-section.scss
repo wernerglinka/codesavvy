@@ -1,89 +1,6 @@
 $programs-list-background-color: #f0f0f0;
 $programs-header-color: #fff;
-/*
-.youth-programs-section {
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0;
-        padding: 0;
 
-        @media (max-width: 620px) {
-            display: block;
-        }
-
-        li {
-            position: relative;
-            overflow: hidden;
-            list-style: none;
-            flex: 0 1 50%;
-            max-width: 50%;
-            height: 0;
-            padding-bottom: 50%;
-            background-size: 100%;
-            background-position: center center;
-            transition: all 0.3s;
-            opacity: 0.5;
-            
-            @media (max-width: 620px) {
-                margin: 0 auto;
-                width: 300px;
-                max-width: 300px;
-                height: 300px;
-            }
-
-            &:hover {
-                background-size: 110%;
-                cursor: pointer;
-                opacity: 1;
-            }
-
-            > a {
-                display: block;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-            }
-
-            .inner {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background-color: rgba(0,0,0,0.7);
-                padding: 0 20px;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-
-            &:hover .inner {
-                opacity: 1;
-            }
-
-            h2 {
-                font-size: 4vw;
-                line-height: 1;
-                font-weight: 600;
-                text-shadow: $default-text-shadow;
-                text-align: center;
-                color: $light-text-color;
-            }
-            p {
-                color: $light-text-color;
-
-                &:after {
-                    @include insert-icon($icon-arrow-right, 18px, $light-text-color); 
-                    position: relative;
-                    top: 1px;
-                    left: 10px;
-                }
-            }
-        }
-    }
-}
-*/
 .programs-list {
     display: flex;
     flex-wrap: wrap;
@@ -104,7 +21,6 @@ $programs-header-color: #fff;
 
         @media (max-width: 500px) {
             display: block;
-            width: auto;
             margin: 0;
         }
     }
