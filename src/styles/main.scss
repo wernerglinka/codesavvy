@@ -8,14 +8,14 @@
 // local styles
 @import "variables";
 @import "base";
+@import "layout";
 
 
-
+@import "components/sections";
 @import "components/buttons";
 @import "components/header";
 @import "components/to-top";
 @import "components/welcome-section";
-@import "components/about-section";
 @import "components/programs-section";
 @import "components/accordions";
 @import "components/lists";

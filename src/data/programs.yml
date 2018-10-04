@@ -1,39 +1,47 @@
 technovation_challenge:
+  type: youth
   image_src: technovationmn.jpg
   title: "Technovation Challenge"
   link_url: "https://technovationmn.org"
   description: "(young women ages 12-18 design and code mobile apps as they participate in this global coding and entrepreneurial challenge) + the festive Appapalooza"
 get_with_the_program:
+  type: educators
   image_src: get-with-the-program.jpg
   title: "Get with the Program "
   link_url: "/educator-programs/"
   description: "Designed to develop coding awareness, skills and resources among K-12 and after-school educators through hands-on workshops, conferences and mentoring"
 twincities_coderdojo:
+  type: youth
   image_src: coderdojo1.jpg
   title: "CoderDojo Twin Cities"
   link_url: "https://www.coderdojotc.org/"
   description: "Free, mentored coding environment for kids 8-16. Started April 2013 and has welcomed 1000+ young coders to explore web and app design, gaming, systems and electronics."
 rebecca_coderdojo:
+  type: youth
   image_src: coderdojo-rebecca.jpg
   title: "Rebecca CoderDojo"
   link_url: "/rebecca/"
   description: "Free mentored coding environment for girls and young women ages 8-16. Started February 2016 and has welcomed 130+ young girl coders to explore Scratch, App Inventor, Python, and Arduino."
 northfield_coderdojo:
+  type: youth
   image_src: coderdojo-nfld.jpg
   title: "Northfield CoderDojo"
   link_url: "https://www.nfldcoderdojo.org/"
   description: "Minnesota’s most rural chapter of CoderDojo, focused on giving young people a free, supportive, open-ended environment for learning and advancing technology skills. We offer coders ages 6-18 a safe space to be creators and not just consumers of technology"
 code_clubs:
+  type: youth
   image_src: codeclubs.jpg
   title: "Code Clubs"
   link_url: "/codeclub"
   description: "Partners with community sites in low opportunity neighborhoods to teach kids to code in after school programs"
 code_camps:
+  type: youth
   image_src: codecamps.jpg
   title: "Code Camps"
   link_url: "/camps/"
   description: "Wide variety of summer programming for youth ages 6-17"
 digital_empowerment_agency:
+  type: youth
   image_src: digital-empowerment.jpg
   title: "Digital Empowerment Academy"
   link_url: "http://www.digitalempowermentacademy.org/"

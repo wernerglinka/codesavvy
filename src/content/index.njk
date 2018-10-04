@@ -11,162 +11,195 @@ page:
 
 body_classes: home
 
+header_images:
+    about: about-header.jpg
+    youth_programs: youth-header.jpg
+    adult_programs: gwtp-header.jpg
+    contact: contact-header.jpg
+
 ---
 
 {% extends "default.njk" %}
 
 {% block body %}
-    <section class="welcome-section">
-        <div class="welcome-section__header" style="background-image: url('/assets/images/welcome-section/classroom-with-children.jpg')">
-            <h1>{{ site.owner.name }}</h1>
-            <p class="welcome-section__text">Learn how to code with Code Savvy</p>
-        </div>
-        <a href="#about"><i class="icon icon-arrow-down"></i></a>
-    </section>
+    <div class="container">
+        <section class="welcome-section">
+            <div class="welcome-section__header" style="background-image: url('/assets/images/welcome-section/classroom-with-children.jpg')">
+                <h1>{{ site.owner.name }}</h1>
+                <p class="welcome-section__text">Learn how to code with Code Savvy</p>
+            </div>
+            <a href="#about"><i class="icon icon-arrow-down"></i></a>
+        </section>
 
-    <section id="about" class="about-section">
-        <div class="container">
-            <h1>About Code Savvy</h1>
-            <p>Code Savvy is a non-profit organization built to inspire kids and teens to become code-savvy. We create and foster programs and services that help kids understand the kind of creative thinking that goes into coding, and to experience programming computers and devices. By doing this, Code Savvy is determined to bring more gender and ethnic diversity to computer science.</p>
-            <p>Code Savvy achieves its mission by supporting a number of open and free coding classes such as the Twin Cities CoderDojo, the girls-only Rebecca CoderDojo and various local coder clubs. It also facilitates Technovation[MN], a local app development competition for local teen girls. Code Savvy also offers services and programs for educators through its Get With The Program workshops, Educators Cohort, and the Coding In The Classroom Summit.</p>
-            <p>Code Savvy is a central resource for local advocates and champions for the advancement of youth computer science. Through its connections and vision, it is able to activate programs and services that give real-world coding experience to the kids who need it most.</p>
-
-            <div class="accordion">
-                <h2 class="accordion-head">Mission<i class="icon icon-chevron-down"></i></h2>
-                <div>
-                    <p>Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies.</p>
+        <section id="about" class="about-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.about }})">
+                    <h1>About</h1>
                 </div>
-                <h2 class="accordion-head">Vision<i class="icon icon-chevron-down"></i></h2>
-                <div>
-                    <p>Code Savvy believes the next generation of successful computer science professionals are already in our communities and need a little inspiration to gain the code-savvy necessary to achieve greatness. By creating accessible programs and services in local neighborhoods, our future tech champions will be able to take the next steps towards a fruitful career in the world’s fastest growing industry.<br>Tomorrow’s tech professionals need to be reflective of all our communities. Code Savvy believes that by focusing its efforts on expanding ethnic and gender equality, we can make a multi-billion dollar industry truly transformative.</p>
-                </div>
-                <h2 class="accordion-head">History<i class="icon icon-chevron-down"></i></h2>
-                <div>
-                    <p>Code Savvy was founded by Rebecca Schatz, a serial entrepreneur in the not-for-profit space. In addition to Code Savvy she founded The Works hands-on museum of engineering, and was the catalyst behind Technovation[MN]. She passed away in 2015.</p>
-                    <p>Rebecca touched so many people during her vibrant, innovative, and inspiring life. She left an an inspiring, sustainable, and lasting legacy to encourage kids and teens to explore their curiosity, learn coding and creative problem solving, and for the the volunteers, family members, and mentors who make it happen.</p>
-                    <p>Rebecca built systems and organizations and more importantly she engaged others to participate in the process. She knew that change is the work of many and she inspired everyone to stretch, grow and develop themselves. Her outreach was inherently about inclusion – helping kids see new models and pathways to pursue their own passion, dreams and careers in new and accessible ways. Rebecca brought passion and a focused commitment to inspire our youth to explore and discover engineering, science and coding in hands-on environments.</p>
-                    <p>In early July 2015, Code Savvy appointed Jean Weiss the Executive Director of Code Savvy to carry forward Rebecca’s vision to inspire a diverse new code savvy generation.</p>
+                <div class="section-row__prose section-row__right">
+                    <p>Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids and educators, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies.</p>
+                    <a href="/about-us" class="learn-more-link">Learn More About Us</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="youth-programs" class="youth-programs-section">
-        <div class="container">
-            <h1>Youth Programs</h1>
-            <p>The main focus of Code Savvy is the development of opportunities for youth to engage in coding activities. Mentor provide support and encouragement for youth ages 8-17 in a variety of environments and locations through the Twin Cities and greater MN area.</p>
-            {% if programs %}
-                <ul> 
+        <section id="youth-programs" class="programs-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-image: url(/assets/images/banners/{{ header_images.youth_programs }})">
+                    <h1>Youth<br>Programs</h1>
+                </div>
+                <div class="section-row__prose section-row__left">
+                    <p>The main focus of Code Savvy is the development of opportunities for youth to engage in coding activities. Mentor provide support and encouragement for youth ages 8-17 in a variety of environments and locations through the Twin Cities and greater MN area.</p>
+                </div>
+            </div>
+            <div class="section-row cf">
+                <ul class="programs-list cf">
                     {% for item, program in programs %}
+                    {% if program.type === 'youth' %}
+                    <li>
+                        <div class="programs-list__item-header" style="background-image: url('/assets/images/programs/{{ program.image_src }}')">
+                            <p>{{ program.title }}</p>
+                        </div>
+                        {{ program.description }}
+                        <a class="learn-more-link" href="{{ program.link_url }}">Learn More</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section id="get-with-the-program" class="programs-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.adult_programs }})">
+                    <h1>Get with the<br>Program</h1>
+                </div>
+                <div class="section-row__prose section-row__right">
+                    <p>The main focus of Code Savvy is the development of opportunities for youth to engage in coding activities. Mentor provide support and encouragement for youth ages 8-17 in a variety of environments and locations through the Twin Cities and greater MN area.</p>
+                    <a href="/educator-programs" class="learn-more-link">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="teams-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-color: #3A1366">
+                    <h1>Meet the Team</h1>
+                </div>
+                <div class="section-row__prose section-row__left">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
+                </div>
+            </div>
+            <div class="section-row auto-height cf">
+                <h2 class="section-postamble">Board of Directors</h2>
+            </div>
+            <div class="section-row cf">
+                <ul class="programs-list cf">
+                    {% for item, teamMember in team.board_of_directors %}
+                    <li>
+                        <div class="programs-list__item-header" style="background-image: url('/assets/images/team/{{ teamMember.image_src }}')">
+                            <p class="team-member-name">{{ teamMember.title }}</p>
+                        </div>
+                        <em>{{ teamMember.position }}</em>
+                    </li>
                     
-                    <li style="background-image: url('/assets/images/programs/{{ program.image_src }}')">
-                        <a href="{{ program.link_url }}">
-                            <h2>{{ program.title }}</h2>
-                            <div class="inner">
-                                <p>{{ program.description }}</p>
-                            </div>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="section-row auto-height cf">
+                <h2 class="section-postamble">Program Directors</h2>
+            </div>
+            <div class="section-row cf">
+                <ul class="programs-list cf">
+                    {% for item, teamMember in team.program_directors %}
+                    <li>
+                        <div class="programs-list__item-header" style="background-image: url('/assets/images/team/{{ teamMember.image_src }}')">
+                            <p class="team-member-name">{{ teamMember.title }}</p>
+                        </div>
+                        <em>{{ teamMember.position }}</em>
+                    </li>
+                    
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section id="sponsors" class="sponsors-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-color: #3A1366;">
+                    <h1>Our Sponsors</h1>
+                </div>
+                <div class="section-row__prose section-row__right">
+                    <p>Our sincere thanks to all of the organizations that support us</p>
+                </div>
+            </div>
+            <div class="section-row cf">
+                <ul class="sponsors-list list-inline list-unstyled">
+                    {% for item, sponsor in sponsors %}
+
+                    <li>
+                        <a href="{{ sponsor.link_url }}">
+                            <img src="/assets/images/sponsors/{{ sponsor.image_src }}" alt="{{ sponsor.name }}" />
                         </a>
+
                     </li>
                     {% endfor %}
                 </ul>
-            {% endif %}
-        </div>
-    </section>
-
-    <section id="team" class="teams-section">
-        <div class="container">
-            <h1>Meet the Team</h1>
-            <h2>Board of Directors</h2>
-            <ul class="team-list list-inline list-unstyled">
-                {% for item, teamMember in team.board_of_directors %}
-                <li>
-                    <img src="/assets/images/team/{{ teamMember.image_src }}" alt="{{ teamMember.title}}, {{ teamMember.position }}" />
-                    <h3>{{ teamMember.title}}</h3>
-                    <em>{{ teamMember.position }}</em>
-
-                </li>
-                {% endfor %}
-            </ul>
-
-            <h2>Program Directors</h2>
-            <ul class="team-list list-inline list-unstyled">
-                {% for item, teamMember in team.program_directors %}
-                <li>
-                    <img src="/assets/images/team/{{ teamMember.image_src }}" alt="{{ teamMember.title}}, {{ teamMember.position }}" />
-                    <h3>{{ teamMember.title}}</h3>
-                    <em>{{ teamMember.position }}</em>
-
-                </li>
-                {% endfor %}
-            </ul>
-    </section>
-
-    <section id="sponsors" class="sponsors-section">
-        <div class="container">
-            <h1>Our Sponsors</h1>
-            <p>Our sincere thanks to all of the organizations that support us</p>
-
-            <ul class="sponsors-list list-inline list-unstyled">
-                {% for item, sponsor in sponsors %}
-
-                <li>
-                    <a href="{{ sponsor.link_url }}">
-                        <img src="/assets/images/sponsors/{{ sponsor.image_src }}" alt="{{ sponsor.name }}" />
-                    </a>
-
-                </li>
-                {% endfor %}
-            </ul>
-
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h1>Contact Us</h1>
-            <div class="section-row cf">
-                <div class="contact-form section-row__left" >
-                    <form name="contact" method="POST" netlify>
-                        <div class="form-element">
-                            <input type="text" name="name" placeholder="Your Name">
-                        </div>
-                        <div class="form-element">
-                            <input type="email" name="email"  placeholder="Your Email">
-                        </div>
-                        <div class="form-element">
-                            <textarea name="message" placeholder="Your Message"></textarea>
-                        </div>
-                        <div class="form-element">
-                            <button class="btn btn_b1" type="submit">Send</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="contact-info section-row__right">
-                    <ul class="contact-snippets adr">
-                        <li>
-                            <i class="icon icon-map-pin"></i>
-                            <p>{{ contact.addressHeader }}</p>
-                            <p class="street-address">{{ contact.street }}</p>
-                            <p class="locality">{{ contact.city }},
-                                <span class="region">{{ contact.state }} </span>
-                                <span class="postal-code">{{ contact.postalCode }}</span>
-                            </p>
-                        </li>
-                        <li>
-                            <i class="icon icon-mail"></i>
-                            <p>{{ contact.emailHeader }}</p>
-                            <p><a class="email" href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
-                        </li>
-                        <li>
-                            <i class="icon icon-phone"></i>
-                            <p>{{ contact.phoneHeader }}</p>
-                            <p><a class="tel" href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section id="contact" class="contact-section">
+        <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.contact }})">
+                    <h1>Contact Us</h1>
+                </div>
+                <div class="section-row__prose section-row__right">
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
+                </div>
+            </div>
+        <div class="section-row cf">
+            <div class="contact-form section-row__left" >
+                <form name="contact" method="POST" netlify>
+                    <div class="form-element">
+                        <input type="text" name="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-element">
+                        <input type="email" name="email"  placeholder="Your Email">
+                    </div>
+                    <div class="form-element">
+                        <textarea name="message" placeholder="Your Message"></textarea>
+                    </div>
+                    <div class="form-element">
+                        <button class="btn btn_b1" type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+            <div class="contact-info section-row__right">
+                <ul class="contact-snippets adr">
+                    <li>
+                        <i class="icon icon-map-pin"></i>
+                        <p>{{ contact.addressHeader }}</p>
+                        <p class="street-address">{{ contact.street }}</p>
+                        <p class="locality">{{ contact.city }},
+                            <span class="region">{{ contact.state }} </span>
+                            <span class="postal-code">{{ contact.postalCode }}</span>
+                        </p>
+                    </li>
+                    <li>
+                        <i class="icon icon-mail"></i>
+                        <p>{{ contact.emailHeader }}</p>
+                        <p><a class="email" href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+                    </li>
+                    <li>
+                        <i class="icon icon-phone"></i>
+                        <p>{{ contact.phoneHeader }}</p>
+                        <p><a class="tel" href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+            
+        </section>
+    </div>
 {% endblock %}
