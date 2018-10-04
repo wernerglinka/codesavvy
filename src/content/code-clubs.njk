@@ -1,0 +1,38 @@
+---
+title: Code Savvy | Code Camps
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: code-camps
+
+---
+
+{% extends "default.njk" %}
+{% block header %}
+    {% include "partials/no-nav-header.njk" %}
+{% endblock %}
+{% block body %}
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <h1>Code Camps</h1>
+            <img src="/assets/images/sponsors/works-museum-logo.png" alt="the works museum" />
+            <p>Through a partnership with <a href="https://theworks.org/12-14-year-old-camps/">The Works® Museum</a>, we are able to offer these half-day programming camps.</p>
+            <p><strong>NEW! Code SavvyTM Beginning App Inventor</strong></p>
+            <p><em>$185 non-members, $166.50 members</em></p>
+            <p>Create mobile apps with App Inventor programming language! Explore the basics of programming, testing, and debugging by building some simple apps, then design one of your own. (Apps created will only run on Android devices, but owning one is NOT required for camp!)</p>
+            <p>M-Th, July 30-August 2, 1-4 p.m.</p>
+            <p><strong>Code SavvyTM Minecraft MOD</strong></p>
+            <p><em>$185 non-members, $166.50 members</em></p>
+            <p>Enhance your Minecraft skills with code! Create events, build structures, and add new items to the game. (Campers with Minecraft PC accounts can test their creations in the real game; campers who don't have accounts can use an in-browser simulator).</p>
+            <p>M-Th, July 9-12, 1p.m. - 4p.m.</p>
+            <p>M-Th, August 6-9, 1-4 p.m.</p>
+        </div>
+    </section>
+
+{% endblock %}

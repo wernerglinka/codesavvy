@@ -1,0 +1,69 @@
+---
+title: Educator Programs
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: educator-programs
+
+---
+
+{% extends "default.njk" %}
+
+{% block header %}
+    {% include "partials/edu-prog-header.njk" %}
+{% endblock %}
+
+{% block body %}
+    <section class="rebecca-coderdojo-section">
+        <div class="container">
+            <h1>What is Rebecca CoderDojo?</h1>
+            <img class="img-left" src="/assets/images/rebecca-coderdojo/rebecca-coderdojo-logo.jpg" alt="Get with the program" />
+            <p>Rebecca CoderDojo is a safe and fun coding club for girls, ages 8-16. We are an independent chapter of the global CoderDojo movement, which fosters creation of free coding clubs for young people led by groups of volunteers.</p>
+
+            <ul class="list-inline list-unstyled">
+                <li>
+                    <p>Sign up for email notices</p>
+                    <a class="btn btn_b1" href="https://groups.google.com/forum/#!forum/rebecca-coderdojo-event-notifications">Sign Up</a>
+                </li>
+                <li>
+                    <p>Next Event Registration</p>
+                    <a class="btn btn_b1" href="https://www.eventbrite.com/o/rebecca-coderdojo-9823044327">Register</a>
+                </li>
+                <li>
+                    <p>Mentor Sign-up</p>
+                    <a class="btn btn_b1" href="#volunteer">Learn More</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="cohort" class="mn-coding-cohort-section">
+        <div class="container">
+            <h1>What We Teach</h1>
+            {% for item, subject in teaching_subjects %}
+                <div class="teach-subject">
+                    <div class="teach-subject__prose">
+                        <h3>{{ subject.name }}</h3>
+                        <p>{{ subject.description }}</p>
+                    </div>
+                    <div class="teach-subject__image">
+                        <img src="/assets/images/what-we-teach/{{ subject.image }}" alt="{{ subject.name }}" />
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="sponsors" class="mn-coding-summit-section">
+        <div class="container">
+            
+        </div>
+    </section>
+
+{% endblock %}

@@ -20,7 +20,7 @@ rebecca_coderdojo:
   type: youth
   image_src: coderdojo-rebecca.jpg
   title: "Rebecca CoderDojo"
-  link_url: "/rebecca/"
+  link_url: "/rebecca-coderdojo/"
   description: "Free mentored coding environment for girls and young women ages 8-16. Started February 2016 and has welcomed 130+ young girl coders to explore Scratch, App Inventor, Python, and Arduino."
 northfield_coderdojo:
   type: youth
@@ -32,7 +32,7 @@ code_clubs:
   type: youth
   image_src: codeclubs.jpg
   title: "Code Clubs"
-  link_url: "/codeclub"
+  link_url: "/code-clubs"
   description: "Partners with community sites in low opportunity neighborhoods to teach kids to code in after school programs"
 code_camps:
   type: youth

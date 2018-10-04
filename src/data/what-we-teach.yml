@@ -1,0 +1,20 @@
+scratch:
+    name: "scratch"
+    description: "Scratch is a fun, easy to use way to program your own stories, games and animations. It's recommended for any new coder, and for girls ages 8-10. Our friendly mentors will get you started, and if you like you can continue at home; Scratch is free and works in any browser."
+    image: scratch.jpg
+appinventor:
+    name: "appinventor"
+    description: "AppInventor is a programming language that you can use to create apps for Android devices. Our friendly mentors will help you learn the basics of this open-source, web based language so you can design, code, and play with your own mobile apps!"
+    image: appinventor.jpg
+arduino:
+    name: "arduino"
+    description: "Want to control things in the real world through computer programming? In this group, you'll go step-by-step wiring lights, sounds, and sensors through an Arduino board into a computer, then programming them to do cool things!"
+    image: arduino.jpg
+python:
+    name: "python"
+    description: "Python is a general-purpose, versatile, and popular programming language. It is concise and easy to read. It can be used for everything from web development to software development and scientific applications."
+    image: python.jpg
+javascript:
+    name: "javascript"
+    description: "JavaScript is a language used to build in building the Internet and has been called 'the secret sauce that makes the Web awesome.' It can be used for everything from making really cool website features (like the menus that show up when you hover on this site) to animations and games."
+    image: javascript.jpg
