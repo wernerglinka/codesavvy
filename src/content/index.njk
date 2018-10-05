@@ -136,13 +136,14 @@ header_images:
             <div class="section-row cf">
                 <ul class="sponsors-list list-inline list-unstyled">
                     {% for item, sponsor in sponsors %}
-
+                    {% if sponsor.codesavvy %}
                     <li>
                         <a href="{{ sponsor.link_url }}">
                             <img src="/assets/images/sponsors/{{ sponsor.image_src }}" alt="{{ sponsor.name }}" />
                         </a>
 
                     </li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </div>

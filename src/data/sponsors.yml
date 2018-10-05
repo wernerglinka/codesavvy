@@ -2,26 +2,45 @@ target:
   name: Target
   image_src: "target-logo.png"
   link_url: "https://target.com"
+  rebecca: false
+  codesavvy: true
 peoplenet:
   name: Peoplenet
   image_src: "peoplenet-logo.png"
   link_url: "https://peoplenetonline.com"
+  rebecca: false
+  codesavvy: true
 clockwork:
   name: ClockWork
   image_src: "clockwork-logo.png"
   link_url: "https://clockwork.com"
+  rebecca: true
+  codesavvy: true
 mctc:
   name: Minneapolis Community & Technical College
   image_src: "mctc-logo.png"
   link_url: "https://minneapolis.edu"
+  rebecca: true
+  codesavvy: true
 works_museum:
   name: the Works Museum
   image_src: "works-museum-logo.png"
+  rebecca: false
+  codesavvy: true
 techdotcom:
   name: Tech{dot}MN
   image_src: "techdotmn-logo.png"
   link_url: "https://tech.mn"
+  rebecca: false
+  codesavvy: true
 livefront:
   name: Livefront
   image_src: "livefront-logo.png"
   link_url: "https://livefront.com"
+  rebecca: false
+  codesavvy: true
+smaby_family_foundation:
+  name: Smaby Family Foundation
+  image_src: "smaby-logo.png"
+  rebecca: true
+  codesavvy: false

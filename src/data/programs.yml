@@ -38,7 +38,7 @@ code_camps:
   type: youth
   image_src: codecamps.jpg
   title: "Code Camps"
-  link_url: "/camps/"
+  link_url: "/code-camps/"
   description: "Wide variety of summer programming for youth ages 6-17"
 digital_empowerment_agency:
   type: youth

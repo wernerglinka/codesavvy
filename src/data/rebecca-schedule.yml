@@ -1,0 +1,27 @@
+event:
+  name: Event
+  times: 1:30 - 3:30 pm
+  schedule:
+    - September 22
+    - October 6
+    - November 3
+    - December 15
+    - January 26
+    - February 23
+    - March 23
+    - April 6
+    - May 4
+ticket_release:
+  name: Ticket Release
+  times: 6:00pm
+  schedule:
+    - September 9
+    - September 23
+    - October 21
+    - November 4
+    - December 2
+    - January 13
+    - February 10
+    - March 10
+    - March 24
+    - April 21

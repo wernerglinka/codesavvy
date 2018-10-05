@@ -15,6 +15,10 @@ body_classes: about
 
 {% extends "default.njk" %}
 
+{% block header %}
+    {% include "partials/about-header.njk" %}
+{% endblock %}
+
 {% block body %}
     <section id="about" class="about-section">
         <div class="container">

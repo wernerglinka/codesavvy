@@ -1,0 +1,9 @@
+.about-rebecca-section {
+    padding: 20px;
+
+    .responsive-iframe {
+        & + .accordion {
+            margin-top: 30px;
+        }
+    }
+}

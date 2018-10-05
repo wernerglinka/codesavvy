@@ -197,6 +197,9 @@ hr {
 .has-highlight {
     background-color: $highlight-bg-color !important;
 }
+.has-border {
+    border: $default-border;
+}
 
 .nowrap {
     white-space: nowrap;

@@ -16,15 +16,21 @@ body_classes: educator-programs
 {% extends "default.njk" %}
 
 {% block header %}
-    {% include "partials/edu-prog-header.njk" %}
+    {% include "partials/rebecca-header.njk" %}
 {% endblock %}
 
 {% block body %}
-    <section class="rebecca-coderdojo-section">
+    <section id="what-is" class="what-is-section has-highlight">
         <div class="container">
-            <h1>What is Rebecca CoderDojo?</h1>
-            <img class="img-left" src="/assets/images/rebecca-coderdojo/rebecca-coderdojo-logo.jpg" alt="Get with the program" />
-            <p>Rebecca CoderDojo is a safe and fun coding club for girls, ages 8-16. We are an independent chapter of the global CoderDojo movement, which fosters creation of free coding clubs for young people led by groups of volunteers.</p>
+            <div class="media-module">
+                <div class="media-module__img">
+                    <img  src="/assets/images/rebecca-coderdojo/rebecca-coderdojo-logo.png" alt="Get with the program" />
+                </div>
+                <div class="media-module__prose">
+                    <h1>What is Rebecca CoderDojo?</h1>
+                    <p>Rebecca CoderDojo is a safe and fun coding club for girls, ages 8-16. We are an independent chapter of the global CoderDojo movement, which fosters creation of free coding clubs for young people led by groups of volunteers.</p>
+                </div>
+            </div>
 
             <ul class="list-inline list-unstyled">
                 <li>
@@ -43,27 +49,210 @@ body_classes: educator-programs
         </div>
     </section>
 
-    <section id="cohort" class="mn-coding-cohort-section">
+    <section id="what-we-teach" class="what-we-teach-section">
         <div class="container">
             <h1>What We Teach</h1>
-            {% for item, subject in teaching_subjects %}
-                <div class="teach-subject">
-                    <div class="teach-subject__prose">
+            {% for item, subject in teachingSubjects %}
+                <div class="media-module has-border">
+                    <div class="media-modulet__image">
+                        <img src="/assets/images/what-we-teach/{{ subject.image }}" alt="{{ subject.name }}" />
+                    </div>
+                    <div class="media-module__prose">
                         <h3>{{ subject.name }}</h3>
                         <p>{{ subject.description }}</p>
                     </div>
-                    <div class="teach-subject__image">
-                        <img src="/assets/images/what-we-teach/{{ subject.image }}" alt="{{ subject.name }}" />
-                    </div>
+                    
                 </div>
             {% endfor %}
         </div>
     </section>
 
-    <section id="sponsors" class="mn-coding-summit-section">
+    <section id="about" class="about-rebecca-section has-highlight">
         <div class="container">
-            
+            <h1>About Rebecca CoderDojo</h1>
+            <div class="responsive-iframe">
+                <iframe width="640" height="360" style="border-width:0" src="http://interactive.tegna-media.com/video/embed/embed.html?id=2852636&amp;type=video&amp;title=Nonprofit offering free coding classes for girls&amp;site=89&amp;playerid=6918249996585&amp;dfpid=32805352&amp;dfpposition=Video_prestream_external§ion=home"></iframe>
+            </div>
+            <div class="accordion">
+                <h2 class="accordion-head">Mission<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Rebecca CoderDojo is a Code Savvy initiative in memory of Rebecca Schatz, founder and former executive director of Code Savvy, for her lasting inspiration to encourage all of us, especially kids, to explore technology and be our own innovators. We aim to sustain this inspiration by providing a learning environment for girls to explore coding and become innovators of technology.</p>
+                </div>
+                <h2 class="accordion-head">Results<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>In 2016, we held 11 events and served over 300 students, many of which were brand new to coding. At these events, we have classrooms for Scratch (easy-to-use language for making games and animations), AppInventor (for learning how to build Android mobile apps), Arduino (a fun way to learn about electricity and how to build circuits), and Python (a general purpose programming language). In addition, over 100 mentors and coordinators have graciously volunteered to mentor students and run our events!</p>
+                </div>
+                <h2 class="accordion-head">Support<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>RebeccaCoderDojo is free, thanks to the friendly and talented mentors volunteer their time and to our partners at Minneapolis Community & Technical College, Clockwork, and the Smaby Family Foundation.</p>
+                    <ul class="sponsors-list list-inline list-unstyled">
+                    {% for item, sponsor in sponsors %}
+                    {% if sponsor.rebecca %}
+                    <li>
+                        <a href="{{ sponsor.link_url }}">
+                            <img src="/assets/images/sponsors/{{ sponsor.image_src }}" alt="{{ sponsor.name }}" />
+                        </a>
+
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section id="faqs" class="faq-section">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <h2>Events</h2>
+            <div class="accordion">
+                <h2 class="accordion-head">Can my child attend Rebecca CoderDojo?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Rebecca CoderDojo students must be:</p>
+                    <ul>
+                        <li>Between 8 and 16 years old</li>
+                        <li>Identify as female</li>
+                        <li>Accompanied by a parent or guardian if under 13, for the entire event</li>
+                        <li>Registered for the event on Eventbrite</li>
+                    </ul>
+                </div>
+                <h2 class="accordion-head">I’ve never done anything like this before / my daughter has never done anything like this before. Is Rebecca CoderDojo for me?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Absolutely! We strive to make Rebecca CoderDojo a welcoming and inspiring environment for coders at any level, including beginner. We use multiple programming environments (Scratch, AppInventor, Arduino, Python, and JavaScript) and our mentors can help you find a starter project that piques your interest and is appropriate to your age and experience.</p>
+                </div>
+                <h2 class="accordion-head">When is the next CoderDojo?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>During the school year, we hold monthly events and the dates are posted here on the website. Check out the Schedule to find the next event!</p>
+                </div>
+                <h2 class="accordion-head">When do you release tickets?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Tickets are released two weeks before each event, on Sundays at 6pm. The link to register via Eventbrite will be available online and sent out via email. To receive event notifications, subscribe to our google group.</p>
+                </div>
+                <h2 class="accordion-head">When do you release tickets?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Tickets are released two weeks before each event, on Sundays at 6pm. The link to register via Eventbrite will be available online and sent out via email. To receive event notifications, subscribe to our google group.</p>
+                </div>
+                <h2 class="accordion-head">Is CoderDojo safe?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Yes! Protecting the safety of all our “coding ninjas” is very important to us. Mandatory background checks are performed for all volunteers prior to events.</p>
+                    <p>For children under 13, we require that a parent remains on site for the duration of the event.</p>
+                </div>
+            </div>
+            <h2>About</h2>
+            <div class="accordion">
+                <h2 class="accordion-head">Who is Rebecca?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Rebecca CoderDojo is named in honor of Rebecca Schatz, founder and former executive director of Code Savvy and captures the spirit of Rebecca’s lasting inspiration to encourage all of us.  Learn more about Rebecca’s life and legacy:</p>
+                    <ul>
+                        <li>The Voice of the Innovator: Inspiring Story of Rebecca Schatz</li>
+                        <li>Twin Cities kids can tinker as techies, thanks to her</li>
+                        <li>Rebecca CoderDojo Honors Founders Legacy With Coding Camp for Girls</li>
+                        
+                    </ul>
+                </div>
+                <h2 class="accordion-head">Why only girls?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Think of Rebecca CoderDojo kind of like girl scouts for coding – there’s not a lot of space focused on younger girls in tech, and Rebecca CoderDojo works to provide that space.  Rebecca CoderDojo makes space for young girls to feel safe, encouraged, and inspired as they build our future! Learn more about encouraging young women in tech:</p>
+                    <ul>
+                        <li>Teach girls bravery, not perfection (TED talk)</li>
+                        <li>Women-only spaces are a hack</li>
+                        <li>8 ways you can empower girls to learn coding</li>
+                        <li>Why we need coding clubs for girls</li>
+                    </ul>
+                    <p>If you are looking for a program for a male child, we encourage you to check out other Code Savvy programs open to all genders: CoderDojo Twin Cities, Code Clubs, and Code Camps.</p>
+                </div>
+                <h2 class="accordion-head">How can I get involved?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Rebecca CoderDojo is made possible through the generous work of our volunteers.  We need mentors and coordinators to make our events run – learn more on our Volunteer page.</p>
+                </div>
+                <h2 class="accordion-head">Do you need and/or accept donations?<i class="icon icon-chevron-down"></i></h2>
+                <div>
+                    <p>Yes, we accept donations!  You can make a tax-deductible donation to Rebecca CoderDojo via Code Savvy’s secure online donation form.  Code Savvy is a registered 501(c)(3) Minnesota nonprofit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="rebecca-register-section has-highlight">
+        <div class="container">
+            <h1>Schedule & Tickets</h1>
+            <p>Rebecca CoderDojo is free, but you must register in advance.  Space is strictly limited to provide the best possible experience for these young coders and their mentors, who are generously volunteering their time and expertise.  Sign up for email updates on main RCD page</p>
+            <a class="btn btn_b1" href="https://www.eventbrite.com/o/rebecca-coderdojo-9823044327">Register</a>
+
+            <div class="schedule-wrapper">
+                {% if rebeccaSchedule %}
+                <ul class="list-unstyled rebecca-schedule">
+                    <li>
+                    {% for key, value in rebeccaSchedule %}
+                        {% if loop.first %}
+                        <span>{{ value.name }}</span>
+                        {% else %}
+                        {{ value.name }}
+                        {% endif %}
+                    {% endfor %}
+                    </li>
+                    <li>
+                    {% for key, value in rebeccaSchedule %}
+                        {% if loop.first %}
+                        <span><em>{{ value.times }}</em></span>
+                        {% else %}
+                        <em>{{ value.times }}</em>
+                        {% endif %}
+                    {% endfor %}
+                    </li>
+                    {% for value in rebeccaSchedule.event.schedule %}
+                    <li><span>{{ value }}</span>{{ rebeccaSchedule.ticket_release.schedule[loop.index0] }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <img src="/assets/images/rebecca-coderdojo/girls-code-1.jpg" alt="rebecca coderdojo schedule" />
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="rebecca-location-section">
+        <div class="container">
+            <h1>Location</h1>
+            <p>Rebecca Coderdojo is held in <strong>Room T3000</strong> at:</p>
+            <ul class="adr list-unstyled">
+                <li class="org">Minneapolis Community & Technical College (<a href="https://www.minneapolis.edu/about-us/campus-floor-plans-map">campus map</a>)</li>
+                <li class="street-address">1501 Hennepin Avenue</li>
+                <li><span class="locality">Minneapolis</span>, <span class="region">MN</span> <span class="postalcode">55403</span></li>
+            </ul>
+            <div class="responsive-iframe">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.5610369320943!2d-93.28531734909313!3d44.97291287400853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b332ea66fc639d%3A0xfe0c1ebc2660121a!2sMinneapolis+Community+%26+Technical+College!5e0!3m2!1sen!2sus!4v1492994594591" width="600" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="volunteer" class="rebecca-volunteer-section">
+        <div class="container">
+            <div class="media-module">
+                <div class="media-module__img">
+                    <img  src="/assets/images/rebecca-coderdojo/volunteer.jpg" alt="volunteer with rebecca coderdojo" />
+                </div>
+                <div class="media-module__prose">
+                    <h1>Volunteer with Rebecca CoderDojo</h1>
+                    <p>We need you to make Rebecca CoderDojo possible!  Discovery Days Crack the Code 12-3-2016-034 We are looking for enthusiastic mentors who are excited to help girls become technology creators.  Mentoring is a fun, rewarding experience, and we hope you'll join us!  Fill out the volunteer form and we will contact you.</p>
+                    <a class="btn btn_b1" href="https://docs.google.com/forms/d/e/1FAIpQLSfRbTmMHEkU5FUxIwSqzfnR0R_Bv6BlT-qfhQGOjbof46Ejkg/viewform?c=0&w=1">Sign Up</a>
+                </div>
+            </div>
+            <h2>What is Volunteering as a Mentor Like?</h2>
+            <ul>
+            <li><strong>Technical skill level</strong>: Mentors can be at any level of programming experience or no experience at all; you don't need to be an expert programmer to be a great mentor!  We will be using Scratch, AppInventor, Arduino, and Python.</li>
+
+            <li><strong>Time commitment</strong>: Mentors can volunteer for the events they are available for, but are required to participate in the entirety of the events they do sign up for.  Mentors are expected to arrive by 1:00 pm on event days and stay until 3:45 pm.  If you are new, you may need a few hours of preparation time before the event.</li>
+
+            <li><strong>Roles</strong>: On event days, we have a Lead Mentor for each room, along with many enthusiastic mentors!  Each of these is open to all mentors.</li>
+
+           <li><strong>Other opportunities</strong>: On event days, we also need Coordinators that help with check-in, getting parents settled, and logistics.</li>
+
+            <li>´strong: Contact Marie Gottschalk, Program Director for Rebecca CoderDojo, at <a href="mailto:rebeccacoderdojo@gmail.com">rebeccacoderdojo@gmail.com</a>.</li>
+            </ul>
+        </div>
+    </section>
+
+
 
 {% endblock %}

@@ -1,0 +1,33 @@
+.media-module {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    margin-bottom: 1em;
+
+    &.media-module_center {
+        align-items: center;
+    }
+
+    @media (max-width: 550px) {
+        display: block;
+    }
+}
+
+.media-module__img {
+    margin-right: 1em;
+}
+
+.media-module__prose {
+    flex: 1;
+    margin-bottom: 0;
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+}
+ 
+.media-module_reverse > .media-module__img {
+order: 1;
+margin: 0 0 0 1em;
+}
