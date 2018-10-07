@@ -1,0 +1,17 @@
+.section-banner {
+    position: relative;
+    overflow: hidden;
+
+    .section-banner__text {
+        position: absolute;
+        top: 30%;
+        width: 100%;
+        font-weight: 600;
+        text-align: center;
+        text-shadow: $default-text-shadow;
+
+        h1 {
+            color: #fff;
+        }
+    }
+}
