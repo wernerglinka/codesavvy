@@ -1,0 +1,15 @@
+.news-list {
+    .news-date {
+        display: block;
+        font-weight: 600;
+    }
+    .news-org {
+        display: inline-block;
+
+        &:after {
+            content: ":";
+            padding-left: 5px;
+            margin-right: 10px;
+        }
+    }
+}

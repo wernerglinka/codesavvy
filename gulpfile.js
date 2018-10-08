@@ -52,6 +52,7 @@ const contactPath = './src/data/contact.yml';
 const eduProgSonsorsPath = './src/data/educator-programs-sponsors.yml';
 const teachingSubjectsPath = './src/data/what-we-teach.yml';
 const rebeccaSchedulePath = './src/data/rebecca-schedule.yml';
+const newsPath = './src/data/in-the-news.yml';
 const stylePath = './src/styles/';
 const scriptPath = './src/scripts/';
 const assetPath = './src/sources/';
@@ -74,7 +75,8 @@ function setUpMS(callback) {
                 "contact": contactPath,
                 "educationProgramSponsors": eduProgSonsorsPath,
                 "teachingSubjects": teachingSubjectsPath,
-                "rebeccaSchedule": rebeccaSchedulePath
+                "rebeccaSchedule": rebeccaSchedulePath,
+                "inTheNews": newsPath
             },
             "config": {
                 isExternalSrc: true

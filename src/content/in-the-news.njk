@@ -1,0 +1,46 @@
+---
+title: Code Savvy | In the News
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: news
+
+---
+
+{% extends "default.njk" %}
+
+{% block header %}
+    {% include "partials/no-nav-header.njk" %}
+{% endblock %}
+
+{% block body %}
+    <section id="news" class="news-section">
+        <div class="container">
+            <h1>In the News</h1>
+            {% if inTheNews.length %}
+            <ul class="list-unstyled news-list">
+                {% for newsItem in inTheNews %}
+                <li>
+                    <span class="news-date">{{ newsItem.date }}</span>
+                    <span class="news-org">{{ newsItem.news_org }}</span>
+                    {% if newsItem.link_url %}
+                        <a href="{{ newsItem.link_url }}">{{ newsItem.title }}</a>
+                    {% else %}
+                        <span>{{ newsItem.title }}</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>No news to display</p>
+            {% endif %}
+            
+        </div>
+    </section>
+{% endblock %}
