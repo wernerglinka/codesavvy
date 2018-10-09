@@ -1,0 +1,30 @@
+---
+title: Code Savvy | Events
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: calendar
+has_calendar: true
+
+---
+
+{% extends "default.njk" %}
+
+{% block header %}
+    {% include "partials/no-nav-header.njk" %}
+{% endblock %}
+
+{% block body %}
+    <section id="calendarWrapper" class="calendar-section">
+        <div class="container">
+            <h1>Events</h1>
+            <div id='calendar'></div>
+        </div>
+    </section>
+{% endblock %}

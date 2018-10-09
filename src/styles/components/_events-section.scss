@@ -1,0 +1,22 @@
+.events-section {
+    h1 {
+        margin: 10px 0;
+    }
+    ul {
+        margin: 0;
+    }
+    li {
+        padding-bottom: 5px;
+    }
+    .event-description {
+        padding-bottom: 10px;
+        border-bottom: $default-border;
+        margin-bottom: 10px;
+    }
+    .event-location {
+        margin-bottom: 0;
+    }
+    .event-map {
+        padding-bottom: 10px;
+    }
+}

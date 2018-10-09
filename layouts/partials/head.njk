@@ -12,5 +12,6 @@
 <link rel="shortcut icon" href="/favicon.ico">
 {% if includeSocialMetaData %}{% include "partials/social-metadata.njk" %}{% endif %}
 <link rel="stylesheet" type="text/css" href="/assets/styles/main.css">
+{% if has_calendar %}<link rel="stylesheet" type="text/css" href="/assets/styles/fullcalendar.min.css">{% endif %}
 {% if hasVideo %} {% include "partials/youtube.njk" %} {% endif %}
 

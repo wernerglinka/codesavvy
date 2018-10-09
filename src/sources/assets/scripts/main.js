@@ -61,6 +61,87 @@ var bannerBackground = function ($, undefined) {
         init: init
     };
 }(jQuery);
+'use strict';
+
+/*jsLint es6, this */
+/*global jQuery, window, moment */
+
+// function to manage top nav visibility
+var calendar = function ($) {
+    'use strict';
+
+    var init = function init() {
+        // create the popup html
+        var eventPopUpHTML = '<div id=\'event-details\' class=\'event-popup\'>\n                    <i class=\'icon icon-x\'></i>\n                    <ul class=\'list-unstyled event-data\'>\n                        <li class=\'event-title\'></li>\n                        <li><strong>Date:</strong> <span class=\'event-date\'></span></li>\n                        <li class=\'event-time\'><strong>Time:</strong> <span class=\'start-time\'></span> to <span class=\'end-time\'></span></li>\n                        <li class=\'event-description\'></li>\n                        <li><strong>Venue</strong><p class=\'event-location\'></p></li>\n                        <li class=\'event-map\'><a target=\'_blank\' class=\'event-map-link\' href=\'\'>+ Google Map</a></li>\n                    </ul>\n                </div>';
+
+        // append the popup container to body  
+        $('body').append($(eventPopUpHTML));
+
+        var eventPopup = $('#event-details');
+
+        // render calendar
+        var thisCal = $('#calendar');
+        thisCal.fullCalendar({
+            googleCalendarApiKey: "AIzaSyBg6sxHiXOgauTfQ0MRvyAAu3ylyePHY_M",
+            eventSources: [{
+                googleCalendarId: "glinka.co_m032tqboc6l83vmi0a2h4uashk@group.calendar.google.com",
+                className: 'codesavvy-event'
+            }, {
+                googleCalendarId: "en.usa#holiday@group.v.calendar.google.com",
+                className: 'calendar-holidays'
+            }],
+            eventClick: function eventClick(calEvent, jsEvent, view) {
+                jsEvent.preventDefault();
+
+                // ignore holidays
+                if ($(this).hasClass('calendar-holidays')) {
+                    return;
+                }
+
+                var date = moment(new Date(calEvent.start)).format("MMMM Do, YYYY");
+                var startTime = moment(new Date(calEvent.start)).format("LT");
+                var endTime = moment(new Date(calEvent.end)).format("LT");
+                var locationQueryTerm = calEvent.location.replace(/,/g, '%20');
+                var mapLink = 'https://www.google.com/maps/search/?api=1&query=' + locationQueryTerm;
+
+                eventPopup.find('.event-title').html(calEvent.title);
+                eventPopup.find('.event-date').html(date);
+                eventPopup.find('.start-time').html(startTime);
+                eventPopup.find('.end-time').html(endTime);
+                eventPopup.find('.event-description').html(calEvent.description);
+                eventPopup.find('.event-location').html(calEvent.location);
+                eventPopup.find('.event-map-link').attr('href', mapLink);
+
+                // show the modal box
+                eventPopup.addClass('event-details_active');
+            }
+        });
+        var viewStatus = "grid";
+        if ($(window).width() < 768) {
+            thisCal.fullCalendar('changeView', 'listMonth');
+            viewStatus = "list";
+        }
+
+        $(window).on('resize', function () {
+            if ($(window).width() < 768 && viewStatus === "grid") {
+                thisCal.fullCalendar('changeView', 'listMonth');
+                viewStatus = "list";
+            }
+            if ($(window).width() >= 768 && viewStatus === "list") {
+                thisCal.fullCalendar('changeView', 'month');
+                viewStatus = "grid";
+            }
+        });
+
+        // close the event popup
+        eventPopup.find('.icon-x').on('touchclick', function () {
+            $(this).parent().removeClass('event-details_active');
+        });
+    };
+    return {
+        init: init
+    };
+}(jQuery);
 "use strict";
 
 /*jslint browser: true, this: true*/
@@ -658,6 +739,45 @@ var touchClick = function ($, undefined) {
 }(jQuery);
 "use strict";
 
+/*jsLint es6, this */
+/*global jQuery, window */
+
+// the scroll to top function for long pages
+var upcomingEvents = function ($, undefined) {
+    "use strict";
+
+    var init = function init() {
+        var calID = "glinka.co_m032tqboc6l83vmi0a2h4uashk@group.calendar.google.com";
+        var calKey = "AIzaSyBg6sxHiXOgauTfQ0MRvyAAu3ylyePHY_M";
+        var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=1";
+        var calURL = "https://www.googleapis.com/calendar/v3/calendars/" + calID + "/events?key=" + calKey + calOptions;
+        $.getJSON(calURL, function (data) {
+            console.log(data);
+
+            var date = moment(new Date(data.items[0].start.dateTime)).format("MMMM Do, YYYY");
+            var startTime = moment(new Date(data.items[0].start.dateTime)).format("LT");
+            var endTime = moment(new Date(data.items[0].end.dateTime)).format("LT");
+            var locationQueryTerm = data.items[0].location.replace(/,/g, '%20');
+            var mapLink = "https://www.google.com/maps/search/?api=1&query=" + locationQueryTerm;
+
+            var nextEvent = $("#next-event");
+            nextEvent.find('.event-title').html(data.items[0].summary);
+            nextEvent.find('.event-date').html(date);
+            nextEvent.find('.start-time').html(startTime);
+            nextEvent.find('.end-time').html(endTime);
+            nextEvent.find('.event-description').html(data.items[0].description);
+            nextEvent.find('.event-location').html(data.items[0].location);
+            nextEvent.find('.event-map-link').attr('href', mapLink);
+
+            $('#event1').html(data.items[0].summary);
+        });
+    };
+    return {
+        init: init
+    };
+}(jQuery);
+"use strict";
+
 /*jsLint es6 */
 /*global YT, jQuery, window, setInterval, clearInterval */
 
@@ -827,7 +947,7 @@ var youTubeVideos = function ($, undefined) {
 'use strict';
 
 /*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions */
+/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents */
 
 (function ($) {
     'use strict';
@@ -842,7 +962,15 @@ var youTubeVideos = function ($, undefined) {
         if ($('body').hasClass('home')) {
             showLogo.init();
         }
+
         accordions.init();
+
+        if ($('body').hasClass('calendar')) {
+            calendar.init();
+        }
+        if ($('body').hasClass('home')) {
+            upcomingEvents.init();
+        }
     });
     // end ready function
 })(jQuery);

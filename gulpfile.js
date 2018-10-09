@@ -132,6 +132,20 @@ gulp.task("vendorScripts", function () {
         .pipe(gulp.dest(path.join(__dirname, assetPath, "assets/scripts")));
 });
 
+
+var calScripts = [
+    "node_modules/moment/min/moment.min.js",
+    "node_modules/fullcalendar/dist/fullcalendar.min.js",
+    "node_modules/fullcalendar/dist/gcal.min.js"
+];
+
+// compile full calendar scripts
+gulp.task("getCalendarScripts", function () {
+    "use strict";
+    return gulp.src(calScripts)
+        .pipe(gulp.dest(path.join(__dirname, assetPath, "assets/scripts")));
+});
+
 // compile scripts for dev
 gulp.task("scripts", function () {
     "use strict";
@@ -167,7 +181,11 @@ gulp.task("getIconVariables", function () {
     return gulp.src(path.join(__dirname, iconPath, "variables.scss"))
         .pipe(gulp.dest(path.join(__dirname, stylePath, "icons")));
 });
-
+gulp.task('getCalendarCSS', function () {
+    "use strict";
+    return gulp.src("node_modules/fullcalendar/dist/fullcalendar.min.css")
+        .pipe(gulp.dest(path.join(__dirname, assetPath, "assets/styles")));
+});
 
 // build the dev instance. styles and script files will have source mapos embedded for debugging
 // we first build all site assets and then call metalsmith to assemble the site
@@ -178,9 +196,11 @@ gulp.task("buildDev", (cb) => sequence(
     "getIconVariables",
     "getIconStyles",
     "getIcons",
+    "getCalendarCSS",
     [
         "styles",
         "vendorScripts",
+        "getCalendarScripts",
         "scripts"
     ],
     "metalsmith",

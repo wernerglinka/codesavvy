@@ -16,6 +16,7 @@ header_images:
     youth_programs: youth-header.jpg
     adult_programs: gwtp-header.jpg
     contact: contact-header.jpg
+    events: events-calendar.jpg
 
 ---
 
@@ -30,6 +31,26 @@ header_images:
             </div>
             <a href="#about"><i class="icon icon-arrow-down"></i></a>
         </section>
+
+        <section id="upcoming-events" class="events-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-image: url(/assets/images/site-images/{{ header_images.events }})">
+                    <h1>Next Event</h1>
+                </div>
+                <div class="section-row__prose section-row__left has-highlight">
+                    <ul id="next-event" class="list-unstyled">
+                        <li><h1 class="event-title"></h1></li>
+                        <li><strong>Date:</strong> <span class='event-date'></span></li>
+                        <li class='event-time'><strong>Time:</strong> <span class='start-time'></span> to <span class='end-time'></span></li>
+                        <li class='event-description'></li>
+                        <li><strong>Venue</strong><p class='event-location'></p></li>
+                        <li class='event-map'><a target='_blank' class='event-map-link' href=''>+ Google Map</a></li>
+                    </ul>
+                    <a href="/calendar/" class="learn-more-link">Review Our Events Calendar</a>
+                </div>
+            </div>
+        </section>
+
 
         <section id="about" class="about-section">
             <div class="section-row cf">

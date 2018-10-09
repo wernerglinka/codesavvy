@@ -1,0 +1,31 @@
+// overwrite the fullcalendar default styles
+.fc-event {
+    border: none !important;
+    background-color: #ccc !important;
+    border-radius: 0 !important;
+    padding: 5px !important;
+
+    &.codesavvy-event {
+        background-color: $codesavvy-purple !important;
+    }
+
+    .fc-content {
+        white-space: normal !important;
+    }
+}
+.fc-list-item {
+    .fc-event-dot {
+        background-color: #ccc !important;
+    }
+    &.codesavvy-event {
+        .fc-event-dot {
+            background-color: $codesavvy-purple !important;
+        }
+    }
+}
+.fc-view {
+    margin-bottom: 50px !important;
+}
+.fc-scroller {
+    height: auto !important;
+}
