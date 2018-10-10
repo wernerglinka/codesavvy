@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents */
+/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents, getNews */
 
 (function ($) {
     'use strict';
@@ -23,6 +23,8 @@
         if ($('body').hasClass('home')) {
             upcomingEvents.init();
         }
+
+        getNews.init();
     });
     // end ready function
 }(jQuery));

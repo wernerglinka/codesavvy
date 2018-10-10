@@ -1,5 +1,5 @@
 ---
-title: Code Savvy
+title: Welcome
 
 #social media meta data settings
 #-------------------------------
@@ -12,6 +12,7 @@ page:
 body_classes: home
 
 header_images:
+    welcome: home-banner.jpg
     about: about-header.jpg
     youth_programs: youth-header.jpg
     adult_programs: gwtp-header.jpg
@@ -25,27 +26,21 @@ header_images:
 {% block body %}
     <div class="container">
         <section class="welcome-section">
-            <div class="welcome-section__header" style="background-image: url('/assets/images/welcome-section/classroom-with-children.jpg')">
+            <div class="welcome-section__header" style="background-image: url('/assets/images/banners/{{ header_images.welcome }}')">
                 <h1>{{ site.owner.name }}</h1>
-                <p class="welcome-section__text">Learn how to code with Code Savvy</p>
+                <p class="welcome-section__text">Make programming your superpower</p>
             </div>
             <a href="#about"><i class="icon icon-arrow-down"></i></a>
         </section>
 
         <section id="upcoming-events" class="events-section">
             <div class="section-row cf">
-                <div class="section-row__header section-row__right" style="background-image: url(/assets/images/site-images/{{ header_images.events }})">
+                <div class="section-row__header section-row__right has-slidein" style="background-image: url(/assets/images/site-images/{{ header_images.events }})">
                     <h1>Next Event</h1>
                 </div>
                 <div class="section-row__prose section-row__left has-highlight">
-                    <ul id="next-event" class="list-unstyled">
-                        <li><h1 class="event-title"></h1></li>
-                        <li><strong>Date:</strong> <span class='event-date'></span></li>
-                        <li class='event-time'><strong>Time:</strong> <span class='start-time'></span> to <span class='end-time'></span></li>
-                        <li class='event-description'></li>
-                        <li><strong>Venue</strong><p class='event-location'></p></li>
-                        <li class='event-map'><a target='_blank' class='event-map-link' href=''>+ Google Map</a></li>
-                    </ul>
+                    <p id="events-date"></p>
+                    <ul id="next-event" class="list-unstyled"></ul>
                     <a href="/calendar/" class="learn-more-link">Review Our Events Calendar</a>
                 </div>
             </div>
@@ -57,7 +52,7 @@ header_images:
                 <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.about }})">
                     <h1>About</h1>
                 </div>
-                <div class="section-row__prose section-row__right">
+                <div class="section-row__prose section-row__right has-highlight">
                     <p>Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids and educators, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies.</p>
                     <a href="/about-us" class="learn-more-link">Learn More About Us</a>
                     <a href="/in-the-news" class="learn-more-link">In the News</a>
@@ -70,7 +65,7 @@ header_images:
                 <div class="section-row__header section-row__right" style="background-image: url(/assets/images/banners/{{ header_images.youth_programs }})">
                     <h1>Youth<br>Programs</h1>
                 </div>
-                <div class="section-row__prose section-row__left">
+                <div class="section-row__prose section-row__left has-highlight">
                     <p>The main focus of Code Savvy is the development of opportunities for youth to engage in coding activities. Mentor provide support and encouragement for youth ages 8-17 in a variety of environments and locations through the Twin Cities and greater MN area.</p>
                 </div>
             </div>
@@ -96,62 +91,19 @@ header_images:
                 <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.adult_programs }})">
                     <h1>Get with the<br>Program</h1>
                 </div>
-                <div class="section-row__prose section-row__right">
-                    <p>The main focus of Code Savvy is the development of opportunities for youth to engage in coding activities. Mentor provide support and encouragement for youth ages 8-17 in a variety of environments and locations through the Twin Cities and greater MN area.</p>
+                <div class="section-row__prose section-row__right has-highlight">
+                    <p>Get With the Program is designed to develop coding awareness, skills and resources among K-12 and after-school educators through hands-on workshops, conferences and mentoring</p>
                     <a href="/educator-programs" class="learn-more-link">Learn More</a>
                 </div>
             </div>
         </section>
 
-        <section id="team" class="teams-section">
-            <div class="section-row cf">
-                <div class="section-row__header section-row__right" style="background-color: #3A1366">
-                    <h1>Meet the Team</h1>
-                </div>
-                <div class="section-row__prose section-row__left">
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
-                </div>
-            </div>
-            <div class="section-row auto-height cf">
-                <h2 class="section-postamble">Board of Directors</h2>
-            </div>
-            <div class="section-row cf">
-                <ul class="programs-list cf">
-                    {% for item, teamMember in team.board_of_directors %}
-                    <li>
-                        <div class="programs-list__item-header" style="background-image: url('/assets/images/team/{{ teamMember.image_src }}')">
-                            <p class="team-member-name">{{ teamMember.title }}</p>
-                        </div>
-                        <em>{{ teamMember.position }}</em>
-                    </li>
-                    
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="section-row auto-height cf">
-                <h2 class="section-postamble">Program Directors</h2>
-            </div>
-            <div class="section-row cf">
-                <ul class="programs-list cf">
-                    {% for item, teamMember in team.program_directors %}
-                    <li>
-                        <div class="programs-list__item-header" style="background-image: url('/assets/images/team/{{ teamMember.image_src }}')">
-                            <p class="team-member-name">{{ teamMember.title }}</p>
-                        </div>
-                        <em>{{ teamMember.position }}</em>
-                    </li>
-                    
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-
         <section id="sponsors" class="sponsors-section">
             <div class="section-row cf">
-                <div class="section-row__header section-row__left" style="background-color: #3A1366;">
+                <div class="section-row__header section-row__right" style="background-color: #3A1366;">
                     <h1>Our Sponsors</h1>
                 </div>
-                <div class="section-row__prose section-row__right">
+                <div class="section-row__prose section-row__left has-highlight">
                     <p>Our sincere thanks to all of the organizations that support us</p>
                 </div>
             </div>
@@ -176,8 +128,8 @@ header_images:
                 <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.contact }})">
                     <h1>Contact Us</h1>
                 </div>
-                <div class="section-row__prose section-row__right">
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod.</p>
+                <div class="section-row__prose section-row__right has-highlight is-empty">
+                    <p></p>
                 </div>
             </div>
         <div class="section-row cf">

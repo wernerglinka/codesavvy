@@ -19,8 +19,10 @@ let accordions = (function ($) {
                 thisAccordionHead.toggleClass('isOpen');
                 if (thisAccordionHead.hasClass('isOpen')) {
                     thisAccordionHead.next().slideDown();
+                    thisAccordionHead.find('.icon').removeClass('icon-chevron-down').addClass('icon-chevron-up');
                 } else {
                     thisAccordionHead.next().slideUp();
+                    thisAccordionHead.find('.icon').removeClass('icon-chevron-up').addClass('icon-chevron-down');
                 }
             });
         });

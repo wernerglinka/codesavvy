@@ -3,14 +3,22 @@ board_of_directors:
     image_src: jean-weiss.jpg
     title: "Jean Weiss"
     position: "Executive Director"
-  kim_skanson:
-    image_src: kim-skanson.jpg
-    title: "Kim Skanson"
-    position: "Board Member"
   andrea_wilson_vazquez:
     image_src: andrea-wilson-vazquez.jpg
     title: "Andrea Wilson Vazquez"
     position: "Board Secretary"
+  kait_frank:
+    image_src:
+    title: "Kait Frank"
+    position: "Board Member"
+  annette_evans:
+    image_src:
+    title: "Annette Evans"
+    position: "Board Member"
+  chris_alexander:
+    image_src:
+    title: "Chris Alexander"
+    position: "Board Member"
 
 program_directors:
   eileen_king:

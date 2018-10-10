@@ -1,5 +1,5 @@
 ---
-title: Code Savvy | In the News
+title: In the News
 
 #social media meta data settings
 #-------------------------------
@@ -22,7 +22,12 @@ body_classes: news
 {% block body %}
     <section id="news" class="news-section">
         <div class="container">
-            <h1>In the News</h1>
+            <div class="section-banner">
+                <img src="/assets/images/banners/news-header.jpg" alt="newspapers" />
+                <div class="section-banner__text">
+                    <h1>In the News</h1>
+                </div>
+            </div>
             {% if inTheNews.length %}
             <ul class="list-unstyled news-list">
                 {% for newsItem in inTheNews %}

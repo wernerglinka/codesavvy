@@ -27,12 +27,12 @@ works_museum:
   image_src: "works-museum-logo.png"
   rebecca: false
   codesavvy: true
-techdotcom:
-  name: Tech{dot}MN
-  image_src: "techdotmn-logo.png"
-  link_url: "https://tech.mn"
-  rebecca: false
-  codesavvy: true
+#techdotcom:
+#  name: Tech{dot}MN
+#  image_src: "techdotmn-logo.png"
+#  link_url: "https://tech.mn"
+#  rebecca: false
+#  codesavvy: true
 livefront:
   name: Livefront
   image_src: "livefront-logo.png"

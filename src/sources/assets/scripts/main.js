@@ -21,8 +21,10 @@ var accordions = function ($) {
                 thisAccordionHead.toggleClass('isOpen');
                 if (thisAccordionHead.hasClass('isOpen')) {
                     thisAccordionHead.next().slideDown();
+                    thisAccordionHead.find('.icon').removeClass('icon-chevron-down').addClass('icon-chevron-up');
                 } else {
                     thisAccordionHead.next().slideUp();
+                    thisAccordionHead.find('.icon').removeClass('icon-chevron-up').addClass('icon-chevron-down');
                 }
             });
         });
@@ -156,6 +158,30 @@ var externalLinks = function ($, undefined) {
         allExternalLinks.each(function () {
             var thisExternalLink = $(this);
             thisExternalLink.attr("target", "_blank");
+        });
+    };
+    return {
+        init: init
+    };
+}(jQuery);
+"use strict";
+
+/*jsLint es6, this */
+/*global jQuery, window */
+
+// the scroll to top function for long pages
+var getNews = function ($, undefined) {
+    "use strict";
+
+    var init = function init() {
+        var sheetID = "1gT2DHawm3ZlcqfzP40Wy9w2WgWF_bbe2-_751BGOpag";
+        var sheetURL = "https://spreadsheets.google.com/feeds/list/" + sheetID + "/1/public/values?alt=json";
+
+        $.getJSON(sheetURL, function (data) {
+            // loop over all news and prepare news list
+
+
+            console.log(data.feed.entry);
         });
     };
     return {
@@ -739,43 +765,113 @@ var touchClick = function ($, undefined) {
 }(jQuery);
 "use strict";
 
-/*jsLint es6, this */
-/*global jQuery, window */
+/*jsLint es6, this: true */
+/*global jQuery, window, moment */
 
 // the scroll to top function for long pages
 var upcomingEvents = function ($, undefined) {
     "use strict";
 
     var init = function init() {
+        // get the 4 next events and see if we have multiple for the next event day
+        // prepare a info pane that is shown when user clicks the event title
+        // this way, when we have multiple events on the next events day, we can show them all
         var calID = "glinka.co_m032tqboc6l83vmi0a2h4uashk@group.calendar.google.com";
         var calKey = "AIzaSyBg6sxHiXOgauTfQ0MRvyAAu3ylyePHY_M";
-        var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=1";
+        var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4";
         var calURL = "https://www.googleapis.com/calendar/v3/calendars/" + calID + "/events?key=" + calKey + calOptions;
+        var nextEvents = [];
+        var temp = [];
+        var date = void 0,
+            locationQueryTerm = void 0,
+            nextEvent = void 0,
+            eventDetails = void 0;
+
         $.getJSON(calURL, function (data) {
-            console.log(data);
+            // get the date for the first event
+            var nextDay = moment(new Date(data.items[0].start.dateTime)).format("MMMM Do, YYYY");
+            // loop over the events and check if we have more events for the first event day
+            Object.values(data.items).forEach(function (thisEvent) {
+                date = moment(new Date(thisEvent.start.dateTime)).format("MMMM Do, YYYY");
+                if (nextDay === date) {
+                    temp = [];
+                    temp.date = moment(new Date(thisEvent.start.dateTime)).format("MMMM Do, YYYY");
+                    temp.title = thisEvent.summary;
+                    temp.startTime = moment(new Date(thisEvent.start.dateTime)).format("LT");
+                    temp.endTime = moment(new Date(thisEvent.end.dateTime)).format("LT");
+                    temp.location = thisEvent.location;
+                    locationQueryTerm = thisEvent.location.replace(/,/g, '%20');
+                    temp.mapLink = "https://www.google.com/maps/search/?api=1&query=" + locationQueryTerm;
 
-            var date = moment(new Date(data.items[0].start.dateTime)).format("MMMM Do, YYYY");
-            var startTime = moment(new Date(data.items[0].start.dateTime)).format("LT");
-            var endTime = moment(new Date(data.items[0].end.dateTime)).format("LT");
-            var locationQueryTerm = data.items[0].location.replace(/,/g, '%20');
-            var mapLink = "https://www.google.com/maps/search/?api=1&query=" + locationQueryTerm;
+                    nextEvents.push(temp);
+                }
+            });
 
-            var nextEvent = $("#next-event");
-            nextEvent.find('.event-title').html(data.items[0].summary);
-            nextEvent.find('.event-date').html(date);
-            nextEvent.find('.start-time').html(startTime);
-            nextEvent.find('.end-time').html(endTime);
-            nextEvent.find('.event-description').html(data.items[0].description);
-            nextEvent.find('.event-location').html(data.items[0].location);
-            nextEvent.find('.event-map-link').attr('href', mapLink);
+            // now array nextEvents hold all event objects for the next events day
+            // typically that is only 1 event
 
-            $('#event1').html(data.items[0].summary);
+            var events = $("#upcoming-events");
+            nextEvent = $("#next-event");
+            var eventsDate = $('#events-date');
+            var today = moment(new Date()).format("MMMM Do, YYYY");
+            var tomorrow = moment(new Date()).add(1, 'days').format("MMMM Do, YYYY");
+
+            switch (nextEvents[0].date) {
+                case today:
+                    eventsDate.html("Today");
+                    break;
+                case tomorrow:
+                    eventsDate.html("Tomorrow");
+                    break;
+                default:
+                    eventsDate.html("On " + nextEvents[0].date);
+            }
+
+            nextEvents.forEach(function (thisEvent) {
+                // add title link to Next Event section
+                nextEvent.append("<li><a class=\"event-title learn-more-link\">" + thisEvent.title + "</a></li>");
+
+                // add the events details pane
+                eventDetails = "\n                    <div class=\"slidein\">\n                        <i class=\"icon icon-x\"></i>\n                        <h2>" + thisEvent.title + "</h2>\n                        <p><strong>Date:</strong> " + thisEvent.date + "</p>\n                        <p><strong>Time:</strong> " + thisEvent.startTime + " to " + thisEvent.endTime + "</p>\n                        <hr>\n                        <h3>Venue</h3> \n                        <p>" + thisEvent.location + "</p>\n                        <a target=\"_blank\" href=\"" + thisEvent.mapLink + "\">+ Google Map</a>\n                    </div>";
+                events.find('.has-slidein').append(eventDetails);
+            });
+
+            // add event handler to events title to show event details when clicked
+            var eventTitles = events.find('.event-title').on('touchclick', function () {
+                var thisEventTrigger = $(this);
+                var thisEventIndex = thisEventTrigger.index(eventTitles);
+
+                thisEventTrigger.toggleClass('is-open');
+
+                if (thisEventTrigger.hasClass('is-open')) {
+                    events.find('.slidein').not(thisEventIndex).css('left', '110%');
+                    thisEventTrigger.parent().siblings().find('.is-open').removeClass('is-open');
+                    events.find('.slidein').eq(thisEventIndex).css('left', 0);
+                } else {
+                    events.find('.slidein').eq(thisEventIndex).css('left', '110%');
+                }
+            });
+
+            events.find('.icon-x').on('touchclick', function () {
+                events.find('.slidein').css('left', '110%');
+                eventTitles.removeClass('is-open');
+            });
         });
     };
     return {
         init: init
     };
 }(jQuery);
+
+/*
+<li><h1 class="event-title"></h1></li>
+<li><strong>Date:</strong> <span class='event-date'></span></li>
+<li class='event-time'><strong>Time:</strong> <span class='start-time'></span> to <span class='end-time'></span></li>
+<li class='event-description'></li>
+<li><strong>Venue</strong><p class='event-location'></p></li>
+<li class='event-map'><a target='_blank' class='event-map-link' href=''>+ Google Map</a></li>
+
+*/
 "use strict";
 
 /*jsLint es6 */
@@ -947,7 +1043,7 @@ var youTubeVideos = function ($, undefined) {
 'use strict';
 
 /*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents */
+/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents, getNews */
 
 (function ($) {
     'use strict';
@@ -971,6 +1067,8 @@ var youTubeVideos = function ($, undefined) {
         if ($('body').hasClass('home')) {
             upcomingEvents.init();
         }
+
+        getNews.init();
     });
     // end ready function
 })(jQuery);

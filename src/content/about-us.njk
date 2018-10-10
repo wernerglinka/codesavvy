@@ -1,5 +1,5 @@
 ---
-title: Code Savvy | About Us
+title: About Us
 
 #social media meta data settings
 #-------------------------------
@@ -11,6 +11,9 @@ page:
 
 body_classes: about
 
+header_images:
+    about: home-banner.jpg
+    contact: contact-header.jpg
 ---
 
 {% extends "default.njk" %}
@@ -20,56 +23,118 @@ body_classes: about
 {% endblock %}
 
 {% block body %}
-    <section id="about" class="about-section">
-        <div class="container">
-            <h1>About Code Savvy</h1>
-            <p>Code Savvy is a non-profit organization built to inspire kids and teens to become code-savvy. We create and foster programs and services that help kids understand the kind of creative thinking that goes into coding, and to experience programming computers and devices. By doing this, Code Savvy is determined to bring more gender and ethnic diversity to computer science.</p>
-            <p>Code Savvy achieves its mission by supporting a number of open and free coding classes such as the Twin Cities CoderDojo, the girls-only Rebecca CoderDojo and various local coder clubs. It also facilitates Technovation[MN], a local app development competition for local teen girls. Code Savvy also offers services and programs for educators through its Get With The Program workshops, Educators Cohort, and the Coding In The Classroom Summit.</p>
-            <p>Code Savvy is a central resource for local advocates and champions for the advancement of youth computer science. Through its connections and vision, it is able to activate programs and services that give real-world coding experience to the kids who need it most.</p>
-
-            <div class="accordion">
-                <h2 class="accordion-head">Mission<i class="icon icon-chevron-down"></i></h2>
-                <div>
-                    <p>Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies.</p>
+    <div class="container">
+        <section id="about" class="about-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.about }})">
+                    <h1>About Code Savvy</h1>
                 </div>
-                <h2 class="accordion-head">Vision<i class="icon icon-chevron-down"></i></h2>
-                <div>
-                    <p>Code Savvy believes the next generation of successful computer science professionals are already in our communities and need a little inspiration to gain the code-savvy necessary to achieve greatness. By creating accessible programs and services in local neighborhoods, our future tech champions will be able to take the next steps towards a fruitful career in the world’s fastest growing industry.<br>Tomorrow’s tech professionals need to be reflective of all our communities. Code Savvy believes that by focusing its efforts on expanding ethnic and gender equality, we can make a multi-billion dollar industry truly transformative.</p>
-                </div>
-                <h2 class="accordion-head">History<i class="icon icon-chevron-down"></i></h2>
-                <div>
-                    <p>Code Savvy was founded by Rebecca Schatz, a serial entrepreneur in the not-for-profit space. In addition to Code Savvy she founded The Works hands-on museum of engineering, and was the catalyst behind Technovation[MN]. She passed away in 2015.</p>
-                    <p>Rebecca touched so many people during her vibrant, innovative, and inspiring life. She left an an inspiring, sustainable, and lasting legacy to encourage kids and teens to explore their curiosity, learn coding and creative problem solving, and for the the volunteers, family members, and mentors who make it happen.</p>
-                    <p>Rebecca built systems and organizations and more importantly she engaged others to participate in the process. She knew that change is the work of many and she inspired everyone to stretch, grow and develop themselves. Her outreach was inherently about inclusion – helping kids see new models and pathways to pursue their own passion, dreams and careers in new and accessible ways. Rebecca brought passion and a focused commitment to inspire our youth to explore and discover engineering, science and coding in hands-on environments.</p>
-                    <p>In early July 2015, Code Savvy appointed Jean Weiss the Executive Director of Code Savvy to carry forward Rebecca’s vision to inspire a diverse new code savvy generation.</p>
+                <div class="section-row__prose section-row__right has-highlight">
+                    <p>Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids and educators, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies.</p>
+                    <a href="/in-the-news" class="learn-more-link">In the News</a>
                 </div>
             </div>
-        </div>
-    </section>
+            <div>
+                <p>Code Savvy is a non-profit organization built to inspire kids and teens to become code-savvy. We create and foster programs and services that help kids understand the kind of creative thinking that goes into coding, and to experience programming computers and devices. By doing this, Code Savvy is determined to bring more gender and ethnic diversity to computer science.</p>
+                <p>Code Savvy achieves its mission by supporting a number of open and free coding classes such as the Twin Cities CoderDojo, the girls-only Rebecca CoderDojo and various local coder clubs. It also facilitates Technovation[MN], a local app development competition for local teen girls. Code Savvy also offers services and programs for educators through its Get With The Program workshops, Educators Cohort, and the Coding In The Classroom Summit.</p>
+                <p>Code Savvy is a central resource for local advocates and champions for the advancement of youth computer science. Through its connections and vision, it is able to activate programs and services that give real-world coding experience to the kids who need it most.</p>
+                <div class="accordion">
+                    <h2 class="accordion-head">Mission<i class="icon icon-chevron-down"></i></h2>
+                    <div>
+                        <p>Code Savvy strives to make kids and teens more code-savvy through creative educational programs and services. We incubate and support community-based programs that bring technology and know-how to local kids, all the while championing gender and ethnic diversity. Code Savvy is dedicated to ensuring the next generation of computer science professionals represents the billions of users of tomorrow’s innovative technologies.</p>
+                    </div>
+                    <h2 class="accordion-head">Vision<i class="icon icon-chevron-down"></i></h2>
+                    <div>
+                        <p>Code Savvy believes the next generation of successful computer science professionals are already in our communities and need a little inspiration to gain the code-savvy necessary to achieve greatness. By creating accessible programs and services in local neighborhoods, our future tech champions will be able to take the next steps towards a fruitful career in the world’s fastest growing industry.<br>Tomorrow’s tech professionals need to be reflective of all our communities. Code Savvy believes that by focusing its efforts on expanding ethnic and gender equality, we can make a multi-billion dollar industry truly transformative.</p>
+                    </div>
+                    <h2 class="accordion-head">History<i class="icon icon-chevron-down"></i></h2>
+                    <div>
+                        <p>Code Savvy was founded by Rebecca Schatz, a serial entrepreneur in the not-for-profit space. In addition to Code Savvy she founded The Works hands-on museum of engineering, and was the catalyst behind Technovation[MN]. She passed away in 2015.</p>
+                        <p>Rebecca touched so many people during her vibrant, innovative, and inspiring life. She left an an inspiring, sustainable, and lasting legacy to encourage kids and teens to explore their curiosity, learn coding and creative problem solving, and for the the volunteers, family members, and mentors who make it happen.</p>
+                        <p>Rebecca built systems and organizations and more importantly she engaged others to participate in the process. She knew that change is the work of many and she inspired everyone to stretch, grow and develop themselves. Her outreach was inherently about inclusion – helping kids see new models and pathways to pursue their own passion, dreams and careers in new and accessible ways. Rebecca brought passion and a focused commitment to inspire our youth to explore and discover engineering, science and coding in hands-on environments.</p>
+                        <p>In early July 2015, Code Savvy appointed Jean Weiss the Executive Director of Code Savvy to carry forward Rebecca’s vision to inspire a diverse new code savvy generation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="sponsors" class="sponsors-section">
-        <div class="container">
-            <h1>Our Sponsors</h1>
-            <p>Our sincere thanks to all of the organizations that support us</p>
+        <section id="team" class="teams-section space-above">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-color: #3A1366">
+                    <h1>Meet the Team</h1>
+                </div>
+                <div class="section-row__prose section-row__left has-highlight is-empty">
+                    <p></p>
+                </div>
+            </div>
+            <div class="section-row auto-height cf">
+                <h2 class="section-postamble">Board of Directors</h2>
+            </div>
+            <div class="section-row cf">
+                <ul class="programs-list cf">
+                    {% for item, teamMember in team.board_of_directors %}
+                    <li>
+                        <div class="programs-list__item-header" style="background-image: url('/assets/images/team/{{ teamMember.image_src }}')">
+                            <p class="team-member-name">{{ teamMember.title }}</p>
+                        </div>
+                        <em>{{ teamMember.position }}</em>
+                    </li>
+                    
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="section-row auto-height cf">
+                <h2 class="section-postamble">Program Directors</h2>
+            </div>
+            <div class="section-row cf">
+                <ul class="programs-list cf">
+                    {% for item, teamMember in team.program_directors %}
+                    <li>
+                        <div class="programs-list__item-header" style="background-image: url('/assets/images/team/{{ teamMember.image_src }}')">
+                            <p class="team-member-name">{{ teamMember.title }}</p>
+                        </div>
+                        <em>{{ teamMember.position }}</em>
+                    </li>
+                    
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
 
-            <ul class="sponsors-list list-inline list-unstyled">
-                {% for item, sponsor in sponsors %}
+        <section id="sponsors" class="sponsors-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-color: #3A1366;">
+                    <h1>Our Sponsors</h1>
+                </div>
+                <div class="section-row__prose section-row__right has-highlight">
+                    <p>Our sincere thanks to all of the organizations that support us</p>
+                </div>
+            </div>
+            <div class="section-row cf">
+                <ul class="sponsors-list list-inline list-unstyled">
+                    {% for item, sponsor in sponsors %}
+                    {% if sponsor.codesavvy %}
+                    <li>
+                        <a href="{{ sponsor.link_url }}">
+                            <img src="/assets/images/sponsors/{{ sponsor.image_src }}" alt="{{ sponsor.name }}" />
+                        </a>
 
-                <li>
-                    <a href="{{ sponsor.link_url }}">
-                        <img src="/assets/images/sponsors/{{ sponsor.image_src }}" alt="{{ sponsor.name }}" />
-                    </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
 
-                </li>
-                {% endfor %}
-            </ul>
-
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h1>Contact Us</h1>
+        <section id="contact" class="contact-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.contact }})">
+                    <h1>Contact Us</h1>
+                </div>
+                <div class="section-row__prose section-row__right has-highlight is-empty">
+                    <p></p>
+                </div>
+            </div>
             <div class="section-row cf">
                 <div class="contact-form section-row__left" >
                     <form name="contact" method="POST" netlify>
@@ -110,9 +175,7 @@ body_classes: about
                         </li>
                     </ul>
                 </div>
-
             </div>
-        </div>
-    </section>
-
+        </section>
+    </div>
 {% endblock %}

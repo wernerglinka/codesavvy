@@ -8,6 +8,36 @@ $postamble-bg-color: #f0f0f0;
     &.auto-height {
         min-height: 0;
     }
+
+    .has-slidein {
+        position: relative;
+        overflow: hidden;
+
+        .slidein {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 110%;
+            width: 100%;
+            background-color: $header-bg-color;
+            padding: 30px;
+            transition: all 0.3s $animation-default;
+
+            .icon-x {
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    }
 }
 .section-row__left,
 .section-row__right {
@@ -26,6 +56,10 @@ $postamble-bg-color: #f0f0f0;
 @media (max-width: 700px) {
     .section-row {
         display: block;
+
+        .is-empty {
+            display: none;
+        }
     }
 
     .section-row__left,
