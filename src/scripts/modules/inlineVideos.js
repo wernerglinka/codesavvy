@@ -3,7 +3,7 @@
 
 // function to play inline youTube videos
 // allows videos to be inserted with minimal html
-// example: "<div class="youtube-video" data-video-tn="<path/to/img>" data-video-id="<youtube id>" data-start-time="10" data-end-time="140"></div>
+// example: "<div class="inline-video" data-video-tn="<path/to/img>" data-video-id="<youtube id>" data-start-time="10" data-end-time="140"></div>
 
 let inlineVideos = (function ($, undefined) {
     "use strict";
