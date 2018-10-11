@@ -35,6 +35,8 @@ let inlineVideos = (function ($, undefined) {
 
         switch (event.data) {
         case YT.PlayerState.PAUSED:
+            $(event.target.a.parentElement).fadeOut();
+            $(event.target.a.parentElement).prev().fadeIn();
             break;
 
         case YT.PlayerState.PLAYING:

@@ -28,24 +28,7 @@ body_classes: news
                     <h1>In the News</h1>
                 </div>
             </div>
-            {% if inTheNews.length %}
-            <ul class="list-unstyled news-list">
-                {% for newsItem in inTheNews %}
-                <li>
-                    <span class="news-date">{{ newsItem.date }}</span>
-                    <span class="news-org">{{ newsItem.news_org }}</span>
-                    {% if newsItem.link_url %}
-                        <a href="{{ newsItem.link_url }}">{{ newsItem.title }}</a>
-                    {% else %}
-                        <span>{{ newsItem.title }}</span>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <p>No news to display</p>
-            {% endif %}
-            
+            <ul id="code-savvy-news-list" class="list-unstyled news-list"></ul>
         </div>
     </section>
 {% endblock %}

@@ -174,14 +174,24 @@ var getNews = function ($, undefined) {
     "use strict";
 
     var init = function init() {
-        var sheetID = "1gT2DHawm3ZlcqfzP40Wy9w2WgWF_bbe2-_751BGOpag";
+        var sheetID = "1FqD-0CJeg-EyMn8NDWCyAY4LtodSnN2qGTS2Re3zEmg";
         var sheetURL = "https://spreadsheets.google.com/feeds/list/" + sheetID + "/1/public/values?alt=json";
 
         $.getJSON(sheetURL, function (data) {
             // loop over all news and prepare news list
-
-
-            console.log(data.feed.entry);
+            var newsList = $('#code-savvy-news-list');
+            Object.values(data.feed.entry).forEach(function (thisNews) {
+                // a little help from: https://gist.github.com/claytongulick/bf05ecebe7a2bbb96b585b74af203eed
+                // about if in string template literals
+                var newsItemHTML = "\n                    <li>\n                    <span class=\"news-date\">" + thisNews.gsx$date.$t + "</span>\n                    <span class=\"news-org\">" + thisNews.gsx$newsorg.$t + "</span>\n                    " + function (gsx$newslink) {
+                    if (gsx$newslink.$t.length) {
+                        return "<a href=\"" + thisNews.gsx$newslink.$t + "\">" + thisNews.gsx$title.$t + "</a>";
+                    } else {
+                        return "<span>" + thisNews.gsx$title.$t + "</span>";
+                    }
+                }(thisNews.gsx$newslink) + "\n                    </li>";
+                newsList.append(newsItemHTML);
+            });
         });
     };
     return {
@@ -266,6 +276,8 @@ var inlineVideos = function ($, undefined) {
 
         switch (event.data) {
             case YT.PlayerState.PAUSED:
+                $(event.target.a.parentElement).fadeOut();
+                $(event.target.a.parentElement).prev().fadeIn();
                 break;
 
             case YT.PlayerState.PLAYING:
@@ -1043,7 +1055,7 @@ var youTubeVideos = function ($, undefined) {
 'use strict';
 
 /*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents, getNews */
+/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents, getNews, inlineVideos */
 
 (function ($) {
     'use strict';
@@ -1055,20 +1067,19 @@ var youTubeVideos = function ($, undefined) {
         scrolledIntoView.init();
         softScroll.init();
         hamburger.init();
+        accordions.init();
+        inlineVideos.init();
+
         if ($('body').hasClass('home')) {
             showLogo.init();
+            upcomingEvents.init();
         }
-
-        accordions.init();
-
         if ($('body').hasClass('calendar')) {
             calendar.init();
         }
-        if ($('body').hasClass('home')) {
-            upcomingEvents.init();
+        if ($('body').hasClass('news')) {
+            getNews.init();
         }
-
-        getNews.init();
     });
     // end ready function
 })(jQuery);

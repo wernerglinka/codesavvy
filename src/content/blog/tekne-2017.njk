@@ -1,0 +1,43 @@
+---
+title: Tekne Award 2017
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+
+hasVideo: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: blog hasVideo
+
+header_images:
+    blog: tekne-awards-2017-logo.jpg
+---
+
+{% extends "default.njk" %}
+
+{% block header %}
+    {% include "partials/no-nav-header.njk" %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <section id="blog" class="blog-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-image: url(/assets/images/banners/{{ header_images.blog }})">
+                </div>
+                <div class="section-row__prose section-row__left has-highlight">
+                    <h1>Tekne Award Winner 2017</h1>
+                    <p>Code Savvy receives STEM Education award at the 2017 Tekne Awards - 18th annual Tekne Awards recognized Minnesota’s technology innovators and innovations. The award recognized our Get With The Program (GWTP) for Educators program. Andrea Wilson Vazquez (co-founder and Program Manager of GWTP) and Tom Cozzolino (co-facilitator) talked to Ryan Peña of Mentormate that night live on Twitter about the program’s success.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section>
+            <div class="inline-video" data-video-tn="/assets/images/video-tns/tekne-2017.jpg" data-video-id="FaaaS9AxF-s"></div>
+        </section>
+    </div>
+{% endblock %}

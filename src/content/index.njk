@@ -18,6 +18,7 @@ header_images:
     adult_programs: gwtp-header.jpg
     contact: contact-header.jpg
     events: events-calendar.jpg
+    blog: tekne-awards-2017-logo.jpg
 
 ---
 
@@ -35,13 +36,25 @@ header_images:
 
         <section id="upcoming-events" class="events-section">
             <div class="section-row cf">
-                <div class="section-row__header section-row__right has-slidein" style="background-image: url(/assets/images/site-images/{{ header_images.events }})">
+                <div class="section-row__header section-row__left has-slidein" style="background-image: url(/assets/images/site-images/{{ header_images.events }})">
                     <h1>Next Event</h1>
                 </div>
-                <div class="section-row__prose section-row__left has-highlight">
+                <div class="section-row__prose section-row__right has-highlight">
                     <p id="events-date"></p>
                     <ul id="next-event" class="list-unstyled"></ul>
                     <a href="/calendar/" class="learn-more-link">Review Our Events Calendar</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-image: url(/assets/images/banners/{{ header_images.blog }})">
+                    <h1></h1>
+                </div>
+                <div class="section-row__prose section-row__left has-highlight">
+                    <p>Code Savvy receives STEM Education award...</p>
+                    <a href="/blog/tekne-2017/" class="learn-more-link">Learn More</a>
                 </div>
             </div>
         </section>

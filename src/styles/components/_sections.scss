@@ -33,6 +33,9 @@ $header-text-size: 60px;
 
 
 .section-row__prose {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 30px;
     font-size: 18px;
     line-height: 1.6;
