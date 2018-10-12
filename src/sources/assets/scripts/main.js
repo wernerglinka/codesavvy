@@ -281,7 +281,7 @@ var inlineVideos = function ($, undefined) {
             var thisVideo = $(this);
             var thisVideoIndex = i;
             // add the thumbnail
-            var thisVideoTnHTML = "<div class='video-tn'><img src='" + thisVideo.data("video-tn") + "' alt='' /></div>";
+            var thisVideoTnHTML = "<div class='video-tn'><i class='icon icon-play'></i><img src='" + thisVideo.data("video-tn") + "' alt='' /></div>";
             thisVideo.append(thisVideoTnHTML);
             // and the video
             var thisVideoHTML = "<div class='video-wrapper'><div id='linearVideo" + thisVideoIndex + "'></div></div>";

@@ -58,7 +58,7 @@ let inlineVideos = (function ($, undefined) {
             let thisVideo = $(this);
             let thisVideoIndex = i;
             // add the thumbnail
-            let thisVideoTnHTML = `<div class='video-tn'><img src='${thisVideo.data("video-tn")}' alt='' /></div>`;
+            let thisVideoTnHTML = `<div class='video-tn'><i class='icon icon-play'></i><img src='${thisVideo.data("video-tn")}' alt='' /></div>`;
             thisVideo.append(thisVideoTnHTML);
             // and the video
             let thisVideoHTML = `<div class='video-wrapper'><div id='linearVideo${thisVideoIndex}'></div></div>`;

@@ -155,3 +155,29 @@ $animation-default: $animation-fast-out-slow-in !default;
     @include icon-base($icon-size, $icon-color);
     content: $icon;
 }
+
+@mixin play-button($play-icon-size, $play-icon-font-size, $play-icon-color) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: $play-icon-size;
+    height: $play-icon-size;
+    box-shadow: $default-box-shadow;
+    margin: (-$play-icon-size/2) 0 0 (-$play-icon-size/2);
+    border-radius: $play-icon-size / 2;
+    border: 3px solid $play-icon-color;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: $play-icon-font-size;
+    color: $play-icon-color;
+    text-align: center;
+    text-shadow: $default-text-shadow;
+    pointer-events: none;
+
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: (-$play-icon-font-size/2) 0 0 (-$play-icon-font-size/2);
+    }
+}
