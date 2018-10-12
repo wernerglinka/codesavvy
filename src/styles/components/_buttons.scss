@@ -49,6 +49,11 @@ a.btn {
   background: $primary-cta-color;
   border: 2px solid $primary-cta-color;
 
+  &.donate {
+    background-color: #6cbd45;
+    border-color: #6cbd45;
+  }
+
   &:hover {
     color: $btn-light-default-text-color;
     background-color: $codesavvy-light-purple;
