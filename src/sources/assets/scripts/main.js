@@ -146,6 +146,7 @@ var getNews = function ($, undefined) {
     var init = function init() {
         var sheetID = "1FqD-0CJeg-EyMn8NDWCyAY4LtodSnN2qGTS2Re3zEmg";
         var sheetURL = "https://spreadsheets.google.com/feeds/list/" + sheetID + "/1/public/values?alt=json";
+        var lastYear = void 0;
 
         $.getJSON(sheetURL, function (data) {
             // loop over all news and prepare news list
@@ -153,13 +154,24 @@ var getNews = function ($, undefined) {
             Object.values(data.feed.entry).forEach(function (thisNews) {
                 // a little help from: https://gist.github.com/claytongulick/bf05ecebe7a2bbb96b585b74af203eed
                 // about if in string template literals
-                var newsItemHTML = "\n                    <li>\n                    <span class=\"news-date\">" + thisNews.gsx$date.$t + "</span>\n                    <span class=\"news-org\">" + thisNews.gsx$newsorg.$t + "</span>\n                    " + function (gsx$newslink) {
+                var date = moment(thisNews.gsx$date.$t, 'MM-DD-YYYY');
+                var thisDay = date.format('DD');
+                var thisMonth = date.format('MMM');
+                var thisYear = date.format('YYYY');
+                var newsItemHTML = "";
+
+                if (thisYear !== lastYear) {
+                    newsItemHTML = "<li class=\"year-header\">" + thisYear + "</li>";
+                    lastYear = thisYear;
+                }
+
+                newsItemHTML += "\n                    <li>\n                        <div class=\"news-date\">\n                            <span class=\"news-date_day\">" + thisDay + "</span><span class=\"news-date_month\">" + thisMonth + "</span>\n                        </div>\n                        <div class=\"news-details\">\n                            <p class=\"news-org\">" + thisNews.gsx$newsorg.$t + "</p>\n                            " + function (gsx$newslink) {
                     if (gsx$newslink.$t.length) {
                         return "<a href=\"" + thisNews.gsx$newslink.$t + "\">" + thisNews.gsx$title.$t + "</a>";
                     } else {
-                        return "<span>" + thisNews.gsx$title.$t + "</span>";
+                        return "<p>" + thisNews.gsx$title.$t + "</p>";
                     }
-                }(thisNews.gsx$newslink) + "\n                    </li>";
+                }(thisNews.gsx$newslink) + "\n                        </div>\n                    </li>";
                 newsList.append(newsItemHTML);
             });
         });
