@@ -4,6 +4,7 @@
     > li {
         display: flex;
         justify-content: flex-start;
+        align-items: center;
 
         &.year-header {
             display: block;
@@ -18,9 +19,12 @@
     .news-date {
         flex: 0 0 80px;
         font-weight: 600;
-        padding: 5px 20px;
-        margin-right: 20px;
-        border-right: 5px solid lighten($codesavvy-purple, 40%);
+        padding: 5px;
+        //background-color: #f8f8f8;
+
+        @media (max-width: 500px) {
+            padding-left: 0;
+        }
 
         span {
             display: block;
@@ -36,11 +40,14 @@
         }
     }
     .news-details {
+        border-left: 5px solid lighten($codesavvy-purple, 40%);
+        padding: 10px 20px;
+
         a {
             display: block;
         }
         p {
-            margin-bottom: 0;
+            margin: 0;
         }
         .news-org + p {
             margin-top: 0;
