@@ -32,6 +32,7 @@ const concat = require('gulp-concat');
 const compressJS = require("gulp-uglify");
 const browserSync = require('browser-sync').create();
 const metalsmith = require('metalsmith');
+var drafts = require('metalsmith-drafts');
 const assets = require("metalsmith-assets");
 const inplace = require('metalsmith-in-place');
 // we are using a branch of metalsmith-metadata: https://github.com/JemBijoux/metalsmith-metadata/tree/ext-data-sources
@@ -65,6 +66,8 @@ function setUpMS(callback) {
         .clean(true)
         .source(srcPath)
         .destination(destPath)
+
+        .use(drafts())
 
         .use(metadata({
             "files": {

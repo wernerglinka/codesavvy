@@ -31,6 +31,7 @@
     "metalsmith": "^2.3.0",
     "metalsmith-add-canonical": "file:local_modules/metalsmith-add-canonical",
     "metalsmith-assets": "^0.1.0",
+    "metalsmith-drafts": "^0.1.0",
     "metalsmith-html-minifier": "^3.0.0",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-in-place": "^4.2.0",
