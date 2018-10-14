@@ -76,7 +76,8 @@ a {
     transition: color, background-color 0.5s;
     font-weight: 400;
 
-    &.learn-more-link {
+    &.learn-more-link,
+    &.read-more-link {
         display: block;
         
         &:after {
