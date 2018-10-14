@@ -27,6 +27,11 @@ works_museum:
   image_src: "works-museum-logo.png"
   rebecca: false
   codesavvy: true
+colle_mcvoy:
+  name: Colle McVoy
+  image_src: "colle-mcvoy-logo.png"
+  rebecca: false
+  codesavvy: true
 #techdotcom:
 #  name: Tech{dot}MN
 #  image_src: "techdotmn-logo.png"
