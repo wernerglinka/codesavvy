@@ -698,8 +698,8 @@ var upcomingEvents = function ($, undefined) {
         // get the 4 next events and see if we have multiple for the next event day
         // prepare a info pane that is shown when user clicks the event title
         // this way, when we have multiple events on the next events day, we can show them all
-        var calID = "glinka.co_m032tqboc6l83vmi0a2h4uashk@group.calendar.google.com";
-        var calKey = "AIzaSyBg6sxHiXOgauTfQ0MRvyAAu3ylyePHY_M";
+        var calID = "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com"; // CoderDojo TC
+        var calKey = "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4";
         var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4";
         var calURL = "https://www.googleapis.com/calendar/v3/calendars/" + calID + "/events?key=" + calKey + calOptions;
         var nextEvents = [];
