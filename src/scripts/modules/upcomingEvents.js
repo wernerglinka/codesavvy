@@ -32,17 +32,22 @@ let upcomingEvents = (function ($, undefined) {
             "kidscode@codesavvy.org" // kids code
         ];
         */
+        let eventsStartDate = new Date().toISOString();
         let calID = "kidscode@codesavvy.org" // kids code
         let calKey = "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4";
-        let calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4";
+        let calOptions = `&singleEvents=true&orderBy=starttime&maxResults=4&timeMin=${eventsStartDate}`;
         let calURL = `https://www.googleapis.com/calendar/v3/calendars/${calID}/events?key=${calKey}${calOptions}`;
         let nextEvents = [];
         let date, nextEvent, eventDetails;
+
+        console.log(eventsStartDate);
 
         // get five calendar events, consolidate into one array and then find the next one(s)
 
 
         $.getJSON(calURL, function (data) {
+
+            console.log(data);
             // get the date for the first event
             let nextDay = moment(new Date(data.items[0].start.dateTime)).format("MMMM Do, YYYY");
             // loop over the events and check if we have more events for the first event day

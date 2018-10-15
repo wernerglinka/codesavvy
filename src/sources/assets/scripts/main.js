@@ -723,19 +723,24 @@ var upcomingEvents = function ($, undefined) {
             "kidscode@codesavvy.org" // kids code
         ];
         */
+        var eventsStartDate = new Date().toISOString();
         var calID = "kidscode@codesavvy.org"; // kids code
         var calKey = "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4";
-        var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4";
+        var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4&timeMin=" + eventsStartDate;
         var calURL = "https://www.googleapis.com/calendar/v3/calendars/" + calID + "/events?key=" + calKey + calOptions;
         var nextEvents = [];
         var date = void 0,
             nextEvent = void 0,
             eventDetails = void 0;
 
+        console.log(eventsStartDate);
+
         // get five calendar events, consolidate into one array and then find the next one(s)
 
 
         $.getJSON(calURL, function (data) {
+
+            console.log(data);
             // get the date for the first event
             var nextDay = moment(new Date(data.items[0].start.dateTime)).format("MMMM Do, YYYY");
             // loop over the events and check if we have more events for the first event day
