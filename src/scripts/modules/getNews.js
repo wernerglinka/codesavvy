@@ -37,7 +37,7 @@ let getNews = (function ($, undefined) {
                             ${
                                 (gsx$newslink => {
                                     if (gsx$newslink.$t.length) {
-                                        return `<a href="${thisNews.gsx$newslink.$t}">${thisNews.gsx$title.$t}</a>`
+                                        return `<a target="_blank" href="${thisNews.gsx$newslink.$t}">${thisNews.gsx$title.$t}</a>`
                                     } else {
                                         return `<p>${thisNews.gsx$title.$t}</p>`
                                     }

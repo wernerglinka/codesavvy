@@ -181,7 +181,7 @@ var getNews = function ($, undefined) {
 
                 newsItemHTML += "\n                    <li>\n                        <div class=\"news-date\">\n                            <span class=\"news-date_day\">" + thisDay + "</span><span class=\"news-date_month\">" + thisMonth + "</span>\n                        </div>\n                        <div class=\"news-details\">\n                            <p class=\"news-org\">" + thisNews.gsx$newsorg.$t + "</p>\n                            " + function (gsx$newslink) {
                     if (gsx$newslink.$t.length) {
-                        return "<a href=\"" + thisNews.gsx$newslink.$t + "\">" + thisNews.gsx$title.$t + "</a>";
+                        return "<a target=\"_blank\" href=\"" + thisNews.gsx$newslink.$t + "\">" + thisNews.gsx$title.$t + "</a>";
                     } else {
                         return "<p>" + thisNews.gsx$title.$t + "</p>";
                     }
@@ -697,9 +697,8 @@ var upcomingEvents = function ($, undefined) {
     "use strict";
 
     var buildEventObj = function buildEventObj(event) {
-        var date = moment(new Date(event.start.dateTime)).format("MMMM Do, YYYY");
         var temp = [];
-        temp.date = moment(new Date(event.start.dateTime)).format("MMMM Do, YYYY");
+        temp.date = new Date(event.start.dateTime); // date becomes a dateTime object so we can compare them later
         temp.title = event.summary;
         temp.startTime = moment(new Date(event.start.dateTime)).format("LT");
         temp.endTime = moment(new Date(event.end.dateTime)).format("LT");
@@ -710,57 +709,77 @@ var upcomingEvents = function ($, undefined) {
     };
 
     var init = function init() {
-        // get the 4 next events and see if we have multiple for the next event day
+        // get the next events - up to 4 - and see if we have multiple for the next event day
         // prepare a info pane that is shown when user clicks the event title
         // this way, when we have multiple events on the next events day, we can show them all
-        /*
-        let calID = [
-            "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com", // CoderDojo TC
-            "codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com", // get with the program
-            "codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com", // northfield coderdojo
-            "codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com", // rebecca coderdojo
-            "codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com", // technovation[mn]
-            "kidscode@codesavvy.org" // kids code
+
+        // calendar IDs for all Code Savvy calendars
+        var calendarIDs = ["codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com", // CoderDojo TC
+        "codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com", // get with the program
+        "codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com", // northfield coderdojo
+        "codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com", // rebecca coderdojo
+        "codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com", // technovation[mn]
+        "kidscode@codesavvy.org" // kids code
         ];
-        */
-        var eventsStartDate = new Date().toISOString();
-        var calID = "kidscode@codesavvy.org"; // kids code
+
+        var eventsStartDate = new Date().toISOString(); // we request on event from today forward
+        var calURLBase = "https://www.googleapis.com/calendar/v3/calendars/";
         var calKey = "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4";
         var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4&timeMin=" + eventsStartDate;
-        var calURL = "https://www.googleapis.com/calendar/v3/calendars/" + calID + "/events?key=" + calKey + calOptions;
         var nextEvents = [];
         var date = void 0,
-            nextEvent = void 0,
             eventDetails = void 0;
 
-        console.log(eventsStartDate);
+        // get all calendar events, consolidate into one array and then find the next one(s)
 
-        // get five calendar events, consolidate into one array and then find the next one(s)
+        // build the request array for all calendars
+        // reference: http://michaelsoriano.com/working-with-jquerys-ajax-promises-and-deferred-objects/
+        var calendarRequests = [];
+        calendarIDs.forEach(function (thisCalendarID) {
+            calendarRequests.push($.get("" + calURLBase + thisCalendarID + "/events?key=" + calKey + calOptions));
+        });
+        // execute all calendar requests
+        $.when.apply($, calendarRequests).done(function () {
+            //arguments is an array of responses [0][data, status, xhrObj],[1][data, status, xhrObj]...
+            var allEvents = [];
+            nextEvents = [];
 
-
-        $.getJSON(calURL, function (data) {
-
-            console.log(data);
-            // get the date for the first event
-            var nextDay = moment(new Date(data.items[0].start.dateTime)).format("MMMM Do, YYYY");
-            // loop over the events and check if we have more events for the first event day
-            Object.values(data.items).forEach(function (thisEvent) {
-                date = moment(new Date(thisEvent.start.dateTime)).format("MMMM Do, YYYY");
-                if (nextDay === date) {
-                    nextEvents.push(buildEventObj(thisEvent));
+            Object.values(arguments).forEach(function (thisResponse) {
+                if (thisResponse[0].items.length) {
+                    // skip calendars with no future events in them
+                    thisResponse[0].items.forEach(function (thisEvent) {
+                        allEvents.push(buildEventObj(thisEvent)); // build the compount array with all events
+                    });
                 }
             });
 
-            // now array nextEvents hold all event objects for the next events day
-            // typically that is only 1 event
+            // sort all events by date, next date is first
+            allEvents = allEvents.sort(function (a, b) {
+                return a.date - b.date;
+            });
 
+            // get the date for the first event
+            var nextDay = moment(new Date(allEvents[0].date)).format("MMMM Do, YYYY");
+            // loop over the events and check if we have more events for the first event day
+            Object.values(allEvents).forEach(function (thisEvent) {
+                date = moment(new Date(thisEvent.date)).format("MMMM Do, YYYY");
+                if (nextDay === date) {
+                    nextEvents.push(thisEvent);
+                }
+            });
+
+            // now array nextEvents holds all event objects for the next events day
+            // typically that is only 1 event but can be more on occassion
             var events = $("#upcoming-events");
-            nextEvent = $("#next-event");
+            var nextEvent = $("#next-event");
             var eventsDate = $('#events-date');
+            // apply a nice date format
             var today = moment(new Date()).format("MMMM Do, YYYY");
             var tomorrow = moment(new Date()).add(1, 'days').format("MMMM Do, YYYY");
+            var thisDate = moment(new Date(nextEvents[0].date)).format("MMMM Do, YYYY");
 
-            switch (nextEvents[0].date) {
+            // if the event is today or tomorrow we use that instead of a date
+            switch (thisDate) {
                 case today:
                     eventsDate.html("Today");
                     break;
@@ -768,15 +787,16 @@ var upcomingEvents = function ($, undefined) {
                     eventsDate.html("Tomorrow");
                     break;
                 default:
-                    eventsDate.html("On " + nextEvents[0].date);
+                    eventsDate.html("On " + thisDate);
             }
 
+            // render the upcoming event(s)
             nextEvents.forEach(function (thisEvent) {
                 // add title link to Next Event section
                 nextEvent.append("<li><a class=\"event-title learn-more-link\">" + thisEvent.title + "</a></li>");
 
                 // add the events details pane
-                eventDetails = "\n                    <div class=\"slidein\">\n                        <i class=\"icon icon-x\"></i>\n                        <h2>" + thisEvent.title + "</h2>\n                        <p><strong>Date:</strong> " + thisEvent.date + "</p>\n                        <p><strong>Time:</strong> " + thisEvent.startTime + " to " + thisEvent.endTime + "</p>\n                        <hr>\n                        <h3>Venue</h3> \n                        <p>" + thisEvent.location + "</p>\n                        <a target=\"_blank\" href=\"" + thisEvent.mapLink + "\">+ Google Map</a>\n                    </div>";
+                eventDetails = "\n                    <div class=\"slidein\">\n                        <i class=\"icon icon-x\"></i>\n                        <h2>" + thisEvent.title + "</h2>\n                        <p><strong>Date:</strong> " + thisDate + "</p>\n                        <p><strong>Time:</strong> " + thisEvent.startTime + " to " + thisEvent.endTime + "</p>\n                        <hr>\n                        <h3>Venue</h3> \n                        <p>" + thisEvent.location + "</p>\n                        <a target=\"_blank\" href=\"" + thisEvent.mapLink + "\">+ Google Map</a>\n                    </div>";
                 events.find('.has-slidein').append(eventDetails);
             });
 
@@ -806,16 +826,6 @@ var upcomingEvents = function ($, undefined) {
         init: init
     };
 }(jQuery);
-
-/*
-<li><h1 class="event-title"></h1></li>
-<li><strong>Date:</strong> <span class='event-date'></span></li>
-<li class='event-time'><strong>Time:</strong> <span class='start-time'></span> to <span class='end-time'></span></li>
-<li class='event-description'></li>
-<li><strong>Venue</strong><p class='event-location'></p></li>
-<li class='event-map'><a target='_blank' class='event-map-link' href=''>+ Google Map</a></li>
-
-*/
 'use strict';
 
 /*jslint browser: true*/
