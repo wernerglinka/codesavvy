@@ -5,7 +5,19 @@
     border-radius: 0 !important;
     padding: 5px !important;
 
-    &.codesavvy-event {
+    &.gwtp-event {
+        background-color: $codesavvy-purple !important;
+    }
+    &.tmn-event {
+        background-color: #FFC760 !important;
+    }
+    &.northfield-coderdojo-event {
+        background-color: $codesavvy-purple !important;
+    }
+    &.rcd-event {
+        background-color: $codesavvy-purple !important;
+    }
+    &.tccd-event {
         background-color: $codesavvy-purple !important;
     }
 
@@ -18,7 +30,7 @@
         background-color: #ccc !important;
     }
     &.codesavvy-event {
-        .fc-event-dot {
+        .gwtp-event {
             background-color: $codesavvy-purple !important;
         }
     }

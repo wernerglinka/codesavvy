@@ -54,10 +54,22 @@ var calendar = function ($) {
         // render calendar
         var thisCal = $('#calendar');
         thisCal.fullCalendar({
-            googleCalendarApiKey: "AIzaSyBg6sxHiXOgauTfQ0MRvyAAu3ylyePHY_M",
+            googleCalendarApiKey: "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4",
             eventSources: [{
-                googleCalendarId: "glinka.co_m032tqboc6l83vmi0a2h4uashk@group.calendar.google.com",
-                className: 'codesavvy-event'
+                googleCalendarId: "codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com",
+                className: 'gwtp-event'
+            }, {
+                googleCalendarId: "codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com",
+                className: 'northfield-coderdojo-event'
+            }, {
+                googleCalendarId: "codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com",
+                className: 'rcd-event'
+            }, {
+                googleCalendarId: "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com",
+                className: 'tccd-event'
+            }, {
+                googleCalendarId: "codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com",
+                className: 'tmn-event'
             }, {
                 googleCalendarId: "en.usa#holiday@group.v.calendar.google.com",
                 className: 'calendar-holidays'
