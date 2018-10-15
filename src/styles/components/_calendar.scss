@@ -5,20 +5,23 @@
     border-radius: 0 !important;
     padding: 5px !important;
 
-    &.gwtp-event {
-        background-color: $codesavvy-purple !important;
+    &.get-with-the-program-event {
+        background-color: #EE1F46 !important;
     }
-    &.tmn-event {
-        background-color: #FFC760 !important;
+    &.kids-code-event {
+        background-color: #3A1366 !important;
+    }
+    &.technovation-mn-event {
+        background-color: #F6BF26 !important;
     }
     &.northfield-coderdojo-event {
-        background-color: $codesavvy-purple !important;
+        background-color: #008CD0 !important;
     }
-    &.rcd-event {
-        background-color: $codesavvy-purple !important;
+    &.rebecca-coderdojo-event {
+        background-color: #B2469A !important;
     }
-    &.tccd-event {
-        background-color: $codesavvy-purple !important;
+    &.tc-coderddojo-event {
+        background-color: #6CBD45 !important;
     }
 
     .fc-content {
