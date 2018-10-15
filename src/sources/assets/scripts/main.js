@@ -55,22 +55,24 @@ var calendar = function ($) {
         var thisCal = $('#calendar');
         thisCal.fullCalendar({
             googleCalendarApiKey: "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4",
-            eventSources: [{
+            eventSources: [{ googleCalendarId: "kidscode@codesavvy.org",
+                className: 'kids-code-event'
+            }, { // get with the program calendar
                 googleCalendarId: "codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com",
                 className: 'get-with-the-program-event'
-            }, {
+            }, { // northfield coderdojo calendar
                 googleCalendarId: "codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com",
                 className: 'northfield-coderdojo-event'
-            }, {
+            }, { // rebecca coderdojo calendar
                 googleCalendarId: "codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com",
                 className: 'rebecca-coderdojo-event'
-            }, {
+            }, { // twin cities coderdojo calendar
                 googleCalendarId: "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com",
                 className: 'tc-coderddojo-event'
-            }, {
+            }, { // technovation[mn] calendar
                 googleCalendarId: "codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com",
                 className: 'technovation-mn-event'
-            }, {
+            }, { // google holidays calendar
                 googleCalendarId: "en.usa#holiday@group.v.calendar.google.com",
                 className: 'calendar-holidays'
             }],
@@ -694,20 +696,44 @@ var touchClick = function ($, undefined) {
 var upcomingEvents = function ($, undefined) {
     "use strict";
 
+    var buildEventObj = function buildEventObj(event) {
+        var date = moment(new Date(event.start.dateTime)).format("MMMM Do, YYYY");
+        var temp = [];
+        temp.date = moment(new Date(event.start.dateTime)).format("MMMM Do, YYYY");
+        temp.title = event.summary;
+        temp.startTime = moment(new Date(event.start.dateTime)).format("LT");
+        temp.endTime = moment(new Date(event.end.dateTime)).format("LT");
+        temp.location = event.location;
+        var locationQueryTerm = event.location.replace(/,/g, '%20');
+        temp.mapLink = "https://www.google.com/maps/search/?api=1&query=" + locationQueryTerm;
+        return temp;
+    };
+
     var init = function init() {
         // get the 4 next events and see if we have multiple for the next event day
         // prepare a info pane that is shown when user clicks the event title
         // this way, when we have multiple events on the next events day, we can show them all
-        var calID = "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com"; // CoderDojo TC
+        /*
+        let calID = [
+            "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com", // CoderDojo TC
+            "codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com", // get with the program
+            "codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com", // northfield coderdojo
+            "codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com", // rebecca coderdojo
+            "codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com", // technovation[mn]
+            "kidscode@codesavvy.org" // kids code
+        ];
+        */
+        var calID = "kidscode@codesavvy.org"; // kids code
         var calKey = "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4";
         var calOptions = "&singleEvents=true&orderBy=starttime&maxResults=4";
         var calURL = "https://www.googleapis.com/calendar/v3/calendars/" + calID + "/events?key=" + calKey + calOptions;
         var nextEvents = [];
-        var temp = [];
         var date = void 0,
-            locationQueryTerm = void 0,
             nextEvent = void 0,
             eventDetails = void 0;
+
+        // get five calendar events, consolidate into one array and then find the next one(s)
+
 
         $.getJSON(calURL, function (data) {
             // get the date for the first event
@@ -716,16 +742,7 @@ var upcomingEvents = function ($, undefined) {
             Object.values(data.items).forEach(function (thisEvent) {
                 date = moment(new Date(thisEvent.start.dateTime)).format("MMMM Do, YYYY");
                 if (nextDay === date) {
-                    temp = [];
-                    temp.date = moment(new Date(thisEvent.start.dateTime)).format("MMMM Do, YYYY");
-                    temp.title = thisEvent.summary;
-                    temp.startTime = moment(new Date(thisEvent.start.dateTime)).format("LT");
-                    temp.endTime = moment(new Date(thisEvent.end.dateTime)).format("LT");
-                    temp.location = thisEvent.location;
-                    locationQueryTerm = thisEvent.location.replace(/,/g, '%20');
-                    temp.mapLink = "https://www.google.com/maps/search/?api=1&query=" + locationQueryTerm;
-
-                    nextEvents.push(temp);
+                    nextEvents.push(buildEventObj(thisEvent));
                 }
             });
 

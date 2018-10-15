@@ -30,27 +30,30 @@ let calendar = (function ($) {
         thisCal.fullCalendar({
             googleCalendarApiKey: "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4",
             eventSources: [
-                {
+                {   googleCalendarId: "kidscode@codesavvy.org",
+                    className: 'kids-code-event'
+                },
+                {   // get with the program calendar
                     googleCalendarId: "codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com",
                     className: 'get-with-the-program-event'
                 },
-                {
+                {   // northfield coderdojo calendar
                     googleCalendarId: "codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com",
                     className: 'northfield-coderdojo-event'
                 },
-                {
+                {   // rebecca coderdojo calendar
                     googleCalendarId: "codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com",
                     className: 'rebecca-coderdojo-event'
                 },
-                {
+                {   // twin cities coderdojo calendar
                     googleCalendarId: "codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com",
                     className: 'tc-coderddojo-event'
                 },
-                {
+                {   // technovation[mn] calendar
                     googleCalendarId: "codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com",
                     className: 'technovation-mn-event'
                 },
-                {
+                {   // google holidays calendar
                     googleCalendarId: "en.usa#holiday@group.v.calendar.google.com",
                     className: 'calendar-holidays'
                 }
