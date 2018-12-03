@@ -1,0 +1,27 @@
+---
+title: Volunteer Opportunities
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: volunteer-opportunities
+
+---
+
+{% extends "default.njk" %}
+{% block header %}
+    {% include "partials/no-nav-header.njk" %}
+{% endblock %}
+{% block body %}
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <h1>Volunteer Opportunities</h1>
+        </div>
+    </section>
+
+{% endblock %}
