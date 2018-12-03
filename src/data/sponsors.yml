@@ -49,3 +49,9 @@ smaby_family_foundation:
   image_src: "smaby-logo.png"
   rebecca: true
   codesavvy: false
+werner_glinka:
+  name: Werner Glinka . Web Developer
+  image_src: "wg-webdev.svg"
+  link_url: "https://glinka.co"
+  rebecca: false
+  codesavvy: true
