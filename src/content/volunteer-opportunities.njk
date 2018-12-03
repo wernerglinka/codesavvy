@@ -11,6 +11,11 @@ page:
 
 body_classes: volunteer-opportunities
 
+header_images:
+    volunteers: volunteer-opportunities.jpg
+    second_section: mentor-with-kids1.jpg
+    contact: mentor-with-kid1.jpg
+
 ---
 
 {% extends "default.njk" %}
@@ -18,10 +23,83 @@ body_classes: volunteer-opportunities
     {% include "partials/no-nav-header.njk" %}
 {% endblock %}
 {% block body %}
-    <section id="intro" class="intro-section">
-        <div class="container">
-            <h1>Volunteer Opportunities</h1>
+    
+    <div class="container">
+        <section id="intro" class="volunteers-section">
+        <div class="section-row cf">
+            <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.volunteers }})">
+                <h1>Volunteer Opportunities</h1>
+            </div>
+            <div class="section-row__prose section-row__right has-highlight">
+                <p>Are you looking for volunteer opportunities with Code Savvy? Become a mentor for one of our programs.</p>
+                
+            </div>
         </div>
+        
     </section>
+        
+    <section id="volunteers" class="volunteers-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__right" style="background-image: url(/assets/images/banners/{{ header_images.second_section }})">
+                    <h1>abra cadabra</h1>
+                </div>
+                <div class="section-row__prose section-row__left has-highlight">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="section-row cf">
+                <div class="section-row__header section-row__left" style="background-image: url(/assets/images/banners/{{ header_images.contact }})">
+                    <h1>Contact Us</h1>
+                </div>
+                <div class="section-row__prose section-row__right has-highlight is-empty">
+                    <p></p>
+                </div>
+            </div>
+            <div class="section-row cf">
+                <div class="contact-form section-row__left" >
+                    <form name="volunteer-contact" method="POST" netlify-honeypot="bot-field" netlify>
+                        <div class="form-element">
+                            <input type="text" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-element">
+                            <input type="email" name="email"  placeholder="Your Email">
+                        </div>
+                        <div class="form-element">
+                            <textarea name="message" placeholder="Your Message"></textarea>
+                        </div>
+                        <div class="form-element">
+                            <button class="btn btn_b1" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact-info section-row__right">
+                    <ul class="contact-snippets adr">
+                        <li>
+                            <i class="icon icon-map-pin"></i>
+                            <p>{{ contact.addressHeader }}</p>
+                            <p class="street-address">{{ contact.street }}</p>
+                            <p class="locality">{{ contact.city }},
+                                <span class="region">{{ contact.state }} </span>
+                                <span class="postal-code">{{ contact.postalCode }}</span>
+                            </p>
+                        </li>
+                        <li>
+                            <i class="icon icon-mail"></i>
+                            <p>{{ contact.emailHeader }}</p>
+                            <p><a class="email" href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+                        </li>
+                        <li>
+                            <i class="icon icon-phone"></i>
+                            <p>{{ contact.phoneHeader }}</p>
+                            <p><a class="tel" href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
 
 {% endblock %}
