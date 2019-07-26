@@ -6,25 +6,21 @@ board_of_directors:
   andrea_wilson_vazquez:
     image_src: andrea-wilson-vazquez.jpg
     title: "Andrea Wilson Vazquez"
-    position: "Board Secretary"
+    position: "Co-Founder and Director, Educator Program"
   kait_frank:
-    image_src:
+    image_src: kait-frank.jpg
     title: "Kait Frank"
-    position: "Board Member"
+    position: "Secretary and Marketing"
   annette_evans:
     image_src:
     title: "Annette Evans"
-    position: "Board Member"
+    position: "Board Chair and Finance"
   chris_alexander:
     image_src:
     title: "Chris Alexander"
-    position: "Board Member"
+    position: "Legal"
 
 program_directors:
-  eileen_king:
-    image_src: eileen-king.jpg
-    title: "Eileen King"
-    position: "Director, Summer Camps"
   lanise_block:
     image_src: lanise-block.jpg
     title: "Dr. Lanise Block"
