@@ -49,37 +49,10 @@ body_classes: educator-programs
     <section id="register" class="rebecca-register-section">
         <div class="container">
             <h1>Schedule</h1>
+            <p>All Code Savvy CoderDojos have temporarily closed due to the COVID-19 outbreak. We are currently assessing resuming our CoderDojo activities in the Fall. In the meantime you can find weekly youth-centered challenges that focus on creating new things with computer science. <a href= "https://www.cstogo.org/"><strong> CStoGo.org </strong></a></p>
             <p>Rebecca CoderDojo is free, but you must register in advance.  Space is strictly limited to provide the best possible experience for these young coders and their mentors, who are generously volunteering their time and expertise.  Sign up for email updates on main RCD page</p>
-            <a class="btn btn_b1" href="https://www.eventbrite.com/o/rebecca-coderdojo-9823044327">Register</a>
-
-            <div class="schedule-wrapper">
-                {% if rebeccaSchedule %}
-                <ul class="list-unstyled rebecca-schedule">
-                    <li>
-                    {% for key, value in rebeccaSchedule %}
-                        {% if loop.first %}
-                        <span>{{ value.name }}</span>
-                        {% else %}
-                        {{ value.name }}
-                        {% endif %}
-                    {% endfor %}
-                    </li>
-                    <li>
-                    {% for key, value in rebeccaSchedule %}
-                        {% if loop.first %}
-                        <span><em>{{ value.times }}</em></span>
-                        {% else %}
-                        <em>{{ value.times }}</em>
-                        {% endif %}
-                    {% endfor %}
-                    </li>
-                    {% for value in rebeccaSchedule.event.schedule %}
-                    <li><span>{{ value }}</span>{{ rebeccaSchedule.ticket_release.schedule[loop.index0] }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <img src="/assets/images/rebecca-coderdojo/girls-code-1.jpg" alt="rebecca coderdojo schedule" />
-            </div>
+            
+           
         </div>
     </section>
 
