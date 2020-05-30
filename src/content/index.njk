@@ -26,8 +26,7 @@ header_images:
 {% extends "default.njk" %}
 
 {% block body %}
-    <div class="container">
-        <section class="welcome-section">
+     <section class="welcome-section">
             <div class="welcome-section__header" style="background-image: url('/assets/images/banners/{{ header_images.welcome }}')">
                 <h1>{{ site.owner.name }}</h1>
                 <p class="welcome-section__text">Make programming your superpower</p>
@@ -35,7 +34,7 @@ header_images:
             <a href="#upcoming-events"><i class="icon icon-arrow-down"></i></a>
         </section>
 
-        <section id="cs-to-go" class="programs-section">
+        <section id="distance-learning" class="distance-learning"><div class="container">
             <div class="section-row cf">
                 <div class="section-row__header section-row__left" style="background-image: url(/assets/images/site-images/{{ header_images.cs_to_go }})">
                     <h1>Distance Learning</h1>
@@ -48,13 +47,14 @@ header_images:
             </div>
         </section>
 
-        <section id="upcoming-events" class="events-section">
+        
+        <section id="next-event" class="next-event">
             <div class="section-row cf">
                 <div class="section-row__header section-row__right has-slidein" style="background-image: url(/assets/images/site-images/{{ header_images.events }})">
                     <h1>Next Event</h1>
                 </div>
                 <div class="section-row__prose section-row__left has-highlight">
-                    <p> All in person events are cancelled until at least May 31.</p>
+                    <p> All in person events are cancelled until June 30.</p>
                 </div>
             </div>
         </section>
