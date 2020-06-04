@@ -11,6 +11,10 @@ board_of_directors:
     image_src: kait-frank.jpg
     title: "Kait Frank"
     position: "Secretary and Marketing"
+  lisa-schlosser:
+    image_src: lisa-schlosser.jpeg
+    title: "Lisa Schlosser"
+    position: "Executive Director, Technovation[MN]"
   annette_evans:
     image_src: annette-evans.jpg
     title: "Annette Evans"
