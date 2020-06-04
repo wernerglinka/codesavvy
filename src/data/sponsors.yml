@@ -4,12 +4,12 @@ target:
   link_url: "https://target.com"
   rebecca: false
   codesavvy: true
-peoplenet:
-  name: Peoplenet
-  image_src: "peoplenet-logo.png"
-  link_url: "https://peoplenetonline.com"
-  rebecca: false
-  codesavvy: true
+#peoplenet:
+  #name: Peoplenet
+  #image_src: "peoplenet-logo.png"
+  #ink_url: "https://peoplenetonline.com"
+  #rebecca: false
+  #codesavvy: true
 clockwork:
   name: ClockWork
   image_src: "clockwork-logo.png"
@@ -27,11 +27,11 @@ works_museum:
   image_src: "works-museum-logo.png"
   rebecca: false
   codesavvy: true
-colle_mcvoy:
-  name: Colle McVoy
-  image_src: "colle-mcvoy-logo.png"
-  rebecca: false
-  codesavvy: true
+#colle_mcvoy:
+  #name: Colle McVoy
+  #image_src: "colle-mcvoy-logo.png"
+  #rebecca: false
+  #codesavvy: true
 #techdotcom:
 #  name: Tech{dot}MN
 #  image_src: "techdotmn-logo.png"

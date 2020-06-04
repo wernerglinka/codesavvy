@@ -15,24 +15,36 @@ board_of_directors:
     image_src: annette-evans.jpg
     title: "Annette Evans"
     position: "Board Chair and Finance"
-  chris_alexander:
-    image_src: chris-alexander.jpg
+  paul-llamas:
+    image_src: paul-llamas.jpeg
+    title: "Paul Llamas"
+    position: "Board Member"
+  francisco-cervantes:
+    image_src: francisco-cervantes.jpeg
     title: "Chris Alexander"
-    position: "Legal"
+    position: "Board Member"
+  ellena-schoop:
+    image_src: ellena-schoop.jpeg
+    title: "Ellena Schoop"
+    position: "Board Member"
 
 program_directors:
   lanise_block:
     image_src: lanise-block.jpg
     title: "Dr. Lanise Block"
     position: "Digital Empowerment Academy Program Director"
-  matt_gray:
-    image_src: matt-gray.jpg
-    title: "Matt Gray"
-    position: "Director, CoderDojo TC"
+  lisa-schlosser:
+    image_src: lisa-schlosser.jpeg
+    title: "Lisa Schlosser"
+    position: "Executive Director, Technovation[MN]"
   andrea_wilson_vazquez:
     image_src: andrea-wilson-vazquez.jpg
     title: "Andrea Wilson Vazquez"
     position: "Director, Educator Programs"
+  eileen king:
+    image_src: eileen-king.jpg
+    title: "Eileen King"
+    position: "Director, Northfield CoderDojo"
   marie_gottschalk:
     image_src: marie-gottschalk.jpg
     title: "Marie Gottschalk"
