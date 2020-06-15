@@ -19,13 +19,21 @@ board_of_directors:
     image_src: paul-llamas.jpeg
     title: "Paul Llamas"
     position: "Board Member"
-  francisco-cervantes:
-    image_src: francisco-cervantes.jpeg
+  Chris Alexander:
+    image_src: Chris-Alexander.jpeg
     title: "Chris Alexander"
-    position: "Board Member"
+    position: "Legal"
   ellena-schoop:
     image_src: ellena-schoop.jpeg
     title: "Ellena Schoop"
+    position: "Board Member"
+  lisa-schlosser:
+    image_src: lisa-schlosser.jpeg
+    title: "Lisa Schlosser"
+    position: "Executive Director, Technovation[MN]"
+  francisco-cervantes:
+    image_src: francisco-cervantes.jpeg
+    title: "Francisco Cervantesr"
     position: "Board Member"
 
 program_directors:
