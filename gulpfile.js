@@ -22,6 +22,7 @@ const templateConfig = {
 
 const path = require('path');
 const gulp = require('gulp');
+const { series } = require('gulp');
 const sequence = require('gulp-sequence');
 const order = require('gulp-order');
 const sass = require('gulp-sass');
@@ -201,47 +202,50 @@ gulp.task('getCalendarCSS', function() {
 // since gulp processes tasks in parallel we'll use the gulp plugin gulp-sequence
 // sequence will process all tasks serially except the one in square bracket, these will be processed in parallel
 // this insures that all site assets are ready before metallsmith assembles the site.
-gulp.task('buildDev', cb =>
-  sequence(
+gulp.task(
+  'buildDev',
+  series(
     'getIconVariables',
     'getIconStyles',
     'getIcons',
     'getCalendarCSS',
     ['styles', 'vendorScripts', 'getCalendarScripts', 'scripts'],
     'metalsmith',
-    cb
+    function(cb) {
+      cb();
+    }
   )
 );
 
 // having buildDev as a dependency for the refresh task insures that they are executed before browerSync is run
 // reference: browsersync.io/docs/gulp
-gulp.task('refresh', ['buildDev'], function(done) {
-  browserSync.reload();
-  done();
-});
+gulp.task(
+  'refresh',
+  gulp.series('buildDev', function(done) {
+    browserSync.reload();
+    done();
+  })
+);
 
-// the gulp default task starts browserSync and the watch task
-gulp.task('default', ['buildDev'], function() {
-  browserSync.init({
-    server: {
-      baseDir: 'build',
-    },
-    open: false,
-  });
+const watch = function() {
+  gulp.watch(`${srcPath}**/*`, `refresh`);
+  gulp.watch(`${stylePath}**/*`, `refresh`);
+  gulp.watch(`${scriptPath}**/*`, `refresh`);
+};
 
-  gulp.watch(
-    [`${srcPath}**/*`, `${stylePath}**/*`, `${scriptPath}**/*`],
-    ['refresh']
-  );
-});
+gulp.task(
+  'default',
+  gulp.series('buildDev', function() {
+    browserSync.init({
+      server: {
+        baseDir: 'build',
+      },
+      open: false,
+    });
 
-gulp.task('buildProd', function(cb) {
-  sequence(
-    ['vendorScripts', 'productionScripts', 'productionStyles'],
-    'metalsmith',
-    cb
-  );
-});
+    gulp.series(watch);
+  })
+);
 
 gulp.task('productionScripts', function() {
   return gulp
@@ -259,3 +263,16 @@ gulp.task('productionStyles', function() {
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest(path.join(__dirname, assetPath, 'assets/styles')));
 });
+
+gulp.task(
+  'buildProd',
+  series(
+    'vendorScripts',
+    'productionScripts',
+    'productionStyles',
+    'metalsmith',
+    function(cb) {
+      cb();
+    }
+  )
+);
