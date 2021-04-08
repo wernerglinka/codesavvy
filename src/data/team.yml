@@ -7,48 +7,54 @@ board_of_directors:
     image_src: andrea-wilson-vazquez.jpg
     title: "Andrea Wilson Vazquez"
     position: "Co-Founder and Director, Educator Programs"
-  kait_frank:
-    image_src: kait-frank.jpg
-    title: "Kait Frank"
-    position: "Secretary and Marketing"
-  annette_evans:
-    image_src: annette-evans.jpg
-    title: "Annette Evans"
-    position: "Board Chair and Finance"
+  lisa-schlosser:
+    image_src: lisa-schlosser.jpeg
+    title: "Lisa Schlosser"
+    position: "Executive Director, Technovation[MN]"
   paul-llamas:
     image_src: paul-llamas.jpeg
     title: "Paul Llamas"
+    position: "Board Chair"
+  david-balcom:
+    image_src: David-Balcom.png
+    title: "David Balcom"
+    position: "Board Treasurer"
+  annette_evans:
+    image_src: annette-evans.jpg
+    title: "Annette Evans"
     position: "Board Member"
   Chris Alexander:
     image_src: Chris-Alexander.jpeg
     title: "Chris Alexander"
-    position: "Legal"
-  ellena-schoop:
-    image_src: ellena-schoop.jpeg
-    title: "Ellena Schoop"
+    position: "Secretary & Legal"
+  christina_llamas:
+    image_src: Christina-Llamas.jpeg
+    title: "Christina Llamas"
     position: "Board Member"
-  lisa-schlosser:
-    image_src: lisa-schlosser.jpeg
-    title: "Lisa Schlosser"
-    position: "Executive Director, Technovation[MN]"
   francisco-cervantes:
     image_src: francisco-cervantes.jpeg
-    title: "Francisco Cervantesr"
+    title: "Francisco Cervantes"
     position: "Board Member"
+  ellena-schoop:
+    image_src: Ellena-Schoop.jpeg
+    title: "Ellena Schoop"
+    position: "Board Member"
+  
+
 
 program_directors:
-  lanise_block:
-    image_src: lanise-block.jpg
-    title: "Dr. Lanise Block"
-    position: "Digital Empowerment Academy Program Director"
-  lisa-schlosser:
-    image_src: lisa-schlosser.jpeg
-    title: "Lisa Schlosser"
-    position: "Executive Director, Technovation[MN]"
   andrea_wilson_vazquez:
     image_src: andrea-wilson-vazquez.jpg
     title: "Andrea Wilson Vazquez"
     position: "Director, Educator Programs"
+  tom-cozzolino:
+    image_src: Tom-Cozzolino.jpeg
+    title: "Tom Cozzolino"
+    position: "Educator Co-Facilitator"
+  lisa-schlosser:
+    image_src: lisa-schlosser.jpeg
+    title: "Lisa Schlosser"
+    position: "Executive Director, Technovation[MN]"
   eileen king:
     image_src: eileen-king.jpg
     title: "Eileen King"
@@ -61,3 +67,11 @@ program_directors:
     image_src: laurie-aaronson.jpg
     title: "Laurie Aaronson"
     position: "Web and Google Administrator"
+  matthew-fox:
+    image_src: Matthew-Fox.jpeg
+    title: "Matthew Fox"
+    position: "Development and Strategy"
+  ilsa-olsen :
+    image_src: Ilsa-olsen.jpeg
+    title: "Ilsa Olsen"
+    position: "Intern"
