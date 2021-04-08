@@ -209,7 +209,10 @@ gulp.task(
     'getIconStyles',
     'getIcons',
     'getCalendarCSS',
-    ['styles', 'vendorScripts', 'getCalendarScripts', 'scripts'],
+    'styles',
+    'vendorScripts',
+    'getCalendarScripts',
+    'scripts',
     'metalsmith',
     function(cb) {
       cb();
@@ -237,7 +240,7 @@ function browsersyncReload(cb) {
 
 // having buildDev as a dependency for the refresh task insures that they are executed before browerSync is run
 // reference: browsersync.io/docs/gulp
-gulp.task('refresh', series('buildDev', browsersyncReload));
+// gulp.task('refresh', series('buildDev', browsersyncReload));
 
 function watchDev() {
   console.log('watching for changes');
