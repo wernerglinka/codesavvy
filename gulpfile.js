@@ -22,7 +22,7 @@ const templateConfig = {
 
 const path = require('path');
 const gulp = require('gulp');
-const { series } = require('gulp');
+const { series, watch } = require('gulp');
 const sequence = require('gulp-sequence');
 const order = require('gulp-order');
 const sass = require('gulp-sass');
@@ -214,38 +214,40 @@ gulp.task(
     function(cb) {
       cb();
     }
-  )
+  ),
+  console.log('rebuild dev...')
 );
+
+// browserSync functions
+function browsersyncServe(cb) {
+  browserSync.init({
+    server: {
+      baseDir: 'build',
+    },
+    open: false,
+  });
+  cb();
+}
+
+function browsersyncReload(cb) {
+  browserSync.reload();
+  console.log('reloading...');
+  cb();
+}
 
 // having buildDev as a dependency for the refresh task insures that they are executed before browerSync is run
 // reference: browsersync.io/docs/gulp
-gulp.task(
-  'refresh',
-  gulp.series('buildDev', function(done) {
-    browserSync.reload();
-    done();
-  })
-);
+gulp.task('refresh', series('buildDev', browsersyncReload));
 
-const watch = function() {
-  gulp.watch(`${srcPath}**/*`, `refresh`);
-  gulp.watch(`${stylePath}**/*`, `refresh`);
-  gulp.watch(`${scriptPath}**/*`, `refresh`);
-};
+function watchDev() {
+  console.log('watching for changes');
+  watch(
+    ['./src/content/**/*', './src/styles/**/*', './src/scripts/**/*'],
+    series('styles', 'scripts', browsersyncReload)
+  );
+}
 
-gulp.task(
-  'default',
-  gulp.series('buildDev', function() {
-    browserSync.init({
-      server: {
-        baseDir: 'build',
-      },
-      open: false,
-    });
-
-    gulp.series(watch);
-  })
-);
+gulp.task('default', series('buildDev', browsersyncServe, watchDev));
 
 gulp.task('productionScripts', function() {
   return gulp

@@ -1,48 +1,21 @@
-/*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents, getNews, inlineVideos */
+'use strict';
 
-(function ($) {
-    'use strict';
-
-    $(function () {
-        touchClick.init();
-        externalLinks.init();
-        scrollToTop.init();
-        scrolledIntoView.init();
-        softScroll.init();
-        hamburger.init();
-        accordions.init();
-        inlineVideos.init();
-
-        if ($('body').hasClass('home')) {
-            showLogo.init();
-            upcomingEvents.init();
-        }
-        if ($('body').hasClass('calendar')) {
-            calendar.init();
-        }
-        if ($('body').hasClass('news')) {
-            getNews.init();
-        }
-    });
-    // end ready function
-})(jQuery);
 /*jsLint es6, this */
 /*global jQuery, window */
 
 // function to manage top nav visibility
-let accordions = function ($) {
+var accordions = function ($) {
     'use strict';
 
-    let init = function () {
-        let allAccordions = $('.accordion');
+    var init = function init() {
+        var allAccordions = $('.accordion');
 
         allAccordions.each(function () {
-            let thisAccordion = $(this);
-            let theseAccordionHeads = thisAccordion.find('.accordion-head');
+            var thisAccordion = $(this);
+            var theseAccordionHeads = thisAccordion.find('.accordion-head');
 
             theseAccordionHeads.on('touchclick', function () {
-                let thisAccordionHead = $(this);
+                var thisAccordionHead = $(this);
 
                 thisAccordionHead.parents('.accordion').find('.accordion-head').not(thisAccordionHead).removeClass('isOpen').next().slideUp();
                 thisAccordionHead.toggleClass('isOpen');
@@ -60,34 +33,26 @@ let accordions = function ($) {
         init: init
     };
 }(jQuery);
+'use strict';
+
 /*jsLint es6, this */
 /*global jQuery, window, moment */
 
 // function to manage top nav visibility
-let calendar = function ($) {
+var calendar = function ($) {
     'use strict';
 
-    let init = function () {
+    var init = function init() {
         // create the popup html
-        let eventPopUpHTML = `<div id='event-details' class='event-popup'>
-                    <i class='icon icon-x'></i>
-                    <ul class='list-unstyled event-data'>
-                        <li class='event-title'></li>
-                        <li><strong>Date:</strong> <span class='event-date'></span></li>
-                        <li class='event-time'><strong>Time:</strong> <span class='start-time'></span> to <span class='end-time'></span></li>
-                        <li class='event-description'></li>
-                        <li><strong>Venue</strong><p class='event-location'></p></li>
-                        <li class='event-map'><a target='_blank' class='event-map-link' href=''>+ Google Map</a></li>
-                    </ul>
-                </div>`;
+        var eventPopUpHTML = '<div id=\'event-details\' class=\'event-popup\'>\n                    <i class=\'icon icon-x\'></i>\n                    <ul class=\'list-unstyled event-data\'>\n                        <li class=\'event-title\'></li>\n                        <li><strong>Date:</strong> <span class=\'event-date\'></span></li>\n                        <li class=\'event-time\'><strong>Time:</strong> <span class=\'start-time\'></span> to <span class=\'end-time\'></span></li>\n                        <li class=\'event-description\'></li>\n                        <li><strong>Venue</strong><p class=\'event-location\'></p></li>\n                        <li class=\'event-map\'><a target=\'_blank\' class=\'event-map-link\' href=\'\'>+ Google Map</a></li>\n                    </ul>\n                </div>';
 
         // append the popup container to body  
         $('body').append($(eventPopUpHTML));
 
-        let eventPopup = $('#event-details');
+        var eventPopup = $('#event-details');
 
         // render calendar
-        let thisCal = $('#calendar');
+        var thisCal = $('#calendar');
         thisCal.fullCalendar({
             googleCalendarApiKey: "AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4",
             eventSources: [{ googleCalendarId: "kidscode@codesavvy.org",
@@ -111,7 +76,7 @@ let calendar = function ($) {
                 googleCalendarId: "en.usa#holiday@group.v.calendar.google.com",
                 className: 'calendar-holidays'
             }],
-            eventClick: function (calEvent, jsEvent, view) {
+            eventClick: function eventClick(calEvent, jsEvent, view) {
                 jsEvent.preventDefault();
 
                 // ignore holidays
@@ -119,11 +84,11 @@ let calendar = function ($) {
                     return;
                 }
 
-                let date = moment(new Date(calEvent.start)).format("MMMM Do, YYYY");
-                let startTime = moment(new Date(calEvent.start)).format("LT");
-                let endTime = moment(new Date(calEvent.end)).format("LT");
-                let locationQueryTerm = calEvent.location.replace(/,/g, '%20');
-                let mapLink = `https://www.google.com/maps/search/?api=1&query=${locationQueryTerm}`;
+                var date = moment(new Date(calEvent.start)).format("MMMM Do, YYYY");
+                var startTime = moment(new Date(calEvent.start)).format("LT");
+                var endTime = moment(new Date(calEvent.end)).format("LT");
+                var locationQueryTerm = calEvent.location.replace(/,/g, '%20');
+                var mapLink = 'https://www.google.com/maps/search/?api=1&query=' + locationQueryTerm;
 
                 eventPopup.find('.event-title').html(calEvent.title);
                 eventPopup.find('.event-date').html(date);
@@ -137,7 +102,7 @@ let calendar = function ($) {
                 eventPopup.addClass('event-details_active');
             }
         });
-        let viewStatus = "grid";
+        var viewStatus = "grid";
         if ($(window).width() < 768) {
             thisCal.fullCalendar('changeView', 'listMonth');
             viewStatus = "list";
@@ -163,6 +128,8 @@ let calendar = function ($) {
         init: init
     };
 }(jQuery);
+"use strict";
+
 /*jslint browser: true, this: true*/
 /*global jQuery, undefined, window */
 
@@ -170,8 +137,8 @@ let calendar = function ($) {
 var externalLinks = function ($, undefined) {
     "use strict";
 
-    let allExternalLinks = $('a[href^="http://"], a[href^="https://"]');
-    let init = function () {
+    var allExternalLinks = $('a[href^="http://"], a[href^="https://"]');
+    var init = function init() {
         allExternalLinks.each(function () {
             var thisExternalLink = $(this);
             thisExternalLink.attr("target", "_blank");
@@ -181,51 +148,44 @@ var externalLinks = function ($, undefined) {
         init: init
     };
 }(jQuery);
+"use strict";
+
 /*jsLint es6, this */
 /*global jQuery, window */
 
 // the scroll to top function for long pages
-let getNews = function ($, undefined) {
+var getNews = function ($, undefined) {
     "use strict";
 
-    let init = function () {
-        let sheetID = "1FqD-0CJeg-EyMn8NDWCyAY4LtodSnN2qGTS2Re3zEmg";
-        let sheetURL = `https://spreadsheets.google.com/feeds/list/${sheetID}/1/public/values?alt=json`;
-        let lastYear;
+    var init = function init() {
+        var sheetID = "1FqD-0CJeg-EyMn8NDWCyAY4LtodSnN2qGTS2Re3zEmg";
+        var sheetURL = "https://spreadsheets.google.com/feeds/list/" + sheetID + "/1/public/values?alt=json";
+        var lastYear = void 0;
 
         $.getJSON(sheetURL, function (data) {
             // loop over all news and prepare news list
-            let newsList = $('#code-savvy-news-list');
+            var newsList = $('#code-savvy-news-list');
             Object.values(data.feed.entry).forEach(function (thisNews) {
                 // a little help from: https://gist.github.com/claytongulick/bf05ecebe7a2bbb96b585b74af203eed
                 // about if in string template literals
-                let date = moment(thisNews.gsx$date.$t, 'MM-DD-YYYY');
-                let thisDay = date.format('DD');
-                let thisMonth = date.format('MMM');
-                let thisYear = date.format('YYYY');
-                let newsItemHTML = ``;
+                var date = moment(thisNews.gsx$date.$t, 'MM-DD-YYYY');
+                var thisDay = date.format('DD');
+                var thisMonth = date.format('MMM');
+                var thisYear = date.format('YYYY');
+                var newsItemHTML = "";
 
                 if (thisYear !== lastYear) {
-                    newsItemHTML = `<li class="year-header">${thisYear}</li>`;
+                    newsItemHTML = "<li class=\"year-header\">" + thisYear + "</li>";
                     lastYear = thisYear;
                 }
 
-                newsItemHTML += `
-                    <li>
-                        <div class="news-date">
-                            <span class="news-date_day">${thisDay}</span><span class="news-date_month">${thisMonth}</span>
-                        </div>
-                        <div class="news-details">
-                            <p class="news-org">${thisNews.gsx$newsorg.$t}</p>
-                            ${(gsx$newslink => {
+                newsItemHTML += "\n                    <li>\n                        <div class=\"news-date\">\n                            <span class=\"news-date_day\">" + thisDay + "</span><span class=\"news-date_month\">" + thisMonth + "</span>\n                        </div>\n                        <div class=\"news-details\">\n                            <p class=\"news-org\">" + thisNews.gsx$newsorg.$t + "</p>\n                            " + function (gsx$newslink) {
                     if (gsx$newslink.$t.length) {
-                        return `<a target="_blank" href="${thisNews.gsx$newslink.$t}">${thisNews.gsx$title.$t}</a>`;
+                        return "<a target=\"_blank\" href=\"" + thisNews.gsx$newslink.$t + "\">" + thisNews.gsx$title.$t + "</a>";
                     } else {
-                        return `<p>${thisNews.gsx$title.$t}</p>`;
+                        return "<p>" + thisNews.gsx$title.$t + "</p>";
                     }
-                })(thisNews.gsx$newslink)}
-                        </div>
-                    </li>`;
+                }(thisNews.gsx$newslink) + "\n                        </div>\n                    </li>";
                 newsList.append(newsItemHTML);
             });
         });
@@ -234,17 +194,19 @@ let getNews = function ($, undefined) {
         init: init
     };
 }(jQuery);
+'use strict';
+
 /*jsLint es6 */
 /*global jQuery, window */
 
 // function to attach a class to the body element when the hamburger is touched/clicked
-const hamburger = function ($) {
+var hamburger = function ($) {
     'use strict';
 
-    let init = function () {
-        const thisPage = $('body');
-        const hamburger = $('.hamburger');
-        const thisMenuLayer = $('.navigation').find('ul');
+    var init = function init() {
+        var thisPage = $('body');
+        var hamburger = $('.hamburger');
+        var thisMenuLayer = $('.navigation').find('ul');
 
         hamburger.on('click', function () {
             if (thisPage.hasClass('navActive')) {
@@ -271,6 +233,8 @@ const hamburger = function ($) {
         init: init
     };
 }(jQuery);
+"use strict";
+
 /*jslint es6, this:true*/
 /*global jQuery, YT, window*/
 
@@ -278,17 +242,17 @@ const hamburger = function ($) {
 // allows videos to be inserted with minimal html
 // example: "<div class="inline-video" data-video-tn="<path/to/img>" data-video-id="<youtube id>" data-start-time="10" data-end-time="140"></div>
 
-let inlineVideos = function ($, undefined) {
+var inlineVideos = function ($, undefined) {
     "use strict";
 
-    let allVideos = $(".inline-video");
-    let allPlayers = [];
+    var allVideos = $(".inline-video");
+    var allPlayers = [];
 
     // initialize all video links when the player is ready
-    let initVideoLinks = function () {
+    var initVideoLinks = function initVideoLinks() {
 
         allVideos.each(function (i) {
-            let thisTrigger = $(this);
+            var thisTrigger = $(this);
 
             thisTrigger.on('click', function () {
                 allPlayers[i].playVideo();
@@ -296,7 +260,7 @@ let inlineVideos = function ($, undefined) {
         });
     };
 
-    let onPlayerStateChange = function (event) {
+    var onPlayerStateChange = function onPlayerStateChange(event) {
 
         // player states
         // "unstarted"               = -1
@@ -325,16 +289,16 @@ let inlineVideos = function ($, undefined) {
         }
     };
 
-    let init = function () {
+    var init = function init() {
         // add all videos to the DOM
         allVideos.each(function (i) {
-            let thisVideo = $(this);
-            let thisVideoIndex = i;
+            var thisVideo = $(this);
+            var thisVideoIndex = i;
             // add the thumbnail
-            let thisVideoTnHTML = `<div class='video-tn'><i class='icon icon-play'></i><img src='${thisVideo.data("video-tn")}' alt='' /></div>`;
+            var thisVideoTnHTML = "<div class='video-tn'><i class='icon icon-play'></i><img src='" + thisVideo.data("video-tn") + "' alt='' /></div>";
             thisVideo.append(thisVideoTnHTML);
             // and the video
-            let thisVideoHTML = `<div class='video-wrapper'><div id='linearVideo${thisVideoIndex}'></div></div>`;
+            var thisVideoHTML = "<div class='video-wrapper'><div id='linearVideo" + thisVideoIndex + "'></div></div>";
             thisVideo.append(thisVideoHTML);
         });
 
@@ -342,13 +306,13 @@ let inlineVideos = function ($, undefined) {
         // videoAPIReady is a custom event triggered when the Youtube API has been loaded
         $(window).on("videoAPIReady", function () {
             allVideos.each(function (i) {
-                let videoID = allVideos.eq(i).data('video-id');
-                let startTime = allVideos.eq(i).data('start-time');
-                let endTime = allVideos.eq(i).data('end-time');
-                let videoTarget = "linearVideo" + i;
+                var videoID = allVideos.eq(i).data('video-id');
+                var startTime = allVideos.eq(i).data('start-time');
+                var endTime = allVideos.eq(i).data('end-time');
+                var videoTarget = "linearVideo" + i;
 
                 // reference https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-                let playerVars = {
+                var playerVars = {
                     autoplay: 0, // start/stop via js commands
                     start: startTime || null, // if no start or end time is specified go trom 0 to end
                     end: endTime || null,
@@ -372,9 +336,9 @@ let inlineVideos = function ($, undefined) {
 
             // initially the video thumbnail is visible. on click fadeout the tn, show and play the video
             allVideos.each(function (i) {
-                let thisVideo = $(this);
+                var thisVideo = $(this);
                 thisVideo.find(".video-tn").on("click", function () {
-                    let thisVideoTn = $(this);
+                    var thisVideoTn = $(this);
                     thisVideoTn.fadeOut();
                     thisVideoTn.next().fadeIn();
                     allPlayers[i].playVideo();
@@ -387,6 +351,8 @@ let inlineVideos = function ($, undefined) {
         init: init
     };
 }(jQuery);
+"use strict";
+
 /*jsLint es6 */
 /*global YT, jQuery, window, setInterval, clearInterval */
 
@@ -404,23 +370,23 @@ let inlineVideos = function ($, undefined) {
 // new video starts, a few frames of the prior video might be visible. API docs recommend to use videoPause().
 
 
-let modalVideos = function ($, undefined) {
+var modalVideos = function ($, undefined) {
     "use strict";
 
-    let modalVideoTriggers = $(".modal-video");
-    let player;
-    let videoOverlay;
+    var modalVideoTriggers = $(".modal-video");
+    var player = void 0;
+    var videoOverlay = void 0;
 
     // initialize all video links when the player is ready
-    let initVideoLinks = function () {
+    var initVideoLinks = function initVideoLinks() {
         videoOverlay = $('#video-overlay');
-        let closeVideoOverlay = videoOverlay.find('.icon-x');
+        var closeVideoOverlay = videoOverlay.find('.icon-x');
 
         modalVideoTriggers.each(function () {
-            let thisTrigger = $(this);
-            let requestedVideoID = thisTrigger.data('video-id');
-            let startTime = thisTrigger.data('start-time');
-            let endTime = thisTrigger.data('end-time');
+            var thisTrigger = $(this);
+            var requestedVideoID = thisTrigger.data('video-id');
+            var startTime = thisTrigger.data('start-time');
+            var endTime = thisTrigger.data('end-time');
 
             // turn data-video-link into a href attribute and remove disabled attribute
             thisTrigger.attr('href', thisTrigger.data('video-link')).removeAttr('data-video-link').removeAttr('disabled');
@@ -449,8 +415,8 @@ let modalVideos = function ($, undefined) {
 
         closeVideoOverlay.on('click', function () {
             // fadeout sound as we close the overlay
-            let currentVolume = player.getVolume();
-            let fadeout = setInterval(function () {
+            var currentVolume = player.getVolume();
+            var fadeout = setInterval(function () {
                 if (currentVolume <= 0) {
                     // use pauseVideo rather than stopVideo to minimize
                     // previous video flashes when starting the new video
@@ -464,7 +430,7 @@ let modalVideos = function ($, undefined) {
         });
     };
 
-    let onPlayerStateChange = function (event) {
+    var onPlayerStateChange = function onPlayerStateChange(event) {
         videoOverlay = $('#video-overlay');
 
         // player states
@@ -491,7 +457,7 @@ let modalVideos = function ($, undefined) {
         }
     };
 
-    let init = function () {
+    var init = function init() {
         if (!$("body").hasClass("hasVideo")) {
             return;
         }
@@ -500,23 +466,15 @@ let modalVideos = function ($, undefined) {
         $(window).on("videoAPIReady", function () {
 
             // create an video overlay
-            $("body").append(`
-            <div id="video-overlay" class="video-overlay">
-                <i class="icon icon-x"></i>
-                <div class="responsive-wrapper">
-                    <div class="video-container">
-                        <div id="ytvideo"></div>
-                    </div>
-                </div>
-            </div>`);
+            $("body").append("\n            <div id=\"video-overlay\" class=\"video-overlay\">\n                <i class=\"icon icon-x\"></i>\n                <div class=\"responsive-wrapper\">\n                    <div class=\"video-container\">\n                        <div id=\"ytvideo\"></div>\n                    </div>\n                </div>\n            </div>");
 
             videoOverlay = $('#video-overlay');
-            let videoID = modalVideoTriggers.eq(0).data('video-id'); // the first video link
-            let startTime = modalVideoTriggers.eq(0).data('start-time');
-            let endTime = modalVideoTriggers.eq(0).data('end-time');
+            var videoID = modalVideoTriggers.eq(0).data('video-id'); // the first video link
+            var startTime = modalVideoTriggers.eq(0).data('start-time');
+            var endTime = modalVideoTriggers.eq(0).data('end-time');
 
             // reference https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-            let playerVars = {
+            var playerVars = {
                 autoplay: 0,
                 start: startTime || null, // if no start or end time is specified go trom 0 to end
                 end: endTime || null, // start/stop via js commands
@@ -543,15 +501,53 @@ let modalVideos = function ($, undefined) {
         init: init
     };
 }(jQuery);
+'use strict';
+
+/*jslint es6*/
+/*global jQuery, window*/
+
+var scrolledIntoView = function ($, undefined) {
+    "use strict";
+
+    var init = function init() {
+        var animateWhenInView = $('.initial');
+
+        $(window).scroll(function () {
+
+            if (animateWhenInView.length) {
+                animateWhenInView.each(function () {
+                    var thisElement = $(this);
+
+                    if (intoView(thisElement) && thisElement.hasClass('initial')) {
+                        thisElement.removeClass('initial');
+                    }
+                });
+            }
+        });
+    };
+
+    var intoView = function intoView(element) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        return elementTop <= docViewBottom && elementTop >= docViewTop;
+    };
+
+    return {
+        init: init
+    };
+}(jQuery);
+"use strict";
+
 /*eslint no-unused-vars: 0*/
 
 // the scroll to top function for long pages
 var scrollToTop = function ($, undefined) {
-    let hasToTop = $("#toTop").length;
-    let toTop = $("#toTop");
-    const TO_TOP_VISIBLE = 400;
+    var hasToTop = $("#toTop").length;
+    var toTop = $("#toTop");
+    var TO_TOP_VISIBLE = 400;
 
-    let init = function () {
+    var init = function init() {
         if (hasToTop) {
             toTop.on("touchclick", function () {
                 $("html, body").animate({
@@ -585,51 +581,19 @@ var scrollToTop = function ($, undefined) {
         init: init
     };
 }(jQuery);
-/*jslint es6*/
-/*global jQuery, window*/
+'use strict';
 
-var scrolledIntoView = function ($, undefined) {
-    "use strict";
-
-    let init = function () {
-        let animateWhenInView = $('.initial');
-
-        $(window).scroll(function () {
-
-            if (animateWhenInView.length) {
-                animateWhenInView.each(function () {
-                    let thisElement = $(this);
-
-                    if (intoView(thisElement) && thisElement.hasClass('initial')) {
-                        thisElement.removeClass('initial');
-                    }
-                });
-            }
-        });
-    };
-
-    let intoView = function (element) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-        var elementTop = $(element).offset().top;
-        return elementTop <= docViewBottom && elementTop >= docViewTop;
-    };
-
-    return {
-        init: init
-    };
-}(jQuery);
 /*jsLint es6 */
 /*global jQuery, window */
 
 // function to manage top nav visibility
-let showLogo = function ($) {
+var showLogo = function ($) {
     'use strict';
 
-    let init = function () {
-        let welcomeScreenMain = $('.welcome-screen__bg-image');
-        let showLogoEdge = 500;
-        let logo = $('#logo');
+    var init = function init() {
+        var welcomeScreenMain = $('.welcome-screen__bg-image');
+        var showLogoEdge = 500;
+        var logo = $('#logo');
 
         $(window).on('scroll', function () {
             //if scrollTop is >= what-i-do section we'll show the topNav
@@ -646,20 +610,22 @@ let showLogo = function ($) {
         init: init
     };
 }(jQuery);
+'use strict';
+
 /*jsLint es6 */
 /*global YT, jQuery, window, setInterval, clearInterval */
 
 // function to scroll softly to on-page anchors
-const softScroll = function ($) {
+var softScroll = function ($) {
     'use strict';
 
     // filter handling for a /dir/ OR /indexordefault.page
 
-    var filterPath = function (string) {
+    var filterPath = function filterPath(string) {
         return string.replace(/^\//, '').replace(/(index|default).[a-zA-Z]{3,4}$/, '').replace(/\/$/, '');
     };
 
-    var init = function () {
+    var init = function init() {
         // source: https://css-tricks.com/smooth-scrolling-accessibility/
         // URL updates and the element focus is maintained
         // originally found via in Update 3 on http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links
@@ -669,14 +635,14 @@ const softScroll = function ($) {
         // the error is caused by this selector $('a[href*="#"]') as this selector selects urls that have an "#" in any place
         // Changing that to $('a[href^="#"]') insures that only hashes that START with and "#" are selected.
 
-        const locationPath = filterPath(location.pathname);
+        var locationPath = filterPath(location.pathname);
         $('a[href^="#"]').each(function () {
-            const thisPath = filterPath(this.pathname) || locationPath;
-            const hash = this.hash;
+            var thisPath = filterPath(this.pathname) || locationPath;
+            var hash = this.hash;
             if ($("#" + hash.replace(/#/, '')).length) {
                 if (locationPath === thisPath && (location.hostname === this.hostname || !this.hostname) && this.hash.replace(/#/, '')) {
-                    const $target = $(hash),
-                          target = this.hash;
+                    var $target = $(hash),
+                        target = this.hash;
                     if (target) {
                         $(this).on('click', function (event) {
                             event.preventDefault();
@@ -694,20 +660,22 @@ const softScroll = function ($) {
         init: init
     };
 }(jQuery);
+"use strict";
+
 /*jsLint es6 */
 /*global YT, jQuery, window */
 
 // function to extend jQuery event >> touchclick for touch and click
-let touchClick = function ($, undefined) {
+var touchClick = function ($, undefined) {
     "use strict";
 
-    let init = function () {
-        let isMobile = false;
+    var init = function init() {
+        var isMobile = false;
         if ($("html").hasClass("touch")) {
             isMobile = true;
         }
         //var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-        let eventType = isMobile ? "touchstart" : "click";
+        var eventType = isMobile ? "touchstart" : "click";
 
         $.event.special.touchclick = {
             bindType: eventType,
@@ -719,62 +687,64 @@ let touchClick = function ($, undefined) {
         init: init
     };
 }(jQuery);
+'use strict';
+
 /* jsLint es6, this: true */
 /* global jQuery, window, moment */
 
 // the scroll to top function for long pages
-const upcomingEvents = function ($, undefined) {
-  const buildEventObj = event => {
-    const temp = [];
+var upcomingEvents = function ($, undefined) {
+  var buildEventObj = function buildEventObj(event) {
+    var temp = [];
     temp.date = new Date(event.start.dateTime); // date becomes a dateTime object so we can compare them later
     temp.title = event.summary;
     temp.startTime = moment(new Date(event.start.dateTime)).format('LT');
     temp.endTime = moment(new Date(event.end.dateTime)).format('LT');
     temp.location = event.location;
-    const locationQueryTerm = event.location.replace(/,/g, '%20');
-    temp.mapLink = `https://www.google.com/maps/search/?api=1&query=${locationQueryTerm}`;
+    var locationQueryTerm = event.location.replace(/,/g, '%20');
+    temp.mapLink = 'https://www.google.com/maps/search/?api=1&query=' + locationQueryTerm;
     return temp;
   };
 
-  const init = function () {
+  var init = function init() {
     // get the next events - up to 4 - and see if we have multiple for the next event day
     // prepare a info pane that is shown when user clicks the event title
     // this way, when we have multiple events on the next events day, we can show them all
 
     // calendar IDs for all Code Savvy calendars
-    const calendarIDs = ['codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com', // CoderDojo TC
+    var calendarIDs = ['codesavvy.org_qb9mb086pvdeaj3a0vrsgtq3uo@group.calendar.google.com', // CoderDojo TC
     'codesavvy.org_6hbsd3g9j98tjclh328e5bji5c@group.calendar.google.com', // get with the program
     'codesavvy.org_kocktpkfeoq5ets7ueq6ahtq7g@group.calendar.google.com', // northfield coderdojo
     'codesavvy.org_kq66e6mmrcgf470apc4i4sgrtc@group.calendar.google.com', // rebecca coderdojo
     'codesavvy.org_vtbr9o2dmjm152b0e9peaotl1s@group.calendar.google.com', // technovation[mn]
     'kidscode@codesavvy.org'];
 
-    const eventsStartDate = new Date().toISOString(); // we request on event from today forward
-    const calURLBase = `https://www.googleapis.com/calendar/v3/calendars/`;
-    const calKey = 'AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4';
-    const calOptions = `&singleEvents=true&orderBy=starttime&maxResults=4&timeMin=${eventsStartDate}`;
-    let nextEvents = [];
-    let date;
-    let eventDetails;
+    var eventsStartDate = new Date().toISOString(); // we request on event from today forward
+    var calURLBase = 'https://www.googleapis.com/calendar/v3/calendars/';
+    var calKey = 'AIzaSyAtfBMbq9zyxuelJG94mkvgUoBA58CF6P4';
+    var calOptions = '&singleEvents=true&orderBy=starttime&maxResults=4&timeMin=' + eventsStartDate;
+    var nextEvents = [];
+    var date = void 0;
+    var eventDetails = void 0;
 
     // get all calendar events, consolidate into one array and then find the next one(s)
 
     // build the request array for all calendars
     // reference: http://michaelsoriano.com/working-with-jquerys-ajax-promises-and-deferred-objects/
-    const calendarRequests = [];
-    calendarIDs.forEach(thisCalendarID => {
-      calendarRequests.push($.get(`${calURLBase}${thisCalendarID}/events?key=${calKey}${calOptions}`));
+    var calendarRequests = [];
+    calendarIDs.forEach(function (thisCalendarID) {
+      calendarRequests.push($.get('' + calURLBase + thisCalendarID + '/events?key=' + calKey + calOptions));
     });
     // execute all calendar requests
-    $.when(...calendarRequests).done(function () {
+    $.when.apply($, calendarRequests).done(function () {
       // arguments is an array of responses [0][data, status, xhrObj],[1][data, status, xhrObj]...
-      let allEvents = [];
+      var allEvents = [];
       nextEvents = [];
 
-      Object.values(arguments).forEach(thisResponse => {
+      Object.values(arguments).forEach(function (thisResponse) {
         if (thisResponse[0].items.length) {
           // skip calendars with no future events in them
-          thisResponse[0].items.forEach(thisEvent => {
+          thisResponse[0].items.forEach(function (thisEvent) {
             allEvents.push(buildEventObj(thisEvent)); // build the compount array with all events
           });
         }
@@ -786,7 +756,7 @@ const upcomingEvents = function ($, undefined) {
       });
 
       // get the date for the first event
-      const nextDay = moment(new Date(allEvents[0].date)).format('MMMM Do, YYYY');
+      var nextDay = moment(new Date(allEvents[0].date)).format('MMMM Do, YYYY');
       // loop over the events and check if we have more events for the first event day
       Object.values(allEvents).forEach(function (thisEvent) {
         date = moment(new Date(thisEvent.date)).format('MMMM Do, YYYY');
@@ -797,13 +767,13 @@ const upcomingEvents = function ($, undefined) {
 
       // now array nextEvents holds all event objects for the next events day
       // typically that is only 1 event but can be more on occassion
-      const events = $('#upcoming-events');
-      const nextEvent = $('#next-event');
-      const eventsDate = $('#events-date');
+      var events = $('#upcoming-events');
+      var nextEvent = $('#next-event');
+      var eventsDate = $('#events-date');
       // apply a nice date format
-      const today = moment(new Date()).format('MMMM Do, YYYY');
-      const tomorrow = moment(new Date()).add(1, 'days').format('MMMM Do, YYYY');
-      const thisDate = moment(new Date(nextEvents[0].date)).format('MMMM Do, YYYY');
+      var today = moment(new Date()).format('MMMM Do, YYYY');
+      var tomorrow = moment(new Date()).add(1, 'days').format('MMMM Do, YYYY');
+      var thisDate = moment(new Date(nextEvents[0].date)).format('MMMM Do, YYYY');
 
       // if the event is today or tomorrow we use that instead of a date
       switch (thisDate) {
@@ -814,33 +784,23 @@ const upcomingEvents = function ($, undefined) {
           eventsDate.html('Tomorrow');
           break;
         default:
-          eventsDate.html(`On ${thisDate}`);
+          eventsDate.html('On ' + thisDate);
       }
 
       // render the upcoming event(s)
       nextEvents.forEach(function (thisEvent) {
         // add title link to Next Event section
-        nextEvent.append(`<li><a class="event-title learn-more-link">${thisEvent.title}</a></li>`);
+        nextEvent.append('<li><a class="event-title learn-more-link">' + thisEvent.title + '</a></li>');
 
         // add the events details pane
-        eventDetails = `
-                    <div class="slidein">
-                        <i class="icon icon-x"></i>
-                        <h2>${thisEvent.title}</h2>
-                        <p><strong>Date:</strong> ${thisDate}</p>
-                        <p><strong>Time:</strong> ${thisEvent.startTime} to ${thisEvent.endTime}</p>
-                        <hr>
-                        <h3>Venue</h3> 
-                        <p>${thisEvent.location}</p>
-                        <a target="_blank" href="${thisEvent.mapLink}">+ Google Map</a>
-                    </div>`;
+        eventDetails = '\n                    <div class="slidein">\n                        <i class="icon icon-x"></i>\n                        <h2>' + thisEvent.title + '</h2>\n                        <p><strong>Date:</strong> ' + thisDate + '</p>\n                        <p><strong>Time:</strong> ' + thisEvent.startTime + ' to ' + thisEvent.endTime + '</p>\n                        <hr>\n                        <h3>Venue</h3> \n                        <p>' + thisEvent.location + '</p>\n                        <a target="_blank" href="' + thisEvent.mapLink + '">+ Google Map</a>\n                    </div>';
         events.find('.has-slidein').append(eventDetails);
       });
 
       // add event handler to events title to show event details when clicked
-      const eventTitles = events.find('.event-title').on('touchclick', function () {
-        const thisEventTrigger = $(this);
-        const thisEventIndex = thisEventTrigger.index(eventTitles);
+      var eventTitles = events.find('.event-title').on('touchclick', function () {
+        var thisEventTrigger = $(this);
+        var thisEventIndex = thisEventTrigger.index(eventTitles);
 
         thisEventTrigger.toggleClass('is-open');
 
@@ -860,6 +820,38 @@ const upcomingEvents = function ($, undefined) {
     });
   };
   return {
-    init
+    init: init
   };
 }(jQuery);
+'use strict';
+
+/*jslint browser: true*/
+/*global Event, jQuery, document, window, touchClick, externalLinks, scrollToTop, scrolledIntoView, softScroll, hamburger, showLogo, accordions, calendar, upcomingEvents, getNews, inlineVideos */
+
+(function ($) {
+    'use strict';
+
+    $(function () {
+        touchClick.init();
+        externalLinks.init();
+        scrollToTop.init();
+        scrolledIntoView.init();
+        softScroll.init();
+        hamburger.init();
+        accordions.init();
+        inlineVideos.init();
+
+        if ($('body').hasClass('home')) {
+            showLogo.init();
+            upcomingEvents.init();
+        }
+        if ($('body').hasClass('calendar')) {
+            calendar.init();
+        }
+        if ($('body').hasClass('news')) {
+            getNews.init();
+        }
+    });
+    // end ready function
+})(jQuery);
+//# sourceMappingURL=main.js.map
