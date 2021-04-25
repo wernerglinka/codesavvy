@@ -40,9 +40,9 @@ code_camps:
   title: "Code Camps"
   link_url: "/code-camps/"
   description: "Wide variety of summer programming for youth ages 6-17"
-digital_empowerment_agency:
+AI_racing_league:
   type: youth
-  image_src: digital-empowerment.jpg
-  title: "Digital Empowerment Academy"
-  link_url: "http://www.digitalempowermentacademy.org/"
-  description: "North Minneapolis teens explore digital literacy and coding"
+  image_src: AI-race.jpg
+  title: "AI Racing League"
+  link_url: "https://www.coderdojotc.org/ai-racing-league/#/README"
+  description: "The AI Racing League is a fun way to learn AI using small computers (Raspberry Pi and Nvidia Nano), computer vision, Python, machine learning, and RC-cars. Our curriculum is inspired by the DonkeyCar and the CoderDojo mentoring system."
