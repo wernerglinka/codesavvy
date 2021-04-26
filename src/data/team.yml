@@ -16,7 +16,7 @@ board_of_directors:
     title: "Paul Llamas"
     position: "Board Chair"
   david-balcom:
-    image_src: David-Balcom.png
+    image_src: david-balcom.jpeg
     title: "David Balcom"
     position: "Board Treasurer"
   annette_evans:
@@ -36,7 +36,7 @@ board_of_directors:
     title: "Francisco Cervantes"
     position: "Board Member"
   ellena-schoop:
-    image_src: Ellena-Schoop.jpeg
+    image_src: ellena.jpeg
     title: "Ellena Schoop"
     position: "Board Member"
   
